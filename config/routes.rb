@@ -7,4 +7,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :edit, :update]
 
+  scope module: 'counselor' do
+    resources :counselors
+  end
 end
