@@ -73,4 +73,10 @@ As a Parent,
 I want to register my kid(s),
 so I can send them off for the summer.
 
->>>>>>> 537f40b84b1326d9dd5d84906f20882f71466019
+
+## Database Setup
+
+The project currently uses PSQL. As a developper, please create a development database on your local machine called "camper_development"
+```psql -d development
+CREATE DATABASE camper_development;
+```
