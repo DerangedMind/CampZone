@@ -10,9 +10,9 @@ class UsersController < ApplicationController
     if @parent.save
       puts "USER SAVED"
     else
-      rediret_to "/users/new"
+      redirect_to "/users/new"
+    end
   end
-end
 
   def edit
   end
@@ -24,12 +24,12 @@ end
 
   def user_params
     params.require(:user).permit(
-    :first_name,
-    :last_name,
-    :email,
-    :password,
-    :role
+      :first_name,
+      :last_name,
+      :email,
+      :password,
+      :role
     )
-end
+  end
 
 end
