@@ -5,7 +5,6 @@ class Counselor::CounselorsController < ApplicationController
   end
 
   def new
-    @counselor = User.new
   end
 
   def create
