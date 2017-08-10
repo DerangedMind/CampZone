@@ -1,0 +1,18 @@
+<h1 class="text-center">Welcome aboard Camp _name_</h1>
+
+<div class="col-md-2 col-xs-1">
+
+</div>
+
+<div class="col-md-8 col-xs-10 jumbotron">
+  <div class="form-group"
+  <%= form_for :counselors do |form| %>
+    <%= form.text_field :first_name, class: 'form-control', placeholder: 'First name' %>
+    <%= form.text_field :last_name, class: 'form-control', placeholder: 'Last name' %>
+    <%= form.text_field :last_name, class: 'form-control', placeholder: 'Email address' %>
+    <%= form.password_field :last_name, class: 'form-control', placeholder: 'Password' %>
+    
+    <%= form.submit "Create account", class: 'btn btn-success pull-right' %>
+
+  <% end %>
+</div>
