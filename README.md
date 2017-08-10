@@ -77,3 +77,6 @@ so I can send them off for the summer.
 ## Database Setup
 
 The project currently uses PSQL. As a developper, please create a development database on your local machine called "camper_development"
+```psql -d development
+CREATE DATABASE camper_development;
+```
