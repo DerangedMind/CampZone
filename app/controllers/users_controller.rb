@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       redirect_to new_user_path
     end
   end
-  
+
   def edit
   end
 
@@ -44,18 +44,6 @@ class UsersController < ApplicationController
   def existing_user(email)
     puts "the email is #{email}"
     @user = User.find_by_email(email)
-  end
-
-  def parent_role_verification
-
-  end
-
-  def counselor_role_verification
-
-  end
-
-  def director_role_verification
-
   end
 
 end
