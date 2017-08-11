@@ -13,10 +13,9 @@ class Parent::KidsController < ApplicationController
 
     if @kid.save
       puts "Kid created!"
-      redirect_to
     else
       puts "Kid not created."
-      redirect_to
+      redirect_to 'kids/new'
 
     end
 
