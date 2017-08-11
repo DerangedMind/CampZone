@@ -6,6 +6,7 @@ class Director::DirectorsController < ApplicationController
 
   def create
     @director = User.new(director_params)
+    @director.role = "director"
 
     if @director.save
       puts "DIRECTOR SUCCESSFULLY SAVED"
@@ -24,7 +25,6 @@ class Director::DirectorsController < ApplicationController
       :last_name,
       :email,
       :password,
-      :role,
     )
   end
 
