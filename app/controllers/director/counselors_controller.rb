@@ -11,10 +11,10 @@ class Director::CounselorsController < ApplicationController
   def create
     @user = User.new(counselor_params)
     @user.role = "counselor"
-
+    @user.password = "password"
 
     if @user.save
-      puts "COUNSELOR USER SAVED"
+      puts "USER SAVED"
       @counselor = Counselor.create(
         user_id: @user.id,
         group_id: 0,
@@ -26,7 +26,7 @@ class Director::CounselorsController < ApplicationController
         puts "COUNSELOR SAVED"
       end
     else
-      puts "COUNSELOR NOT SAVED"
+      puts "User NOT SAVED"
       redirect_to "/counselors/new"
     end
   end
