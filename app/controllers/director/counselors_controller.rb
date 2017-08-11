@@ -24,6 +24,10 @@ class Director::CounselorsController < ApplicationController
       if @counselor.save
         puts "COUNSELOR SAVED"
         redirect_to counselor_path(:id => @counselor.id)
+      else
+        puts "COUNSELOR NOT SAVED - DESTROYING USER"
+        @user.destroy!
+        redirect_to new_counselor_path
       end
     else
       puts "User NOT SAVED"
