@@ -9,6 +9,12 @@
   </head>
 
   <body>
+    <article class="container">
+      <% flash.each do |key, value| %>
+        <%= content_tag :div, value, class: "alert alert-danger" %>
+      <% end %>
+    </article>
+
     <%= yield %>
   </body>
 </html>
