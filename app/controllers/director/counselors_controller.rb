@@ -17,7 +17,6 @@ class Director::CounselorsController < ApplicationController
       puts "USER SAVED"
       @counselor = Counselor.create(
         user_id: @user.id,
-        group_id: 0,
         alias: "none",
         training: false,
         account_status: "pending"
