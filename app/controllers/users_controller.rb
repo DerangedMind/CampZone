@@ -5,11 +5,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    # if there is a director session
-    # and we're on a certain page
-    # then we're creating a counselor
-
-
     unless @user = existing_user(params[:user][:email])
       @user = User.new(user_params)
       @user.role = "parent"
@@ -23,13 +18,7 @@ class UsersController < ApplicationController
       redirect_to new_user_path
     end
   end
-
-  def edit
-  end
-
-  def update
-  end
-
+  
   private
 
   def user_params
