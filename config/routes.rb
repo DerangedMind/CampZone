@@ -3,6 +3,6 @@ Rails.application.routes.draw do
 
   scope module: 'director' do
    resources :directors, except: [:index]
- end
+  end
 
 end
