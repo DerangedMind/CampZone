@@ -14,9 +14,10 @@ Rails.application.routes.draw do
   scope module: 'counselor' do
     resources :counselors, only: [:show, :edit, :update]
   end
-  
+
   scope module: 'parent' do
     resources :kids
+    resources :parents, only: [:new, :create, :show]
   end
 
   resources :users, only: [:new, :create, :edit, :update]
