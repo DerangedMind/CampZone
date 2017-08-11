@@ -1,0 +1,16 @@
+<h1> Edit Counselor Information </h1>
+
+<%= form_for @counselor, url: "/counselors/#{params[:id]}" do |form| %>
+
+  <%= form.label :alias %>
+  <%= form.text_field :alias %>
+
+  <%= form.label :training %>
+  <%= form.select :training, [["True", true], ["False", false]]%>
+
+  <%= form.label :account_status %>
+  <%= form.select :account_status, [["Active", "active"], ["Pending", "pending"], ["Inactive", 'inactive']] %>
+
+  <%= form.submit "Submit" %>
+
+<% end %>
