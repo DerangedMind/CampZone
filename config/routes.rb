@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   scope module: 'director' do
    resources :directors, except: [:index]
- end
+  end
 
- resources :users, only: [:new, :create, :edit, :update]
+  resources :users, only: [:new, :create, :edit, :update]
 
 end

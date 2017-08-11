@@ -5,8 +5,17 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    @user.role = "parent"
+    # if there is a director session
+    # and we're on a certain page
+    # then we're creating a counselor
+
+
+    unless @user = existing_user(params[:user][:email])
+      @user = User.new(user_params)
+      @user.role = "parent"
+    else
+      redirect_to new_user_path
+    end
 
     if @user.save
       puts "#{@user.role} SAVED"
@@ -14,7 +23,7 @@ class UsersController < ApplicationController
       redirect_to new_user_path
     end
   end
-
+  
   def edit
   end
 
@@ -30,6 +39,11 @@ class UsersController < ApplicationController
       :email,
       :password
     )
+  end
+
+  def existing_user(email)
+    puts "the email is #{email}"
+    @user = User.find_by_email(email)
   end
 
   def parent_role_verification
