@@ -5,4 +5,6 @@ Rails.application.routes.draw do
    resources :directors, except: [:index]
   end
 
+  resources :users, only: [:new, :create, :edit, :update]
+
 end
