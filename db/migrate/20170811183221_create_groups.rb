@@ -5,7 +5,7 @@ class CreateGroups < ActiveRecord::Migration[5.0]
       t.string :name
       t.integer :min_age
       t.integer :max_age
-      t.date :startdate
+      t.date :start_date
 
       t.timestamps
     end

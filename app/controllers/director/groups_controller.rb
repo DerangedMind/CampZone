@@ -41,7 +41,7 @@ class Director::GroupsController < ApplicationController
       :name,
       :min_age,
       :max_age,
-      :startdate
+      :start_date
     )
   end
 end

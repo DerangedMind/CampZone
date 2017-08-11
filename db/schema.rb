@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20170811183221) do
     t.string   "name"
     t.integer  "min_age"
     t.integer  "max_age"
-    t.date     "startdate"
+    t.date     "start_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
