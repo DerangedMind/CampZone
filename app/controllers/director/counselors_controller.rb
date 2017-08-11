@@ -9,7 +9,7 @@ class Director::CounselorsController < ApplicationController
   end
 
   def create
-    @user = User.new(counselor_params)
+    @user = User.new(user_params)
     @user.role = "counselor"
     @user.password = "password"
 
@@ -23,6 +23,7 @@ class Director::CounselorsController < ApplicationController
       )
       if @counselor.save
         puts "COUNSELOR SAVED"
+        redirect_to counselor_path, id: @user.id
       end
     else
       puts "User NOT SAVED"
@@ -42,7 +43,7 @@ class Director::CounselorsController < ApplicationController
   
   private
 
-  def counselor_params
+  def user_params
     params.require(:user).permit(
       :first_name,
       :last_name,
