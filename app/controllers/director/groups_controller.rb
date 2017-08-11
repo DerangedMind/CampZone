@@ -1,18 +1,33 @@
 class Director::GroupsController < ApplicationController
 
   def index
-  end
-
-  def new
-  end
-
-  def create
+    @group = Group.all
   end
 
   def show
+    @group = Group.find params[:id]
+  end
+
+  def new
+    @group = Group.new
+  end
+
+  def create
+    @group = Group.new(group_params)
+
+    if @group.save
+      puts "Group saved!"
+    else
+      puts "Group not saved."
+      redirect_to '/groups/new'
+    end
+
   end
 
   def edit
+  end
+
+  def update
   end
 
   def delete
@@ -29,5 +44,4 @@ class Director::GroupsController < ApplicationController
       :startdate
     )
   end
-
 end
