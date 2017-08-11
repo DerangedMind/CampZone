@@ -5,6 +5,10 @@ Rails.application.routes.draw do
    resources :directors, except: [:index]
   end
 
+  scope module: 'parent' do
+    resources :kids
+  end
+
   resources :users, only: [:new, :create, :edit, :update]
 
 end
