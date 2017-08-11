@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   scope module: 'director' do
    resources :directors, except: [:index]
    resources :counselors
+   resources :camps
   end
 
   scope module: 'counselor' do
