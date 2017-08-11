@@ -5,12 +5,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @parent = User.new(user_params)
+    @user = User.new(user_params)
+    @user.role = "parent"
 
-    if @parent.save
-      puts "USER SAVED"
+    if @user.save
+      puts "#{@user.role} SAVED"
     else
-      redirect_to "/users/new"
+      redirect_to new_user_path
     end
   end
 
@@ -27,9 +28,20 @@ class UsersController < ApplicationController
       :first_name,
       :last_name,
       :email,
-      :password,
-      :role
+      :password
     )
+  end
+
+  def parent_role_verification
+
+  end
+
+  def counselor_role_verification
+
+  end
+
+  def director_role_verification
+
   end
 
 end
