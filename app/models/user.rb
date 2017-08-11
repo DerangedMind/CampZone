@@ -2,6 +2,8 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  has_many :counselors
+
   validates :first_name, :last_name,
               presence: true
   validates :password,

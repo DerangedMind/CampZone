@@ -1,0 +1,22 @@
+<h1> All Counselors </h1>
+
+<table>
+  <tr>
+    <th> First Name </th>
+    <th> Last Name </th>
+    <th> Email </th>
+    <th> Alias </th>
+    <th> In Training? </th>
+    <th> Status </th>
+  </tr>
+  <% @counselors.each do |counselor| %>
+    <tr>
+      <td> <%= counselor.user.first_name %> </td>
+      <td> <%= counselor.user.last_name %> </td>
+      <td> <%= counselor.user.email %> </td>
+      <td> <%= counselor.alias %> </td>
+      <td> <%= counselor.training %> </td>
+      <td> <%= counselor.account_status %> </td>
+    </tr>
+  <% end %>
+</table>
