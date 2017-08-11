@@ -14,7 +14,6 @@ class Parent::KidsController < ApplicationController
       redirect_to 'kids/new'
 
     end
-
   end
 
   private
@@ -28,5 +27,4 @@ class Parent::KidsController < ApplicationController
       :medicare_number
     )
   end
-
 end
