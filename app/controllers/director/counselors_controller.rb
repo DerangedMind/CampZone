@@ -12,7 +12,6 @@ class Director::CounselorsController < ApplicationController
       puts "COUNSELOR USER SAVED"
     else
       puts "COUNSELOR NOT SAVED"
-      params.inspect
       redirect_to "/counselors/new"
     end
   end
