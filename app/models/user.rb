@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  
+
   has_secure_password
 
   validates :first_name, :last_name, 
@@ -20,7 +20,10 @@ class User < ApplicationRecord
 
   private
 
-  def downcase_email
-    self.email.downcase! if self.email.present?
+  def downcase_and_strip_email
+    if self.email.present?
+      self.email.downcase! 
+      self.email.strip!
+    end
   end
 end
