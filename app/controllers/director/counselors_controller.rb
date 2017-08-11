@@ -41,7 +41,7 @@ class Director::CounselorsController < ApplicationController
 
   def update
     @counselor = Counselor.find(params[:id])
-    @counselor.update(update_params)
+    @counselor.update(update_counselor_params)
     puts "COUNSELOR UPDATED"
   end
   
@@ -56,7 +56,7 @@ class Director::CounselorsController < ApplicationController
     )
   end
 
-    def update_params
+    def update_counselor_params
       params.require(:counselor).permit(
         :group_id,
         :alias,
