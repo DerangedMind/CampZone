@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20170811161507) do
     t.string   "account_status"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
 
   create_table "kids", force: :cascade do |t|
     t.string   "first_name"
@@ -32,14 +33,6 @@ ActiveRecord::Schema.define(version: 20170811161507) do
     t.string   "medicare"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "parents", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "address"
-    t.string   "phone_number"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
   end
 
   create_table "users", force: :cascade do |t|
