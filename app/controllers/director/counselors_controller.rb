@@ -23,7 +23,7 @@ class Director::CounselorsController < ApplicationController
       )
       if @counselor.save
         puts "COUNSELOR SAVED"
-        redirect_to counselor_path, id: @user.id
+        redirect_to counselor_path(:id => @counselor.id)
       end
     else
       puts "User NOT SAVED"
