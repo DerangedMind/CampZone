@@ -7,12 +7,16 @@ Rails.application.routes.draw do
 
   scope module: 'director' do
    resources :directors, except: [:index]
+   resources :counselors
   end
 
+  scope module: 'counselor' do
+    resources :counselors, only: [:show, :edit, :update]
+  end
+  
   scope module: 'parent' do
     resources :kids
   end
 
   resources :users, only: [:new, :create, :edit, :update]
-
 end

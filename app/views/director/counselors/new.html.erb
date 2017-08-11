@@ -1,0 +1,19 @@
+<h1> Invite a counselor! </h1>
+
+<%= form_for @counselor, url: "/counselors" do |form| %>
+
+<%= form.label :first_name %>
+<%= form.text_field :first_name %>
+
+<%= form.label :last_name %>
+<%= form.text_field :last_name %>
+
+<%= form.label :email %>
+<%= form.email_field :email %>
+
+<%= form.label :password %>
+<%= form.password_field :password %>
+
+<%= form.submit :Submit %>
+
+<% end %>

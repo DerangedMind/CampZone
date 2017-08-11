@@ -1,0 +1,2 @@
+class Counselor < ApplicationRecord
+end
