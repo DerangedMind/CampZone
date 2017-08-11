@@ -1,6 +1,5 @@
 class Group < ApplicationRecord
 
-  belongs_to :counselor
   has_many :kids
 
   validates :camp_id, presence: true
