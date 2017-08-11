@@ -1,0 +1,19 @@
+<h1>Create a Group!</h1>
+
+<%= form_for @group do |form| %>
+
+  <%= form.label :name %>
+  <%= form.text_filed :name %>
+
+  <%= form.label :min_age %>
+  <%= form.integer :min_age %>
+
+  <%= form.label :max_age %>
+  <%= form.integer :max_age %>
+
+  <%= form.label :startdate %>
+  <%= form.date :startdate %>
+
+  <%= form.submit :Submit %>
+
+<% end %>
