@@ -25,12 +25,17 @@ group = Group.create!({
 
 User.destroy_all
 
-director = User.create!({
+director_user = User.create!({
   first_name: Faker::Zelda.character,
   last_name: "of #{Faker::Zelda.location}",
   email: "admin@couchlyfe.com",
   password: BCrypt::Password.create('password'),
   role: "director"
+})
+
+director = Director.create!({
+  user_id: director_user.id,
+  camp_ids: [camp.id]
 })
 
 acc_status = ["inactive", "active", "pending"]
