@@ -3,16 +3,16 @@
 <%= form_for @group do |form| %>
 
   <%= form.label :name %>
-  <%= form.text_filed :name %>
+  <%= form.text_field :name %>
 
   <%= form.label :min_age %>
-  <%= form.integer :min_age %>
+  <%= form.number_field :min_age %>
 
   <%= form.label :max_age %>
-  <%= form.integer :max_age %>
+  <%= form.number_field :max_age %>
 
   <%= form.label :start_date %>
-  <%= form.date :start_date %>
+  <%= form.date_field :start_date %>
 
   <%= form.submit :Submit %>
 
