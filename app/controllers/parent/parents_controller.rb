@@ -19,9 +19,7 @@ class Parent::ParentsController < ApplicationController
       # redirect_to new_parent_path
       # redirect_to 'parents/new'
     end
-
   end
-
 
   def edit
   end
