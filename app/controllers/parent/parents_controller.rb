@@ -38,5 +38,6 @@ class Parent::ParentsController < ApplicationController
       :address,
       :phone_number
     )
+  end
 
 end
