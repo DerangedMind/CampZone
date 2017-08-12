@@ -9,12 +9,13 @@ Rails.application.routes.draw do
    resources :directors, except: [:index]
    resources :counselors
    resources :camps
+   resources :dashboard, only: [:index]
   end
 
   scope module: 'counselor' do
     resources :counselors, only: [:show, :edit, :update]
   end
-  
+
   scope module: 'parent' do
     resources :kids
   end
