@@ -10,15 +10,16 @@ class Parent::ParentsController < ApplicationController
 
   def create
     @parent = Parent.new(parent_params)
+    @parent.user_id = current_user.id
 
     if @parent.save
       puts "Parent created!"
-      # redirect_to '/parents/show'
+      redirect_to '/parents/show'
     else
       puts "Parent not created."
-      # redirect_to new_parent_path
-      # redirect_to 'parents/new'
+      redirect_to new_parent_path
     end
+
   end
 
   def edit
@@ -34,7 +35,6 @@ class Parent::ParentsController < ApplicationController
 
   def parent_params
     params.require(:parent).permit(
-      :user_id,
       :address,
       :phone_number
     )

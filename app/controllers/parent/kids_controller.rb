@@ -24,7 +24,7 @@ class Parent::KidsController < ApplicationController
       :last_name,
       :birthdate,
       :sin,
-      :medicare_number
+      :medicare
     )
   end
 end
