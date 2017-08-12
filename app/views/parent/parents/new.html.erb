@@ -1,0 +1,13 @@
+<h1>Create a Parent!</h1>
+
+<%= form_for @parent do |form| %>
+
+  <%= form.label :address %>
+  <%= form.text_field :address %>
+
+  <%= form.label :phone_number %>
+  <%= form.date_field :phone_number %>
+
+  <%= form.submit :Submit %>
+
+<% end %>
