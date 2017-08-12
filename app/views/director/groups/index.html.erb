@@ -1,0 +1,16 @@
+<h1> All Groups </h1>
+
+<table>
+  <tr>
+    <th> Group Name </th>
+    <th> Age Range </th>
+  </tr>
+
+  <% @groups.each do |group| %>
+    <tr>
+      <td> <%= link_to group.name, group_path(:id => group.id) %> </td>
+      <td> <%= group.min_age %> - <%= group.max_age %> </td>
+    </tr>
+  <% end %>
+
+</table>

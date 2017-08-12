@@ -1,11 +1,13 @@
 class Director::GroupsController < ApplicationController
 
   def index
-    @group = Group.all
+    @groups = Group.all
   end
 
   def show
     @group = Group.find params[:id]
+    @counselors = @group.counselors
+
   end
 
   def new
@@ -17,6 +19,7 @@ class Director::GroupsController < ApplicationController
 
     if @group.save
       puts "Group saved!"
+      redirect_to group.path(:id => @group.id)
     else
       puts "Group not saved."
       redirect_to '/groups/new'
@@ -44,5 +47,15 @@ class Director::GroupsController < ApplicationController
       :max_age,
       :start_date
     )
+  end
+
+    def group_update_params
+      params.require(:group).permit(
+      :camp_id,
+      :name,
+      :min_age,
+      :max_age,
+      :start_date
+      )
   end
 end
