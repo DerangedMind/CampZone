@@ -7,11 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Camp.destroy_all
 
+puts "Creating Camp..."
+
 camp = Camp.create!(
   name: Faker::HarryPotter.location,
   address: '123 Magic Lane',
   phone_number: '5551234567'
 )
+
+puts "Creating Group..."
 
 Group.destroy_all
 
@@ -22,6 +26,8 @@ group = Group.create!({
   max_age: 14,
   start_date: Date.current.next_week(:monday)
 })
+
+puts "Creating Director..."
 
 User.destroy_all
 
@@ -40,6 +46,8 @@ director = Director.create!({
 
 acc_status = ["inactive", "active", "pending"]
 
+puts "Creating Counselors..."
+
 3.times do |count|
   user = User.create!({
     first_name: Faker::Zelda.character,
@@ -57,6 +65,8 @@ acc_status = ["inactive", "active", "pending"]
     group_ids: [group.id]
   })
 end
+
+puts "Creating Parents..."
 
 10.times do |count|
   user = User.create!({
