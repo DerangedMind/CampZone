@@ -4,6 +4,10 @@ class Director::CounselorsController < ApplicationController
     @counselors = Counselor.all
   end
 
+  def show
+    @counselor = Counselor.find(params[:id])
+  end
+
   def new
     @user = User.new
   end
@@ -44,7 +48,7 @@ class Director::CounselorsController < ApplicationController
     @counselor.update(update_counselor_params)
     puts "COUNSELOR UPDATED"
   end
-  
+
   private
 
   def user_params

@@ -1,0 +1,17 @@
+<h1> All Counselors </h1>
+
+<table>
+  <tr>
+    <th> First Name </th>
+    <th> Last Name </th>
+    <th> Alias </th>
+  </tr>
+  <% @counselors.each do |counselor| %>
+    <tr>
+      <td> <%= counselor.user.first_name %> </td>
+      <td> <%= counselor.user.last_name %> </td>
+      <td> <%= counselor.alias %> </td>
+      <td><%= link_to "Edit Counselor", edit_counselor_path(:id => counselor.id) %> </td>
+    </tr>
+  <% end %>
+</table>

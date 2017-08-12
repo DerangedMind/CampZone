@@ -1,0 +1,12 @@
+<h1> <%= @counselor.user.first_name %> <%= @counselor.user.last_name %> </h1>
+
+<h3> Alias: </h3> <%=@counselor.alias %>
+<h3> Training Status: </h3> <%=@counselor.training %>
+<h3> Account Status: </h3> <%=@counselor.account_status %>
+<h3> Email: </h3> <%=@counselor.user.email %>
+
+<br />
+
+<%= link_to "Edit Counselor", edit_counselor_path(:id => @counselor.id) %>
+<br />
+<%= link_to "View all Counselors", counselors_path %>
