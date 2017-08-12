@@ -1,6 +1,8 @@
 class Group < ApplicationRecord
 
   has_many :kids
+  has_many :counselors_groups
+  has_many :counselors, through: :counselors_groups
 
   validates :camp_id, presence: true
   validates :name, presence: true

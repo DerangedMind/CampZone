@@ -10,17 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170811211945) do
+ActiveRecord::Schema.define(version: 20170812183132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "camp_directors", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "camp_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "camps", force: :cascade do |t|
     t.string   "name"
@@ -28,6 +21,11 @@ ActiveRecord::Schema.define(version: 20170811211945) do
     t.string   "phone_number"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "camps_directors", id: false, force: :cascade do |t|
+    t.integer "camp_id",     null: false
+    t.integer "director_id", null: false
   end
 
   create_table "counselors", force: :cascade do |t|
@@ -42,6 +40,13 @@ ActiveRecord::Schema.define(version: 20170811211945) do
   create_table "counselors_groups", id: false, force: :cascade do |t|
     t.integer "counselor_id", null: false
     t.integer "group_id",     null: false
+  end
+
+  create_table "directors", force: :cascade do |t|
+    t.string   "privileges"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "user_id"
   end
 
   create_table "groups", force: :cascade do |t|
