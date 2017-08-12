@@ -1,13 +1,27 @@
 class Parent::ParentsController < ApplicationController
 
+  def show
+    @parent = Parent.find_by_id(params[:id])
+  end
+
   def new
+    @parent = Parent.new
   end
 
   def create
+    @parent = Parent.new(parent_params)
+
+    if @parent.save
+      puts "Parent created!"
+      # redirect_to '/parents/show'
+    else
+      puts "Parent not created."
+      # redirect_to new_parent_path
+      # redirect_to 'parents/new'
+    end
+
   end
 
-  def show
-  end
 
   def edit
   end
