@@ -24,7 +24,7 @@ class Parent::KidsController < Parent::PortalController
       :last_name,
       :birthdate,
       :sin,
-      :medicare_number
+      :medicare
     )
   end
 end
