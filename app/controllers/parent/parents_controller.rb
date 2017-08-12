@@ -19,6 +19,7 @@ class Parent::ParentsController < ApplicationController
       puts "Parent not created."
       redirect_to new_parent_path
     end
+
   end
 
   def edit
