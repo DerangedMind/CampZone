@@ -7,7 +7,6 @@ class Director::GroupsController < ApplicationController
   def show
     @group = Group.find params[:id]
     @counselors = @group.counselors
-
   end
 
   def new
@@ -29,6 +28,7 @@ class Director::GroupsController < ApplicationController
 
   def edit
     @group = Group.find(params[:id])
+    @counselors = @group.counselors
   end
 
   def update
