@@ -2,15 +2,19 @@
 
 <div class="row">
 
-  <div class="col-md-4">
+  <div class="col border border-primary rounded">
     <h3> Total Kids: </h3> <%= @kids_count %>
+    <br />
   </div>
 
-  <div class="col-md-4 border-bottom-0">
-    <h3> Total Counselors </h3> <%= @counselor_count %> <%= link_to "View All Couselors", counselors_path %>
+  <div class="col border border-primary rounded">
+    <h3> Total Counselors </h3> <%= @counselor_count %>
+    <br />
+    <%= link_to "View All Couselors", counselors_path, class:"btn btn-primary" %>
   </div>
 
-  <div class="col-md-4 info-box border-bottom-0">
+  <div class="col border border-primary rounded">
     <h3> Total Groups </h3> <%= @group_count %>
+    <br />
   </div>
 </div>
