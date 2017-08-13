@@ -10,6 +10,7 @@ Rails.application.routes.draw do
    resources :counselors
    resources :camps
    resources :groups
+   resources :dashboard, only: [:index]
   end
 
   scope module: 'counselor' do
