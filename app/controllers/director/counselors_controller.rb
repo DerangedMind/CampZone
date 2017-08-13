@@ -6,10 +6,7 @@ class Director::CounselorsController < ApplicationController
 
   def show
     @counselor = Counselor.find(params[:id])
-    # @group_id = CounselorsGroup.find_by(counselor_id: @counselor).group_id
-    # @group = Group.find(@group_id)
     @group = @counselor.groups
-    puts @group[0].name
 
   end
 
