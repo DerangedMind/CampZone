@@ -1,4 +1,4 @@
-class Counselor::CounselorsController < ApplicationController
+class Counselor::CounselorsController < Counselor::PortalController
 
   def show
     @counselor = User.find params[:id]
