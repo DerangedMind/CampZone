@@ -32,6 +32,10 @@ class Director::GroupsController < ApplicationController
   end
 
   def update
+    @group = Group.find(params[:id])
+    @group.update!(group_update_params)
+    puts "GROUP UPDATED"
+    redirect_to group_path(:id => params[:id])
   end
 
   def delete

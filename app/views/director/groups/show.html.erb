@@ -8,4 +8,9 @@
   <% @counselors.each do |counselor| %>
     <li> <%= link_to counselor.alias, counselor_path(:id => counselor.id) %> </li>
   <% end %>
+
+  <br />
+
+  <%= link_to "Edit Group", edit_group_path(:id => @group.id) %>
+
 </ul>

@@ -1,0 +1,19 @@
+<h1> Edit <%= @group.name %> </h1>
+
+<%= form_for @group, url: "/groups/#{params[:id]}" do |form| %>
+
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+
+  <%= form.label :min_age%>
+  <%= form.number_field :min_age %>
+
+  <%= form.label :max_age %>
+  <%= form.number_field :max_age %>
+
+  <%= form.label :start_date %>
+  <%= form.date_field :start_date %>
+
+  <%= form.submit "Submit" %>
+
+<% end %>
