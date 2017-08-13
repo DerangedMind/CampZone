@@ -1,19 +1,34 @@
-<h1> Create a Camp Director! </h1>
+<h1 class="text-center">
+  Create a Camp Director!
+</h1>
 
 <%= form_for @director, url:directors_path do |form| %>
-
-  <%= form.label :first_name %>
-  <%= form.text_field :first_name %>
-
-  <%= form.label :last_name %>
-  <%= form.text_field :last_name %>
-
-  <%= form.label :email %>
-  <%= form.email_field :email %>
-
-  <%= form.label :password %>
-  <%= form.password_field :password %>
-
-  <%= form.submit :Submit %>
+<div class='jumbotron row'>
+  <div class="row">
+    <div class="form-group col-md-4 col-md-offset-4">
+      <%= form.label :first_name %>
+      <%= form.text_field :first_name, class:"form-control" %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='form-group col-md-4 col-md-offset-4'>
+      <%= form.label :last_name %>
+      <%= form.text_field :last_name, class:"form-control" %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class="form-group col-md-4 col-md-offset-4">
+      <%= form.label :email %>
+      <%= form.email_field :email, class:'form-control'%>
+    </div>
+  </div>
+  <div class='row'>
+    <div class="form-group col-md-4 col-md-offset-4">
+      <%= form.label :password %>
+      <%= form.password_field :password, class:'form-control' %>
+    </div>
+  </div>
+  <%= form.submit :Submit, class:'btn btn-primary col-md-offset-4' %>
+</div>
 
 <% end %>
