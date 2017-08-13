@@ -5,18 +5,18 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
-  scope module: 'director' do
+  scope module: 'director', path: 'd' do
    resources :directors, except: [:index]
    resources :counselors
    resources :camps
    resources :dashboard, only: [:index]
   end
 
-  scope module: 'counselor' do
+  scope module: 'counselor', path: 'c' do
     resources :counselors, only: [:show, :edit, :update]
   end
 
-  scope module: 'parent' do
+  scope module: 'parent', path: 'p' do
     resources :kids
   end
 
