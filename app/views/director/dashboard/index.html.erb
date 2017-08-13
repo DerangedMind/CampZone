@@ -1,0 +1,20 @@
+<h1> Welcome CURRENT_USER </h1>
+
+<div class="row text-center">
+
+  <div class="col-md-4">
+    <h3> Total Kids: </h3> <%= @kids_count %>
+    <br />
+  </div>
+
+  <div class="col-md-4">
+    <h3> Total Counselors </h3> <%= @counselor_count %>
+    <br />
+    <%= link_to "View All Couselors", counselors_path, class:"btn btn-primary" %>
+  </div>
+
+  <div class="col-md-4">
+    <h3> Total Groups </h3> <%= @group_count %>
+    <br />
+  </div>
+</div>
