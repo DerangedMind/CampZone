@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   def authorize_director
     unless director?
       flash[:error] = "Hmm... no chocolate chip cookies here!"
-      redirect_to '/'
+      redirect_to '/login'
       false
     end
   end
@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
   def authorize_counselor
     unless counselor?
       flash[:error] = "I knew I took a wrong turn at Albuquerque..."
-      redirect_to '/'
+      redirect_to '/login'
       false
     end
   end
