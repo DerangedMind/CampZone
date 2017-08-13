@@ -1,4 +1,4 @@
-class Parent::KidsController < ApplicationController
+class Parent::KidsController < Parent::PortalController
 
   def new
     @kid = Kid.new

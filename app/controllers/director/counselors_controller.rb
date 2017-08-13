@@ -1,4 +1,4 @@
-class Director::CounselorsController < ApplicationController
+class Director::CounselorsController < Director::PortalController
 
   def index
     @counselors = Counselor.all

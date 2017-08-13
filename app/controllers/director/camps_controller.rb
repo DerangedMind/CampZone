@@ -1,4 +1,4 @@
-class Director::CampsController < ApplicationController
+class Director::CampsController < Director::PortalController
 
   def show
     @camp = Camp.find_by_id(params[:id])
