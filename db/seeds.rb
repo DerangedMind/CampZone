@@ -35,7 +35,7 @@ director_user = User.create!({
   first_name: Faker::Zelda.character,
   last_name: "of #{Faker::Zelda.location}",
   email: "admin@couchlyfe.com",
-  password: BCrypt::Password.create('password'),
+  password: "password",
   role: "director"
 })
 
@@ -53,7 +53,7 @@ puts "Creating Counselors..."
     first_name: Faker::Zelda.character,
     last_name: "of #{Faker::Zelda.location}",
     email: "#{Faker::Cat.name}@campers.com",
-    password: BCrypt::Password.create('password'),
+    password: "password",
     role: "counselor",
   })
 
@@ -73,7 +73,7 @@ puts "Creating Parents..."
     first_name: Faker::Lovecraft.deity,
     last_name: "of #{Faker::Lovecraft.location}",
     email: "#{Faker::Lovecraft.word}#{count * rand(7) + 1}@campers.com",
-    password: BCrypt::Password.create('password'),
+    password: "password",
     role: "parent"
   })
 end

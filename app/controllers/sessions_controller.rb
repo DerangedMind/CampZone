@@ -6,9 +6,11 @@ class SessionsController < ApplicationController
 
   def create
     if @user = User.authenticate_with_credentials(params[:email], params[:password])
+      puts "Login SUCCESS"
       session[:user_id] = @user.id
       redirect_to '/'
     else
+      puts "Login FAILED"
       flash.now[:error] = "Invalid username or password."
       render :new
     end
