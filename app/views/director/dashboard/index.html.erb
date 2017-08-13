@@ -1,5 +1,16 @@
-<h1> Director Dashboard </h1>
+<h1> Welcome CURRENT_USER </h1>
 
-<h3> Total Kids: </h3> <%= @kids_count %> <%= link_to "View all Kids", kids_path %>
-<h3> Total Counselors </h3> <%= @counselor_count %> <%= link_to "View All Couselors", counselors_path %>
-<h3> Total Groups </h3> <%= @group_count %> <%= link_to "View all Groups", groups_path %>
+<div class="row">
+
+  <div class="col-md-4">
+    <h3> Total Kids: </h3> <%= @kids_count %>
+  </div>
+
+  <div class="col-md-4 border-bottom-0">
+    <h3> Total Counselors </h3> <%= @counselor_count %> <%= link_to "View All Couselors", counselors_path %>
+  </div>
+
+  <div class="col-md-4 info-box border-bottom-0">
+    <h3> Total Groups </h3> <%= @group_count %>
+  </div>
+</div>
