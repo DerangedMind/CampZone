@@ -1,7 +1,7 @@
 class Director::GroupsController < ApplicationController
 
   def index
-    @groups = Group.all
+    @groups = Group.all.order(start_date: :desc)
   end
 
   def show
