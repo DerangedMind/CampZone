@@ -1,4 +1,4 @@
-class Director::DirectorsController < ApplicationController
+class Director::DirectorsController < Director::PortalController
 
   def new
     @director = User.new

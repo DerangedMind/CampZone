@@ -42,4 +42,12 @@ class ApplicationController < ActionController::Base
       false
     end
   end
+
+  def authorize_parent
+    unless parent?
+      flash[:error] = "You must have created life to access this point."
+      redirect_to '/login'
+      false
+    end
+  end
 end

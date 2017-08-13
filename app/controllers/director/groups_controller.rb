@@ -1,4 +1,4 @@
-class Director::GroupsController < ApplicationController
+class Director::GroupsController < Director::PortalController
 
   def index
     @groups = Group.all.order(start_date: :desc)

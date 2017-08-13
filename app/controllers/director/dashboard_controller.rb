@@ -1,4 +1,4 @@
-class Director::DashboardController < ApplicationController
+class Director::DashboardController < Director::PortalController
 
 def index
   @counselor_count = Counselor.count
