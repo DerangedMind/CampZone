@@ -30,6 +30,8 @@ group = Group.create!({
 puts "Creating Director..."
 
 User.destroy_all
+Counselor.destroy_all
+Director.destroy_all
 
 director_user = User.create!({
   first_name: Faker::Zelda.character,
@@ -77,5 +79,3 @@ puts "Creating Parents..."
     role: "parent"
   })
 end
-
-

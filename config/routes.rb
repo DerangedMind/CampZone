@@ -9,6 +9,7 @@ Rails.application.routes.draw do
    resources :directors, except: [:index]
    resources :counselors
    resources :camps
+   resources :groups
    resources :dashboard, only: [:index]
   end
 

@@ -1,0 +1,17 @@
+<h1> <%= @group.name %> </h1>
+
+<h3> Age Range: </h3> <%= @group.min_age %> - <%= @group.max_age %>
+
+<h3> Counselors: </h3>
+
+<ul>
+  <% @counselors.each do |counselor| %>
+    <li> <%= link_to counselor.alias, counselor_path(:id => counselor.id) %> </li>
+  <% end %>
+
+  <br />
+  <%= link_to "Edit Group", edit_group_path(:id => @group.id) %>
+  <br />
+  <%= link_to "Delete Group", "/groups/#{@group.id}", method: 'DELETE' %>
+
+</ul>

@@ -10,7 +10,7 @@
     <tr>
       <td> <%= counselor.user.first_name %> </td>
       <td> <%= counselor.user.last_name %> </td>
-      <td> <%= counselor.alias %> </td>
+      <td> <%= link_to counselor.alias, counselor_path(:id => counselor.id) %> </td>
       <td><%= link_to "Edit Counselor", edit_counselor_path(:id => counselor.id) %> </td>
     </tr>
   <% end %>

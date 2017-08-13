@@ -6,6 +6,8 @@ class Director::CounselorsController < ApplicationController
 
   def show
     @counselor = Counselor.find(params[:id])
+    @group = @counselor.groups
+
   end
 
   def new
