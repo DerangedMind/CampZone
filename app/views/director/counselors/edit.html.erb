@@ -1,16 +1,28 @@
-<h1> Edit Counselor Information </h1>
+<h1 class="text-center">
+  Edit Counselor Information
+</h1>
 
 <%= form_for @counselor, url: "/counselors/#{params[:id]}" do |form| %>
+<div class="row">
+  <div class="col-md-3 col-md-offset-4 form-group">
+    <%= form.label :alias %>
+    <%= form.text_field :alias, class:"form-control" %>
+  </div>
+</div>
 
-  <%= form.label :alias %>
-  <%= form.text_field :alias %>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4 form-group">
+    <%= form.label :training %>
+    <%= form.select :training, [["True", true], ["False", false]], class:"form-control"%>
+  </div>
+</div>
 
-  <%= form.label :training %>
-  <%= form.select :training, [["True", true], ["False", false]]%>
-
-  <%= form.label :account_status %>
-  <%= form.select :account_status, [["Active", "active"], ["Pending", "pending"], ["Inactive", 'inactive']] %>
-
-  <%= form.submit "Submit" %>
+<div class="row">
+  <div class=" col-md-4 col-md-offset-4 form-group">
+    <%= form.label :account_status %>
+    <%= form.select :account_status, [["Active", "active"], ["Pending", "pending"], ["Inactive", 'inactive']], class:"form-control" %>
+  </div>
+</div>
+<%= form.submit "Submit", class:"col-md-offset-4 btn btn-primary" %>
 
 <% end %>
