@@ -38,7 +38,10 @@ class Director::GroupsController < ApplicationController
     redirect_to group_path(:id => params[:id])
   end
 
-  def delete
+  def destroy
+    @group = Group.find(params[:id])
+    @group.destroy!
+    redirect_to groups_path
   end
 
   private

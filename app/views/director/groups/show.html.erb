@@ -10,7 +10,8 @@
   <% end %>
 
   <br />
-
   <%= link_to "Edit Group", edit_group_path(:id => @group.id) %>
+  <br />
+  <%= link_to "Delete Group", "/groups/#{@group.id}", method: 'DELETE' %>
 
 </ul>
