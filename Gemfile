@@ -35,7 +35,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'bootstrap-sass', '~> 3.3.6'
-gem 'bootstrap', '~> 4.0.0.beta'
 gem 'font-awesome-rails'
 gem 'money-rails'
 gem 'carrierwave'
