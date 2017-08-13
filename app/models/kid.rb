@@ -1,11 +1,12 @@
 class Kid < ApplicationRecord
 
-  belongs_to :camp
+  has_many :kids_parents
+  has_many :parents, through: :kids_parents
+  has_many :counselors, through: :counselors_groups
+
   belongs_to :counselor
   belongs_to :group
   belongs_to :parent
-
-  has_many :parents
 
   validates :first_name, :last_name, presence: true
   validates :birthdate, presence: true
