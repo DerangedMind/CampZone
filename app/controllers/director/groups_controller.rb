@@ -18,7 +18,7 @@ class Director::GroupsController < ApplicationController
 
     if @group.save
       puts "Group saved!"
-      redirect_to group.path(:id => @group.id)
+      redirect_to group_path(:id => @group.id)
     else
       puts "Group not saved."
       redirect_to '/groups/new'
