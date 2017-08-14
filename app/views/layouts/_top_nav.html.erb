@@ -1,16 +1,17 @@
-<nav class="nav navbar-default nav-pills">
-  <div class="container-fluid">
-    <div class="navbar-header">
+<nav class="navbar navbar-default nav-pills">
+  <div class="container">
+    <div class="navbar-header pull-left">
       <a class="navbar-brand" href="#">Campers</a>
     </div>
-
-    <ul class="nav navbar-nav navbar-right">
-      <% if current_user %>
-        <li class="navbar-text">Welcome, <%= current_user.first_name %> - <%= current_user.role %></li>
-        <li><a href="/logout">Logout</a></li>
-      <% else %>
-        <li><a href="/login">Login</a></li>
-      <% end %>
-    </ul>
+    <div class="navbar-header pull-right">
+      <ul class="nav navbar-nav">
+        <% if current_user %>
+          <li class="navbar-text">Welcome, <%= current_user.first_name %> - <%= current_user.role %></li>
+          <li><a href="/logout">Logout</a></li>
+        <% else %>
+          <li><a href="/login">Login</a></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </nav>
