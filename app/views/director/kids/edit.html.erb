@@ -1,0 +1,22 @@
+<h1> Edit <%= @kid.first_name %> <%= @kid.last_name %> 's Information </h1>
+
+<%= form_for @kid do |form| %>
+
+<%= form.label :first_name %>
+<%= form.text_field :first_name %>
+
+<%= form.label :last_name %>
+<%= form.text_field :last_name %>
+
+<%= form.label :birthdate %>
+<%= form.date_field :birthdate %>
+
+<%= form.label :social_insurance_number %>
+<%= form.text_field :sin %>
+
+<%= form.label :medicare %>
+<%= form.text_field :medicare %>
+
+<%= form.submit "Submit" %>
+
+<% end %>

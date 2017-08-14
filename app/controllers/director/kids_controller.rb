@@ -21,21 +21,27 @@ class Director::KidsController < ApplicationController
   end
 
   def show
+    @kid = Kid.find(params[:id])
   end
 
   def edit
+    @kid = Kid.find(params[:id])
   end
 
   def update
+    @kid = Kid.find(params[:id])
+    @kid.update(update_kid_params)
   end
 
   def destroy
+    @kid = Kid.find(params[:id])
+    @kid.destroy!
   end
 
   private
 
   def kid_params
-    param.require(:kid).permit(
+    params.require(:kid).permit(
       :first_name,
       :last_name,
       :birthdate,
@@ -44,6 +50,14 @@ class Director::KidsController < ApplicationController
     )
   end
 
-
+  def update_kid_params
+    params.require(:kid).permit(
+      :first_name,
+      :last_name,
+      :birthdate,
+      :sin,
+      :medicare
+    )
+  end
 
 end
