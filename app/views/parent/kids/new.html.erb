@@ -1,0 +1,33 @@
+<h1>Create a Kid!</h1>
+
+<div class="row">
+  <div class="col-md-2 col-xs-1"></div>
+  <div class="col-md-8 col-xs-10">
+    <div class="form-box clearfix">
+      <%= form_for @kid, url: "/kids" do |form| %>
+        <div class="form-group">
+          <h3 class="text-center">Create a New Kid!</h3>
+          <label for="kids_first_name">First Name</label>
+          <%= form.text_field :first_name, class: 'form-control', placeholder: 'First Name' %>
+        </div>
+        <div class="form-group">
+          <label for="kids_last_name">Last Name</label>
+          <%= form.text_field :last_name, class: 'form-control', placeholder: 'Last Name' %>
+        </div>
+        <div class="form-group">
+          <label for="kids_birthdate">Birthdate</label>
+            <%= form.date_field :birthdate, class: 'form-control', placeholder: 'Birthdate' %>
+        </div>
+        <div class="form-group">
+          <label for="kids_sin">SIN</label>
+            <%= form.number_field :sin, class: 'form-control', placeholder: 'SIN' %>
+        </div>
+        <div class="form-group">
+          <label for="kids_medicare">Medicare</label>
+            <%= form.number_field :medicare, class: 'form-control', placeholder: 'Medicare' %>
+        </div>
+        <%= form.submit "Create Kid", class: 'btn btn-success pull-right' %>
+      <% end %>
+    </div>
+  </div>
+</div>

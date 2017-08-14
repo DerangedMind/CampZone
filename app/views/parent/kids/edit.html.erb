@@ -1,6 +1,6 @@
-<h1>Create a Kid!</h1>
+<h1> Edit Kid Information </h1>
 
-<%= form_for @kid do |form| %>
+<%= form_for @kid, url: "/kids/#{params[:id]}" do |form| %>
 
   <%= form.label :first_name %>
   <%= form.text_field :first_name %>
@@ -17,6 +17,6 @@
   <%= form.label :medicare %>
   <%= form.text_field :medicare %>
 
-  <%= form.submit :Submit %>
+  <%= form.submit "Submit" %>
 
 <% end %>

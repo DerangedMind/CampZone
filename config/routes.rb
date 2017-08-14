@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   scope module: 'parent', path: 'p' do
     resources :kids
+    resources :parents, only: [:new, :create, :show]
   end
 
   resources :users, only: [:new, :create, :edit, :update]
