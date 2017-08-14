@@ -1,0 +1,13 @@
+<h1> Edit Parent Information </h1>
+
+<%= form_for @parent, url: "/parent/#{params[:id]}" do |form| %>
+
+  <%= form.label :address %>
+  <%= form.text_field :address %>
+
+  <%= form.label :phone_number %>
+  <%= form.text_field :phone_number %>
+
+  <%= form.submit "Submit" %>
+
+<% end %>

@@ -1,0 +1,22 @@
+<h1> Edit Kid Information </h1>
+
+<%= form_for @kid, url: "/kids/#{params[:id]}" do |form| %>
+
+  <%= form.label :first_name %>
+  <%= form.text_field :first_name %>
+
+  <%= form.label :last_name %>
+  <%= form.text_field :last_name %>
+
+  <%= form.label :birthdate %>
+  <%= form.date :birthdate %>
+
+  <%= form.label :sin %>
+  <%= form.number_field :sin %>
+
+  <%= form.label :medicare %>
+  <%= form.number_field :medicare %>
+
+  <%= form.submit "Submit" %>
+
+<% end %>
