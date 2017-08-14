@@ -14,7 +14,7 @@ class Parent::ParentsController < Parent::PortalController
 
     if @parent.save
       puts "Parent created!"
-      redirect_to '/parents/show'
+      redirect_to parent_path(:id => @parent.id)
     else
       puts "Parent not created."
       redirect_to new_parent_path
