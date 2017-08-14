@@ -12,7 +12,7 @@
         </div>
         <div class="form-group">
           <label for="parents_phone_number">Phone Number</label>
-          <%= form.text_field :phone_number, class: 'form-control', placeholder: 'Phone Number' %>
+          <%= form.telephone_field :phone_number, class: 'form-control', placeholder: 'Phone Number' %>
         </div>
         <%= form.submit "Create Parent Account", class: 'btn btn-success pull-right' %>
       <% end %>
