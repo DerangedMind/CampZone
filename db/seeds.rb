@@ -79,3 +79,17 @@ puts "Creating Parents..."
     role: "parent"
   })
 end
+
+Kid.destroy_all
+
+puts "Creating Kids..."
+
+2.times do |count|
+  kid = Kid.create!({
+    first_name: Faker::Superhero.name,
+    last_name: "of #{Faker::StarWars.planet}",
+    birthdate: Faker::Date.birthday (5, 14),
+    sin: Faker::Number.number(9),
+    medicare: Faker:Number.number(12)
+  })
+end
