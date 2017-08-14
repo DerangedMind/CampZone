@@ -2,7 +2,6 @@ class Kid < ApplicationRecord
 
   has_many :kids_parents
   has_many :parents, through: :kids_parents
-  has_many :counselors, through: :counselors_groups
 
   belongs_to :counselor
   belongs_to :group
