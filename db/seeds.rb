@@ -89,8 +89,8 @@ puts "Creating Kids..."
 
 2.times do |count|
   kid = Kid.create!({
-    first_name: Faker::Superhero.name,
-    last_name: "of #{Faker::StarWars.planet}",
+    first_name: Faker::Pokemon.name,
+    last_name: "of #{Faker::HarryPotter.location}",
     birthdate: Faker::Date.birthday(5, 14),
     sin: Faker::Number.number(9),
     medicare: Faker::Number.number(12)
