@@ -10,6 +10,7 @@ Rails.application.routes.draw do
    resources :counselors
    resources :camps
    resources :groups
+   resources :kids
    resources :dashboard, only: [:index]
   end
 

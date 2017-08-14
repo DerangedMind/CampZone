@@ -1,18 +1,28 @@
 class Director::DirectorsController < Director::PortalController
 
   def new
-    @director = User.new
+    @user = User.new
   end
 
   def create
-    @director = User.new(director_params)
-    @director.role = "director"
+    @user= User.new(director_params)
+    @user.role = "director"
 
-    if @director.save
-      puts "DIRECTOR SUCCESSFULLY SAVED"
+    if @user.save
+      puts "USER SAVED"
+      @director = Director.new(
+        user_id: @user.id
+      )
+      if @director.save
+        puts "DIRECTOR SAVED"
+      else
+        puts "DIRECTOR NOT SAVED"
+        redirect_to new_director_path
+      end
+
     else
-      puts "DIRECTOR NOT SAVED"
-      redirect_to "/directors/new"
+      puts "USER NOT SAVED"
+      redirect_to new_director_path
     end
 
   end
