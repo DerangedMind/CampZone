@@ -36,6 +36,7 @@ class Director::KidsController < ApplicationController
   def destroy
     @kid = Kid.find(params[:id])
     @kid.destroy!
+    redirect_to kids_path
   end
 
   private
