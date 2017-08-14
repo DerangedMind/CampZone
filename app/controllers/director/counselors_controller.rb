@@ -29,7 +29,7 @@ class Director::CounselorsController < Director::PortalController
       )
       if @counselor.save
         puts "COUNSELOR SAVED"
-        redirect_to counselor_path(:id => @counselor.id)
+        redirect_to counselors_path
       else
         puts "COUNSELOR NOT SAVED - DESTROYING USER"
         @user.destroy!
@@ -37,7 +37,7 @@ class Director::CounselorsController < Director::PortalController
       end
     else
       puts "User NOT SAVED"
-      redirect_to "/counselors/new"
+      redirect_to new_counselor_path
     end
   end
 
@@ -49,6 +49,7 @@ class Director::CounselorsController < Director::PortalController
     @counselor = Counselor.find(params[:id])
     @counselor.update(update_counselor_params)
     puts "COUNSELOR UPDATED"
+    redirect_to counselor_path(:id => @counselor.id)
   end
 
   private

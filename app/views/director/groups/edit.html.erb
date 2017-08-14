@@ -1,6 +1,6 @@
 <h1> Edit <%= @group.name %> </h1>
 
-<%= form_for @group, url: "/groups/#{params[:id]}" do |form| %>
+<%= form_for @group do |form| %>
 
   <%= form.label :name %>
   <%= form.text_field :name %>

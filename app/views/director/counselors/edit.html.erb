@@ -1,6 +1,6 @@
 <h1> Edit Counselor Information </h1>
 
-<%= form_for @counselor, url: "/counselors/#{params[:id]}" do |form| %>
+<%= form_for @counselor do |form| %>
 
   <%= form.label :alias %>
   <%= form.text_field :alias %>
