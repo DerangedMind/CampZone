@@ -1,4 +1,4 @@
-class Parent::ParentsController < ApplicationController
+class Parent::ParentsController < Parent::PortalController
 
   def show
     @parent = Parent.find_by_id(params[:id])
