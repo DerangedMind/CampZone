@@ -9,6 +9,15 @@
   </head>
 
   <body>
+
+    <%= render "/layouts/top_nav" %>
+
+    <% if flash[:notice] %>
+      <div class="alert alert-warning">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

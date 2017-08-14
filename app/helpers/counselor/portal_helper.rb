@@ -1,0 +1,2 @@
+module Counselor::PortalHelper
+end

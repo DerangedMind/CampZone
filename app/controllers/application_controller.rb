@@ -29,16 +29,24 @@ class ApplicationController < ActionController::Base
 
   def authorize_director
     unless director?
-      flash[:error] = "Hmm... no chocolate chip cookies here!"
-      redirect_to '/'
+      flash[:notice] = "Hmm... no chocolate chip cookies here!"
+      redirect_to '/login'
       false
     end
   end
 
   def authorize_counselor
     unless counselor?
-      flash[:error] = "I knew I took a wrong turn at Albuquerque..."
-      redirect_to '/'
+      flash[:notice] = "I knew I took a wrong turn at Albuquerque..."
+      redirect_to '/login'
+      false
+    end
+  end
+
+  def authorize_parent
+    unless parent?
+      flash[:notice] = "You must have created life to access this point."
+      redirect_to '/login'
       false
     end
   end
