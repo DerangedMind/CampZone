@@ -69,6 +69,9 @@ puts "Creating Counselors..."
 end
 
 puts "Creating Parents..."
+# join tables for parents and kids
+# create 1-3 kids per parent
+# create parent from user
 
 10.times do |count|
   user = User.create!({
@@ -88,8 +91,8 @@ puts "Creating Kids..."
   kid = Kid.create!({
     first_name: Faker::Superhero.name,
     last_name: "of #{Faker::StarWars.planet}",
-    birthdate: Faker::Date.birthday (5, 14),
+    birthdate: Faker::Date.birthday(5, 14),
     sin: Faker::Number.number(9),
-    medicare: Faker:Number.number(12)
+    medicare: Faker::Number.number(12)
   })
 end
