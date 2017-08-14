@@ -1,7 +1,7 @@
 class Director::KidsController < ApplicationController
 
   def index
-    @kids = Kid.all.order(first_name: :desc)
+    @kids = Kid.all.order(last_name: :desc)
   end
 
   def new
@@ -30,7 +30,7 @@ class Director::KidsController < ApplicationController
 
   def update
     @kid = Kid.find(params[:id])
-    @kid.update(update_kid_params)
+    @kid.update(kid_params)
   end
 
   def destroy
@@ -42,16 +42,6 @@ class Director::KidsController < ApplicationController
   private
 
   def kid_params
-    params.require(:kid).permit(
-      :first_name,
-      :last_name,
-      :birthdate,
-      :sin,
-      :medicare
-    )
-  end
-
-  def update_kid_params
     params.require(:kid).permit(
       :first_name,
       :last_name,
