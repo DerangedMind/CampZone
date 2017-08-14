@@ -29,7 +29,7 @@ class Director::CounselorsController < Director::PortalController
       )
       if @counselor.save
         puts "COUNSELOR SAVED"
-        redirect_to counselors_path
+        redirect_to counselor_path(:id => @counselor.id)
       else
         puts "COUNSELOR NOT SAVED - DESTROYING USER"
         @user.destroy!
