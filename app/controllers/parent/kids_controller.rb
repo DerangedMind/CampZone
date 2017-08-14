@@ -1,11 +1,12 @@
 class Parent::KidsController < Parent::PortalController
 
   def index
-  # List of all a parent's kids.
+    @kids = Kid.all
+    # Placeholder, will be updated to only show specific parent's kids.
   end
 
   def show
-  # Details of specific kid.
+    @kid = Kid.find_by_id(params[:id])
   end
 
   def new
