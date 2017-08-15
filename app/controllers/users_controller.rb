@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
     if @user.save
       puts "#{@user.role} SAVED"
+      redirect_to new_parent_path
     else
       redirect_to new_user_path
     end

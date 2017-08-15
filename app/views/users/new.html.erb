@@ -19,7 +19,10 @@
         <%= form.label :password %>
         <%= form.password_field :password, class: "form-control" %>
       </div>
-      <%= form.submit :Submit %>
+      <div class="col-xs-2"></div>
+      <div class="col-xs-8">
+        <%= form.submit "Create Account", class: "btn btn-block btn-success" %>
+      </div>
 
     <% end %>
   </div>

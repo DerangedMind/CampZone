@@ -1,13 +1,17 @@
 <nav class="navbar navbar-default nav-pills">
   <div class="container">
-    <div class="navbar-header pull-left">
-      <a class="navbar-brand" href="#">Campers</a>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#user-dropdown" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span><img class="nav-avatar" src="<%= Faker::Avatar.image("avatar", "30x30", "png", "set4") %>"> <%= current_user.first_name %> <span class="glyphicon glyphicon-chevron-down"></span></span>
+      </button>
+      <a class="navbar-brand" href="#">CampZone</a>
     </div>
-    <div class="navbar-header pull-right">
-      <ul class="nav navbar-nav">
+    <div class="collapse navbar-collapse" id="user-dropdown">
+      <ul class="nav navbar-nav pull-right">
         <% if current_user %>
-          <li class="navbar-text">Welcome, <%= current_user.first_name %> - <%= current_user.role %></li>
-          <li><a href="/logout">Logout</a></li>
+          <li class="navbar-text" id="hide-welcome">Welcome, <%= current_user.first_name %></li>
+          <li><a class="nav-link" href="/logout">Logout</a></li>
         <% else %>
           <li><a href="/login">Login</a></li>
         <% end %>
