@@ -1,6 +1,35 @@
-<h1> Add a Kid to Camp! </h1>
+<h1>
+  Add a Kid to Camp!
+</h1>
 
-<%= form_for @kid do |form| %>
+<%= form_tag(:action => "create") do %>
+
+<p>First Name:
+  <%=text_field_tag("first_name") %></p>
+
+<p>Last Name:
+  <%=text_field_tag("last_name") %></p>
+
+</p>Birthday:
+<%=date_field_tag("birthdate") %></p>
+
+<p>Social Insurance Number:
+<%=text_field_tag("sin") %></p>
+
+<p>Medicare:
+<%=text_field_tag('medicare') %></p>
+
+<p>Parent Email:
+<%=email_field_tag("parent_email")%></p>
+
+<p> Group Name:
+<%= text_field_tag("group_name")%></p>
+
+<%= submit_tag("Submit") %>
+
+<% end %>
+
+<!-- <%= form_for @kid do |form| %>
 
 <%= form.label :first_name %>
 <%= form.text_field :first_name %>
@@ -17,6 +46,9 @@
 <%=form.label :medicare %>
 <%=form.text_field :medicare %>
 
+<%form.label :parent_ids %>
+<%form.number_field :parent_ids %>
+
 <%=form.submit "Submit" %>
 
-<% end %>
+<% end %> -->
