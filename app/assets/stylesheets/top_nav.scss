@@ -1,0 +1,54 @@
+.navbar {
+  border: none;
+  border-radius: 0;
+  background-image: 
+    linear-gradient(
+      to top right,
+      #663399, purple
+    );
+  .navbar-brand {
+    font-weight: 300;
+    font-size: 2em;
+  }
+  .nav-avatar {
+    border-radius: 100px;
+
+  }
+  .navbar-toggle {
+    font-size: 1.25em;
+    font-weight: 300;
+  }
+  .navbar-toggle:focus, 
+  .navbar-toggle:active,
+  .navbar-toggle:hover {
+    color: #333;
+    background-image: 
+    linear-gradient(
+      to top right,
+      #663399, #cc28fa
+    );
+  }
+  .navbar-brand, 
+  .navbar-text,
+  .nav-link,
+  .navbar-toggle {
+    color: #eee;
+    .glyphicon {
+      font-size: .75em;
+      color: #c02222;
+    }
+  }
+  .submit-btn {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #hide-welcome {
+    display: none;
+  }
+  .navbar-brand {
+    line-height: 40px;
+  }
+}
+

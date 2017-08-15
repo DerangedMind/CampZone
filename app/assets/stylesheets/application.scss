@@ -16,4 +16,8 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "top_nav"
+@import "top_nav";
+
+body {
+  font-family: 'Work Sans', sans-serif;
+}
