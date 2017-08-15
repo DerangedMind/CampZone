@@ -12,7 +12,6 @@ class Director::KidsController < ApplicationController
     @kid = Kid.new(kid_params)
     @parent_user_id = User.find_by(email: params[:parent_email]).id
     @parent_status = params[:parent_status]
-    # effulgence4@campers.com
     puts @parent_user_id
 
     if @kid.save
