@@ -1,3 +1,20 @@
 // Place all the styles related to the director/counselors controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.counselor-list {
+  .user-card {
+    margin: 5px 0;
+    background-color: #dde;
+    border-radius: 4px;
+    .name {
+      padding: 10px 0;
+    }
+    .alias {
+      padding: 10px 0;
+    }
+    .edit-link {
+      padding: 10px 0;
+    }
+  }  
+}
