@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
 
   def redirect_to_role_portal(user)
     if user.role == "parent"
-      redirect_to parents_path, action: "show", id: user.id
+      redirect_to parent_path, action: "show", id: user.id
     else user.role == "director"
       redirect_to dashboard_index_path
     end
