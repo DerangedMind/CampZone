@@ -1,4 +1,4 @@
 class KidsParent < ApplicationRecord
   belongs_to :kid
-  belongs_to :parent
+  belongs_to :user
 end

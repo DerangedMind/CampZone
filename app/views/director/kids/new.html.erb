@@ -22,33 +22,9 @@
 <p>Parent Email:
 <%=email_field_tag("parent_email")%></p>
 
-<p> Group Name:
-<%= text_field_tag("group_name")%></p>
+<p>Parent Status:
+<%= text_field_tag("parent_status")%></p>
 
 <%= submit_tag("Submit") %>
 
 <% end %>
-
-<!-- <%= form_for @kid do |form| %>
-
-<%= form.label :first_name %>
-<%= form.text_field :first_name %>
-
-<%= form.label :last_name %>
-<%= form.text_field :last_name %>
-
-<%= form.label :birthdate %>
-<%= form.date_field :birthdate %>
-
-<%=form.label :social_insurance_number %>
-<%=form.text_field :sin %>
-
-<%=form.label :medicare %>
-<%=form.text_field :medicare %>
-
-<%form.label :parent_ids %>
-<%form.number_field :parent_ids %>
-
-<%=form.submit "Submit" %>
-
-<% end %> -->

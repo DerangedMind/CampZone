@@ -1,7 +1,7 @@
 class Kid < ApplicationRecord
 
   has_many :kids_parents
-  has_many :parents, through: :kids_parents
+  has_many :users, through: :kids_parents
 
   # belongs_to :counselor
   # belongs_to :group
