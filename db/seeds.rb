@@ -68,7 +68,9 @@ puts "Creating Counselors..."
   })
 end
 
-puts "Creating Parents..."
+Parent.destroy_all
+Kid.destroy_all
+puts "Creating Parents and Kids..."
 
 10.times do |count|
   user = User.create!({
@@ -77,5 +79,26 @@ puts "Creating Parents..."
     email: "#{Faker::Lovecraft.word}#{count * rand(7) + 1}@campers.com",
     password: "password",
     role: "parent"
-  })
+    })
+
+    parent = Parent.create!({
+      user_id: user.id,
+      address: "123 Street",
+      phone_number: "5140001111"
+    })
+
+  random = 1 + rand(3)
+  random.times do |count|
+    kid = Kid.create!({
+      first_name: Faker::Pokemon.name,
+      last_name: "of #{Faker::HarryPotter.location}",
+      birthdate: Faker::Date.birthday(5, 14),
+      sin: Faker::Number.number(9),
+      medicare: Faker::Number.number(12)
+    })
+    KidsParent.create!({
+      parent_id: parent.id,
+      kid_id: kid.id
+    })
+  end
 end
