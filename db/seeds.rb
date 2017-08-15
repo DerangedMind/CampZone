@@ -69,10 +69,8 @@ puts "Creating Counselors..."
 end
 
 Parent.destroy_all
-puts "Creating Parents..."
-
 Kid.destroy_all
-puts "Creating Kids..."
+puts "Creating Parents and Kids..."
 
 10.times do |count|
   user = User.create!({
