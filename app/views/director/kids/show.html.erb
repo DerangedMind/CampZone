@@ -1,13 +1,39 @@
-<h1> <%= @kid.first_name %> <%= @kid.last_name %> </h1>
+<h1>
+  <%= @kid.first_name %>
+  <%= @kid.last_name %>
+</h1>
 
-<h3> Birthdate: </h3> <%= @kid.birthdate %>
-<h3> Social Insurance Number: </h3> <%= @kid.sin %>
-<h3> Medicare Number: </h3> <%= @kid.medicare %>
-<h3> Current Group: </h3> GROUP HERE
-<h3> Parents: </h3> PARENTS HERE
-<h3> Counselors: </h3> GROUP COUNSELORS HERE
+<h3>
+  Birthdate:
+</h3>
+<%= @kid.birthdate %>
+<h3>
+  Social Insurance Number:
+</h3>
+<%= @kid.sin %>
+<h3>
+  Medicare Number:
+</h3>
+<%= @kid.medicare %>
+<h3>
+  Current Group:
+</h3>
+GROUP HERE
+<h3>
+  Parents:
+</h3>
+<% @parents.each do |parent| %>
+  First Name: <%= parent.first_name %>
+  Last Name: <%= parent.last_name %>
+  Email: <%= parent.email %>
+<% end %>
 
-<br />
+<h3>
+  Counselors:
+</h3>
+GROUP COUNSELORS HERE
+
+<br/>
 <%= link_to "Edit Child Information", edit_kid_path(:id => @kid.id) %>
-<br />
+<br/>
 <%= link_to "Remove Child from Database", "/d/kids/#{@kid.id}", method: "DELETE" %>
