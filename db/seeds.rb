@@ -88,7 +88,6 @@ puts "Creating Parents and Kids..."
     })
 
   random = 1 + rand(3)
-
   random.times do |count|
     kid = Kid.create!({
       first_name: Faker::Pokemon.name,
@@ -97,11 +96,10 @@ puts "Creating Parents and Kids..."
       sin: Faker::Number.number(9),
       medicare: Faker::Number.number(12)
     })
-  KidsParent.create!({
-    user_id: user.id,
-    kid_id: kid.id,
-    parent_status: "Status"
-  })
-
+    KidsParent.create!({
+      user_id: user.id,
+      kid_id: kid.id,
+      parent_status: "Status"
+    })
   end
 end
