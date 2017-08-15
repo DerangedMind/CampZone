@@ -1,7 +1,7 @@
 class Counselor::CounselorsController < Counselor::PortalController
 
   def show
-    @counselor = User.find(current_user.id)
+    @counselor = current_user
   end
 
   def edit
