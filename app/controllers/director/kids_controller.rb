@@ -1,4 +1,4 @@
-class Director::KidsController < ApplicationController
+class Director::KidsController < Director::PortalController
 
   def index
     @kids = Kid.all.order(last_name: :desc)
