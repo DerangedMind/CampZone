@@ -26,6 +26,7 @@ GROUP HERE
   <p>First Name: <%= parent.user.first_name %></p>
   <p>Last Name: <%= parent.user.last_name %></p>
   <p>Email: <%= parent.user.email %></p>
+  <p>Phone Number: <%= number_to_phone(parent.phone_number, area_code: true) %></p>
 <% end %>
 
 <h3>
