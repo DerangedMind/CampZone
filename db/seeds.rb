@@ -75,12 +75,12 @@ test_counselor_user = User.create(
   last_name: "TEST",
   email: "counselor@campzone.com",
   password: "password",
-  role: 'counselor'
+  role: "counselor"
 )
 
 test_counselor = Counselor.create(
   user_id: test_counselor_user.id,
-  alias: "GodMode",
+  alias: "DemiGodMode",
   training: true,
   account_status: "active",
   group_ids: [group.id]

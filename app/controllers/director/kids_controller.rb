@@ -11,7 +11,6 @@ class Director::KidsController < Director::PortalController
   def create
     @kid = Kid.new(kid_params)
     @parent_id = Parent.find_by(user_id: User.find_by(email: params[:parent_email]).id).id
-    # decadent13@campers.com
     puts @parent_id
 
     if @kid.save
