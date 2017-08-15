@@ -13,14 +13,15 @@
 
   <body>
 
-    <%= render "/layouts/top_nav" %>
+    <%= render "/layouts/top_nav" unless (current_page?("/login") || current_page?(new_user_path)) %>
 
     <% if flash[:notice] %>
       <div class="alert alert-warning">
         <%= flash[:notice] %>
       </div>
     <% end %>
-
-    <%= yield %>
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
   </body>
 </html>

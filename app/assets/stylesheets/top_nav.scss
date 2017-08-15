@@ -1,6 +1,8 @@
 .navbar {
   border: none;
+  width: 100%;
   border-radius: 0;
+  margin-bottom: 0;
   background-image: 
     linear-gradient(
       to top right,
@@ -21,7 +23,7 @@
   .navbar-toggle:focus, 
   .navbar-toggle:active,
   .navbar-toggle:hover {
-    color: #333;
+    color: #fff;
     background-image: 
     linear-gradient(
       to top right,
@@ -38,12 +40,17 @@
       color: #c02222;
     }
   }
+  .navbar-default .navbar-nav > li > .nav-link,
+  .navbar-default .navbar-nav > li > a:hover, 
+  .navbar-default .navbar-nav > li > a:focus {
+    color: #eee;
+  }
   .submit-btn {
     width: 100%;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   #hide-welcome {
     display: none;
   }
