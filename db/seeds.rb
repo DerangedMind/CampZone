@@ -56,7 +56,7 @@ puts "Creating Counselors..."
     last_name: "of #{Faker::Zelda.location}",
     email: "#{Faker::Cat.name}@campers.com",
     password: "password",
-    role: "counselor",
+    role: "counselor"
   })
 
   counselor = Counselor.create!({
@@ -67,6 +67,25 @@ puts "Creating Counselors..."
     group_ids: [group.id]
   })
 end
+
+puts "Creating Test Counselor..."
+
+test_counselor_user = User.create(
+  first_name: 'Test Counselor',
+  last_name: "TEST",
+  email: "counselor@campzone.com",
+  password: "password",
+  role: 'counselor'
+)
+
+test_counselor = Counselor.create(
+  user_id: test_counselor_user.id,
+  alias: "GodMode",
+  training: true,
+  account_status: "active",
+  group_ids: [group.id]
+)
+
 
 Parent.destroy_all
 Kid.destroy_all
@@ -102,3 +121,24 @@ puts "Creating Parents and Kids..."
     })
   end
 end
+
+puts "Creating Test Parent..."
+
+test_parent_user = User.create(
+  first_name: "TestParent",
+  last_name: "TEST",
+  email: "parent@campzone.com",
+  password: "password",
+  role: "parent"
+)
+
+test_parent = Parent.create(
+  user_id: test_parent_user.id,
+  address: "123 Test Street",
+  phone_number: "5141234567"
+)
+
+KidsParent.create(
+  parent_id: test_parent.id,
+  kid_id: 3
+)
