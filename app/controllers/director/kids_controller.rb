@@ -10,8 +10,7 @@ class Director::KidsController < ApplicationController
 
   def create
     @kid = Kid.new(kid_params)
-    @parent_user_id = User.find_by(email: params[:parent_email]).id
-    @parent_status = params[:parent_status]
+    @parent_id = Parent.find_by(user_id: User.find_by(email: params[:parent_email]).id)
     puts @parent_user_id
 
     if @kid.save
@@ -19,7 +18,6 @@ class Director::KidsController < ApplicationController
       KidsParent.create(
         user_id: @parent_user_id,
         kid_id: @kid.id,
-        parent_status: @parent_status
       )
       redirect_to kid_path(:id => @kid.id)
     else
