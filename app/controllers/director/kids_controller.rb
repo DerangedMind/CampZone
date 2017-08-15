@@ -10,7 +10,7 @@ class Director::KidsController < ApplicationController
 
   def create
     @kid = Kid.new(kid_params)
-    @parent_id = Parent.find_by(user_id: User.find_by(email: params[:parent_email]).id)
+    @parent_id = Parent.find_by(user_id: User.find_by(email: params[:parent_email]).id).id
     puts @parent_user_id
 
     if @kid.save
