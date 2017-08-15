@@ -11,12 +11,12 @@ class Director::KidsController < ApplicationController
   def create
     @kid = Kid.new(kid_params)
     @parent_id = Parent.find_by(user_id: User.find_by(email: params[:parent_email]).id).id
-    puts @parent_user_id
+    puts @parent_id
 
     if @kid.save
       puts "KID SAVED"
       KidsParent.create(
-        user_id: @parent_user_id,
+        parent_id: @parent_id,
         kid_id: @kid.id,
       )
       redirect_to kid_path(:id => @kid.id)
@@ -29,7 +29,6 @@ class Director::KidsController < ApplicationController
 
   def show
     @kid = Kid.find(params[:id])
-    @parents = @kid.users
   end
 
   def edit
