@@ -1,4 +1,4 @@
-class Director::KidsController < ApplicationController
+class Director::KidsController < Director::PortalController
 
   def index
     @kids = Kid.all.order(last_name: :desc)
@@ -29,6 +29,7 @@ class Director::KidsController < ApplicationController
 
   def show
     @kid = Kid.find(params[:id])
+    @parents = @kid.parents
   end
 
   def edit

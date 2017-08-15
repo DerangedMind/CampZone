@@ -76,7 +76,21 @@ so I can send them off for the summer.
 
 ## Database Setup
 
-The project currently uses PSQL. As a developper, please create a development database on your local machine called "camper_development"
+The project currently uses PSQL. As a developer, please create a development database on your local machine called "camper_development"
 ```psql -d development
 CREATE DATABASE camper_development;
 ```
+
+## Test Logins:
+
+*Parent:*
+Email: parent@campzone.com
+password: password
+
+*Counselor:*
+Email: counselor@campzone.com
+password: password
+
+*Director:*
+Email: admin@couchlyfe.com
+password: password

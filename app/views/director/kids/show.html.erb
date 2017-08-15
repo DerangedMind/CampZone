@@ -23,9 +23,17 @@ GROUP HERE
   Parents:
 </h3>
 <% @parents.each do |parent| %>
-  First Name: <%= parent.first_name %>
-  Last Name: <%= parent.last_name %>
-  Email: <%= parent.email %>
+<div>
+  <p>First Name:
+    <%= parent.user.first_name %></p>
+  <p>Last Name:
+    <%= parent.user.last_name %></p>
+  <p>Email:
+    <%= parent.user.email %></p>
+  <p>Phone Number:
+    <%= number_to_phone(parent.phone_number, area_code: true) %></p>
+</div>
+
 <% end %>
 
 <h3>
