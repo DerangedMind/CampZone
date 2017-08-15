@@ -3,7 +3,13 @@
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#user-dropdown" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
-        <span><img class="nav-avatar" src="<%= Faker::Avatar.image("avatar", "30x30", "png", "set4") %>"> <%= current_user.first_name %> <span class="glyphicon glyphicon-chevron-down"></span></span>
+        <% if current_user %>
+          <span><img class="nav-avatar" src="<%= Faker::Avatar.image("avatar", "30x30", "png", "set4") %>"> <%= current_user.first_name %> <span class="glyphicon glyphicon-chevron-down"></span></span>
+        <% else %>
+          <span class="line-bar"></span>
+          <span class="line-bar"></span>
+          <span class="line-bar"></span>
+        <% end %>
       </button>
       <a class="navbar-brand" href="#">CampZone</a>
     </div>
