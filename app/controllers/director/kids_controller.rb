@@ -11,6 +11,7 @@ class Director::KidsController < ApplicationController
   def create
     @kid = Kid.new(kid_params)
     @parent_id = Parent.find_by(user_id: User.find_by(email: params[:parent_email]).id).id
+    # decadent13@campers.com
     puts @parent_id
 
     if @kid.save
@@ -29,6 +30,7 @@ class Director::KidsController < ApplicationController
 
   def show
     @kid = Kid.find(params[:id])
+    @parents = @kid.parents
   end
 
   def edit

@@ -23,9 +23,9 @@ GROUP HERE
   Parents:
 </h3>
 <% @parents.each do |parent| %>
-  First Name: <%= parent.first_name %>
-  Last Name: <%= parent.last_name %>
-  Email: <%= parent.email %>
+  <p>First Name: <%= parent.user.first_name %></p>
+  <p>Last Name: <%= parent.user.last_name %></p>
+  <p>Email: <%= parent.user.email %></p>
 <% end %>
 
 <h3>
