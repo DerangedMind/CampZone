@@ -86,7 +86,7 @@ puts "Creating Kids..."
     parent = Parent.create!({
       user_id: user.id,
       address: "123 Street",
-      phone_number: "(514) 000-1111"
+      phone_number: number_to_phone(5140001111, area_code: true)
     })
 
   random = 1 + rand(3)
