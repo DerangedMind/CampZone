@@ -7,12 +7,15 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   scope module: 'director', path: 'd' do
-   resources :directors, except: [:index]
-   resources :counselors
-   resources :camps
-   resources :groups
-   resources :kids
-   resources :dashboard, only: [:index]
+    resources :directors, except: [:index]
+    resources :counselors
+    resources :camps
+    resources :groups
+    resources :kids
+    resources :dashboard, only: [:index]
+    get "/profile" => 'directors#show'
+    get "/settings" => 'directors#edit'
+    put "/profile" => 'directors#update'
   end
 
   scope module: 'counselor', path: 'c' do
@@ -27,6 +30,9 @@ Rails.application.routes.draw do
   scope module: 'parent', path: 'p' do
     resources :kids
     resources :parents, only: [:new, :create, :show]
+    get "/profile" => 'parents#show'
+    get "/settings" => 'parents#edit'
+    put "/profile" => 'parents#update'
   end
 
   resources :users, only: [:new, :create, :edit, :update]
