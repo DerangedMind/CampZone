@@ -4,14 +4,18 @@
 
 <h3> Counselors: </h3>
 
-<ul>
+<div class="item-list">
   <% @counselors.each do |counselor| %>
-    <li> <%= link_to counselor.alias, counselor_path(:id => counselor.id) %> </li>
+    <div class="row user-card">
+      <div class="col-sm-2 col-xs-3">
+        <img src="<%= Faker::Avatar.image("counselor-avatar", "50x50", "png", "set2") %>">
+      </div>
+      <div class="col-sm-6 col-xs-6 name">
+        <%= link_to ("#{counselor.user.first_name} #{counselor.user.last_name}"), counselor_path(:id => counselor.id) %>
+      </div>
+      <div class="col-sm-2 col-xs-3 alias">
+        <%= counselor.alias %>
+      </div>
+    </div>
   <% end %>
-
-  <br />
-  <%= link_to "Edit Group", edit_group_path(:id => @group.id) %>
-  <br />
-  <%= link_to "Delete Group", "/d/groups/#{@group.id}", method: 'DELETE' %>
-
-</ul>
+</div>
