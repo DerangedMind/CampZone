@@ -17,4 +17,27 @@
       padding: 10px 0;
     }
   }
+
+  .row#kids-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .user-card-sm {
+    margin: 5px;
+    background-color: pink;
+    border-radius: 4px;
+    padding: 10px;
+    height: 90%;
+
+    .name {
+      padding: 20px 0;
+    }
+    .alias {
+      padding: 10px 0;
+    }
+    .edit-link {
+      padding: 10px 0;
+    }
+  }
 }

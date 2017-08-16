@@ -16,8 +16,9 @@
     <div class="collapse navbar-collapse" id="user-dropdown">
       <ul class="nav navbar-nav pull-right">
         <% if current_user %>
-          <li class="navbar-text" id="hide-welcome">Welcome, <%= current_user.first_name %></li>
-          <li><a class="nav-link" href="/logout">Logout</a></li>
+          <li class="navbar-text hidden-xs">Welcome, <%= current_user.first_name %></li>
+          <li><%= link_to :Dashboard, dashboard_index_path %></li>
+          <li><a href="/logout">Logout</a></li>
         <% else %>
           <li><a href="/login">Login</a></li>
         <% end %>
