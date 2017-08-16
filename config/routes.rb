@@ -16,7 +16,12 @@ Rails.application.routes.draw do
   end
 
   scope module: 'counselor', path: 'c' do
-    resources :counselors, only: [:show, :edit, :update]
+    resources :groups, only: [:show]
+    resources :kids, only: [:show]
+    resources :parents, only: [:show]
+    get "/profile" => 'counselors#show'
+    get "/settings" => 'counselors#edit'
+    put "/profile" => 'counselors#update'
   end
 
   scope module: 'parent', path: 'p' do
