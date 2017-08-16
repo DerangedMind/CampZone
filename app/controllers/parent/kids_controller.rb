@@ -7,6 +7,7 @@ class Parent::KidsController < Parent::PortalController
 
   def show
     @kid = Kid.find_by_id(params[:id])
+    @medical_info = MedicalInfo.find_by(kid_id: @kid.id)
   end
 
   def new
