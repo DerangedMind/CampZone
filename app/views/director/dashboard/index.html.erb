@@ -4,6 +4,7 @@
 
   <div class="col-md-4">
     <h3> Total Kids: </h3> <%= @kids.count %>
+    <div class="item-list">
     <% @kids.each do |kid| %> 
       <div class="row user-card">
         <div class="col-sm-2 col-xs-3">
@@ -20,6 +21,7 @@
         </div>
       </div>
     <% end %>
+    </div>
     <br />
   </div>
 
@@ -27,20 +29,21 @@
     <h3> Total Counselors </h3> <%= @counselors.count %>
     <br />
     <%= link_to "View All Couselors", counselors_path, class:"btn btn-primary" %>
-
-    <% @counselors.each do |counselor| %>
-    <div class="row user-card">
-      <div class="col-sm-2 col-xs-3">
-        <img src="<%= Faker::Avatar.image("counselor-avatar", "50x50", "png", "set2") %>">
-      </div>
-      <div class="col-sm-6 col-xs-6 name">
-        <%= link_to ("#{counselor.user.first_name} #{counselor.user.last_name}"), counselor_path(:id => counselor.id) %>
-      </div>
-      <div class="col-sm-2 col-xs-3 alias">
-        <%= counselor.alias %>
-      </div>
+    <div class="item-list">
+      <% @counselors.each do |counselor| %>
+        <div class="row user-card">
+          <div class="col-sm-2 col-xs-3">
+            <img src="<%= Faker::Avatar.image("counselor-avatar", "50x50", "png", "set2") %>">
+          </div>
+          <div class="col-sm-6 col-xs-6 name">
+            <%= link_to ("#{counselor.user.first_name} #{counselor.user.last_name}"), counselor_path(:id => counselor.id) %>
+          </div>
+          <div class="col-sm-2 col-xs-3 alias">
+            <%= counselor.alias %>
+          </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
   </div>
 
   <div class="col-md-4">
