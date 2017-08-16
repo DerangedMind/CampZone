@@ -119,6 +119,14 @@ puts "Creating Parents and Kids..."
       parent_id: parent.id,
       kid_id: kid.id
     })
+    MedicalInfo.create({
+      kid_id: kid.id,
+      allergies: Faker::Witcher.monster,
+      conditions: Faker::Lorem.word,
+      medications: "Some kind of medication lol",
+      dietary_restrictions: "Can't eat food",
+      epi_pen: true
+      })
   end
 end
 
