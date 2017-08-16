@@ -12,11 +12,12 @@
   </head>
 
   <body>
-
-    <%= render "/layouts/top_nav" unless (current_page?(login_path) || current_page?(new_user_path) ||
-      current_page?(root_path)) 
+    <%= render "/layouts/top_nav" unless (
+          current_page?(login_path) || 
+          current_page?(new_user_path) ||
+          current_page?(root_path)
+        ) 
     %>
-
     <% if flash[:notice] %>
       <div class="alert alert-warning">
         <%= flash[:notice] %>
