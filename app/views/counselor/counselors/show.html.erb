@@ -1,3 +1,36 @@
-<%= @counselor.first_name %> <%= @counselor.last_name %>
+<h1>
+  <%= @counselor.user.first_name %>
+  <%= @counselor.user.last_name %>
+</h1>
 
-<%= @counselor.email %>
+<h3>
+  Alias:
+</h3>
+<%= @counselor.alias %>
+<h3>
+  Email Address:
+</h3>
+<%= @counselor.user.email %>
+<h3>
+  Currently Training?
+</h3>
+<%=@counselor.training %>
+
+<h3>
+  Groups:
+</h3>
+
+<% @groups.each do |group| %>
+<div>
+  <p>
+    Group Name:
+    <%= group.name %>
+  </p>
+  <p>Start Date:
+    <%= group.start_date %>
+  </p>
+</div>
+<% end %>
+
+<br />
+<%= link_to "Edit Personal Information", "/c/counselors/#{@counselor.id}/edit" %>

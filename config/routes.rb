@@ -16,6 +16,9 @@ Rails.application.routes.draw do
 
   scope module: 'counselor', path: 'c' do
     resources :counselors, only: [:show, :edit, :update]
+    resources :groups, only: [:show]
+    resources :kids, only: [:show]
+    resources :parents, only: [:show]
   end
 
   scope module: 'parent', path: 'p' do
