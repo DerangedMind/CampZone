@@ -1,12 +1,12 @@
 class Counselor::CounselorsController < Counselor::PortalController
 
   def show
-    @counselor = authorize_current_counselor
-    @groups = authorize_current_counselor.groups
+    @counselor = Counselor.find_by(user_id: current_user.id)
+    @groups = @counselor.groups
   end
 
   def edit
-    @counselor = authorize_current_counselor
+    @counselor = Counselor.find_by(user_id: current_user.id)
   end
 
   def update

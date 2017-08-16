@@ -1,6 +1,6 @@
 <h1> Edit <%= @counselor.user.first_name %> <%= @counselor.user.last_name %> Information </h1>
 
-<%= form_tag("/c/counselors/#{@counselor.id}", method: :put) do %>
+<%= form_tag("/c/profile", method: :put) do %>
 
   <p> Alias : <%= text_field_tag("alias") %> </p>
   <p> Password : <%= password_field_tag("password") %> </p>
