@@ -67,6 +67,7 @@ class Director::KidsController < Director::PortalController
       :allergies,
       :conditions,
       :medications,
+      :dietary_restrictions,
       :epi_pen
     )
   end
