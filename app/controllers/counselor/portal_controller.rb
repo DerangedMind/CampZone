@@ -7,7 +7,7 @@ class Counselor::PortalController < ApplicationController
     else
       nil
       flash[:notice] = "Looks like something went wrong, try again!"
+    end
   end
-end
 
 end
