@@ -4,29 +4,58 @@
   <div class="col-md-2 col-xs-1"></div>
   <div class="col-md-8 col-xs-10">
     <div class="form-box clearfix">
-      <%= form_for @kid, url: "/kids" do |form| %>
-        <div class="form-group">
-          <h3 class="text-center">Create a New Kid!</h3>
-          <label for="kids_first_name">First Name</label>
-          <%= form.text_field :first_name, class: 'form-control', placeholder: 'First Name' %>
-        </div>
-        <div class="form-group">
-          <label for="kids_last_name">Last Name</label>
-          <%= form.text_field :last_name, class: 'form-control', placeholder: 'Last Name' %>
-        </div>
-        <div class="form-group">
-          <label for="kids_birthdate">Birthdate</label>
-            <%= form.date_field :birthdate, class: 'form-control', placeholder: 'Birthdate' %>
-        </div>
-        <div class="form-group">
-          <label for="kids_sin">SIN</label>
-            <%= form.number_field :sin, class: 'form-control', placeholder: 'SIN' %>
-        </div>
-        <div class="form-group">
-          <label for="kids_medicare">Medicare</label>
-            <%= form.number_field :medicare, class: 'form-control', placeholder: 'Medicare' %>
-        </div>
-        <%= form.submit "Create Kid", class: 'btn btn-success pull-right' %>
+
+      <%= form_tag(:action => 'create') do %>
+      General Information:
+      <div class="form-group">
+        <h3 class="text-center">Create a New Kid!</h3>
+        <label>First Name</label>
+        <%= text_field_tag('first_name')%>
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <%= text_field_tag("last_name")%>
+      </div>
+      <div class="form-group">
+        <label>Birthdate</label>
+        <%= date_field_tag("birthdate") %>
+      </div>
+      <div class="form-group">
+        <label>SIN</label>
+        <%=text_field_tag("sin")%>
+      </div>
+      <div class="form-group">
+        <label>Medicare</label>
+        <%= text_field_tag("medicare") %>
+      </div>
+
+      Medical Information:
+      <div class="form_group">
+        <label>Allergies</label>
+        <%= text_area_tag("allergies") %>
+      </div>
+      <div class="form_group">
+        <label>Conditions</label>
+        <%= text_area_tag("conditions") %>
+      </div>
+      <div class="form_group">
+        <label>Medications
+        </label>
+        <%= text_area_tag("medications") %>
+      </div>
+      <div class="form_group">
+        <label>
+          Dietary Restrictions
+        </label>
+        <%= text_area_tag("dietary_restrictions") %>
+      </div>
+      <div class="form_group">
+        <label>
+          Epi Pen
+        </label>
+        <%= select_tag('epi_pen', "<option value=true>Yes</option><option value=false>No</option>".html_safe)%>
+      </div>
+      <%= submit_tag("Submit")%>
       <% end %>
     </div>
   </div>
