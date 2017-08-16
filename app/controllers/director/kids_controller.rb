@@ -19,11 +19,11 @@ class Director::KidsController < Director::PortalController
         parent_id: @parent_id,
         kid_id: @kid.id,
       )
-      redirect_to kid_path(:id => @kid.id)
+      redirect_to director_kid_path(:id => @kid.id)
     else
       puts "KID NOT SAVED"
       puts @kid.errors.full_messages
-      redirect_to new_kid_path
+      redirect_to new_director_kid_path
     end
   end
 
@@ -44,7 +44,7 @@ class Director::KidsController < Director::PortalController
   def destroy
     @kid = Kid.find(params[:id])
     @kid.destroy!
-    redirect_to kids_path
+    redirect_to director_kids_path
   end
 
   private

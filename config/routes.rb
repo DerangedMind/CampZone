@@ -2,11 +2,14 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'sessions#new'
 
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
-  get '/logout' => 'sessions#destroy'
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  get 'logout', to: 'sessions#destroy'
 
-  scope module: 'director', path: 'd' do
+  get 'signup', to: 'users#new'
+  post 'signup', to: 'users#create'
+
+  scope module: 'director', path: 'd', as: 'director' do
     resources :directors, except: [:index]
     resources :counselors
     resources :camps
@@ -18,7 +21,7 @@ Rails.application.routes.draw do
     put "profile", to: 'directors#update'
   end
 
-  scope module: 'counselor', path: 'c' do
+  scope module: 'counselor', path: 'c', as: 'counselor' do
     resources :groups, only: [:show]
     resources :kids, only: [:show]
     resources :parents, only: [:show]
@@ -27,13 +30,11 @@ Rails.application.routes.draw do
     put "profile", to: 'counselors#update'
   end
 
-  scope module: 'parent', path: 'p' do
+  scope module: 'parent', path: 'p', as: 'parent' do
     resources :kids
     resources :parents, only: [:new, :create, :show]
     get "profile", to: 'parents#show'
     get "settings", to: 'parents#edit'
     put "profile", to: 'parents#update'
   end
-
-  resources :users, only: [:new, :create, :edit, :update]
 end

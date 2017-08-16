@@ -13,14 +13,14 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
       @user.role = "parent"
     else
-      redirect_to new_user_path
+      redirect_to signup_path
     end
 
     if @user.save
       puts "#{@user.role} SAVED"
-      redirect_to new_parent_path
+      redirect_to new_parent_parent_path
     else
-      redirect_to new_user_path
+      redirect_to signup_path
     end
   end
 

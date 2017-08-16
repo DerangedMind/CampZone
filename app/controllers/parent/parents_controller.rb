@@ -14,10 +14,10 @@ class Parent::ParentsController < Parent::PortalController
 
     if @parent.save
       puts "Parent created!"
-      redirect_to parent_path(:id => @parent.id)
+      redirect_to parent_profile_path(:id => @parent.id)
     else
       puts "Parent not created."
-      redirect_to new_parent_path
+      redirect_to new_parent_parent_path
     end
 
   end

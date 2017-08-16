@@ -24,11 +24,11 @@ class SessionsController < ApplicationController
 
   def redirect_to_role_portal(user)
     if user.role == "parent"
-      redirect_to parent_path(:id => Parent.find_by_user_id(user.id).id)
+      redirect_to parent_profile_path(:id => Parent.find_by_user_id(user.id).id)
     elsif user.role == "counselor"
-      redirect_to counselor_path(:id => Counselor.find_by_user_id(user.id).id)
+      redirect_to counselor_profile_path(:id => Counselor.find_by_user_id(user.id).id)
     elsif user.role == "director"
-      redirect_to dashboard_index_path
+      redirect_to director_dashboard_index_path
     else
       raise "no role assigned"
     end
