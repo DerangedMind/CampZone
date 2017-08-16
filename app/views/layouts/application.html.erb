@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0">
     <title>FluffyCampFire</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400" rel="stylesheet">
+
   </head>
 
   <body>
-
-    <%= render "/layouts/top_nav" %>
-
+    <%= render "/layouts/top_nav" unless (
+          current_page?(login_path) || 
+          current_page?(new_user_path) ||
+          current_page?(root_path)
+        ) 
+    %>
     <% if flash[:notice] %>
       <div class="alert alert-warning">
         <%= flash[:notice] %>
       </div>
     <% end %>
-
-    <%= yield %>
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
   </body>
 </html>

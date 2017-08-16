@@ -1,17 +1,19 @@
 <h1> All Counselors </h1>
 
-<table>
-  <tr>
-    <th> First Name </th>
-    <th> Last Name </th>
-    <th> Alias </th>
-  </tr>
+<h3> Total Counselors <%= @counselors.count %></h3> 
+<div class="col-sm-1"></div>
+<div class="col-sm-10 item-list">
   <% @counselors.each do |counselor| %>
-    <tr>
-      <td> <%= counselor.user.first_name %> </td>
-      <td> <%= counselor.user.last_name %> </td>
-      <td> <%= link_to counselor.alias, counselor_path(:id => counselor.id) %> </td>
-      <td><%= link_to "Edit Counselor", edit_counselor_path(:id => counselor.id) %> </td>
-    </tr>
+    <div class="row user-card">
+      <div class="col-sm-2 col-xs-3">
+        <img src="<%= Faker::Avatar.image("counselor-avatar", "50x50", "png", "set2") %>">
+      </div>
+      <div class="col-sm-6 col-xs-6 name">
+        <%= link_to ("#{counselor.user.first_name} #{counselor.user.last_name}"), counselor_path(:id => counselor.id) %>
+      </div>
+      <div class="col-sm-2 col-xs-3 alias">
+        <%= counselor.alias %>
+      </div>
+    </div>
   <% end %>
-</table>
+</div>

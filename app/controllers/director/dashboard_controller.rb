@@ -1,9 +1,9 @@
 class Director::DashboardController < Director::PortalController
 
 def index
-  @counselor_count = Counselor.count
-  @kids_count = Kid.count
-  @group_count = Group.count
+  @counselors = Counselor.all
+  @kids = Kid.all
+  @groups = Group.all
 end
 
 end

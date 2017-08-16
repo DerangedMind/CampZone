@@ -1,3 +1,61 @@
 // Place all the styles related to the Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.right-login {
+  height: 100vh;
+  background-image: 
+    linear-gradient(
+      to top right,
+      #663399, purple
+    );
+  z-index: -1;
+  .title-login {
+    padding-top: 20vh;
+    color: #eee
+  }
+  .logo-login {
+    width: 100%;
+  }
+}
+
+.login {
+  margin-top: 25vh;
+}
+.login-form {
+  
+  h2 {
+    margin: 10px 20px;
+  }
+  form {
+    padding: 10px 15px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #login-page {
+    background-image: 
+      linear-gradient(
+        to top right,
+        #663399, purple
+      );
+  }
+  .login {
+    margin-top: 5vh;
+    height: 95vh;
+    h1 {
+      color: #eee;
+      font-weight: 300;
+    }
+    h2 {
+      font-weight: 400;
+    }
+    .login-form {
+      margin-top: 5vh;
+      background-color: #eee;
+      border-radius: 20px;
+      padding-top: 20px;
+      padding-bottom: 40px;
+    }
+  }
+}

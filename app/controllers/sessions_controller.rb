@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if @user = User.authenticate_with_credentials(params[:email], params[:password])
       puts "Login SUCCESS"
       session[:user_id] = @user.id
-      redirect_to '/'
+      redirect_to_role_portal @user
     else
       puts "Login FAILED"
       flash.now[:error] = "Invalid username or password."
@@ -23,8 +23,10 @@ class SessionsController < ApplicationController
   end
 
   def redirect_to_role_portal(user)
-    if user.role = "parent"
-      redirect_to parents_path, action: "show", id: user.id
+    if user.role == "parent"
+      redirect_to parent_path, action: "show", id: user.id
+    else user.role == "director"
+      redirect_to dashboard_index_path
     end
   end
 end

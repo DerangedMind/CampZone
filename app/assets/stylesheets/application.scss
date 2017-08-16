@@ -14,5 +14,14 @@
  *= require_self
  */
 
+$navbar-default-link-active-color: #eee;
+$navbar-default-link-hover-color: #eee;
+$navbar-default-link-color: #ccc;
+$navbar-default-color: #eee;
+$navbar-default-brand-hover-color: #fff;
+
+$font-family-sans-serif: 'Work Sans', sans-serif;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "top_nav";
