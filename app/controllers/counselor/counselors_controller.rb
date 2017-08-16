@@ -1,12 +1,12 @@
 class Counselor::CounselorsController < Counselor::PortalController
 
   def show
-    @counselor = authorize_current_counsilor
-    @groups = authorize_current_counsilor.groups
+    @counselor = authorize_current_counselor
+    @groups = authorize_current_counselor.groups
   end
 
   def edit
-    @counselor = authorize_current_counsilor
+    @counselor = authorize_current_counselor
   end
 
   def update
