@@ -4,6 +4,8 @@
 
 <%= form_tag(:action => "create") do %>
 
+<h3> General Information </h3>
+
 <p>First Name:
   <%=text_field_tag("first_name") %></p>
 
@@ -21,6 +23,20 @@
 
 <p>Parent Email:
 <%=email_field_tag("parent_email")%></p>
+
+<h3> Medical Information </h3>
+
+<p>Allergies:
+<%= text_area_tag('allergies') %> </p>
+
+<p>Conditions:
+<%= text_area_tag('conditions') %> </p>
+
+<p>Medications:
+<%= text_area_tag('medications') %> </p>
+
+<p>Epi-Pen
+<%= select_tag('epi_pen', "<option value=true>Yes</option><option value=false>No</option>".html_safe)%> </p>
 
 <%= submit_tag("Submit") %>
 
