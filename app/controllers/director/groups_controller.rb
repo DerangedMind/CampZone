@@ -18,7 +18,7 @@ class Director::GroupsController < Director::PortalController
 
     if @group.save
       puts "Group saved!"
-      redirect_to group_path(:id => @group.id)
+      redirect_to director_group_path(:id => @group.id)
     else
       puts "Group not saved."
       redirect_to '/groups/new'
@@ -35,13 +35,13 @@ class Director::GroupsController < Director::PortalController
     @group = Group.find(params[:id])
     @group.update!(group_update_params)
     puts "GROUP UPDATED"
-    redirect_to group_path(:id => params[:id])
+    redirect_to director_group_path(:id => params[:id])
   end
 
   def destroy
     @group = Group.find(params[:id])
     @group.destroy!
-    redirect_to groups_path
+    redirect_to director_groups_path
   end
 
   private
