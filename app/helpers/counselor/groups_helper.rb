@@ -1,0 +1,2 @@
+module Counselor::GroupsHelper
+end

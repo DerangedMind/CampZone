@@ -1,0 +1,34 @@
+<h1>
+  <%= @kid.first_name %>
+  <%= @kid.last_name %>
+</h1>
+
+<h3>
+  Birthdate:
+</h3>
+<%= @kid.birthdate %>
+<h3>
+  Social Insurance Number:
+</h3>
+<%= @kid.sin %>
+<h3>
+  Medicare Number:
+</h3>
+<%= @kid.medicare %>
+
+<h3>
+  Parents:
+</h3>
+<% @parents.each do |parent| %>
+<div>
+  <p>First Name:
+    <%= parent.user.first_name %></p>
+  <p>Last Name:
+    <%= parent.user.last_name %></p>
+  <p>Email:
+    <%= parent.user.email %></p>
+  <p>Phone Number:
+    <%= number_to_phone(parent.phone_number, area_code: true) %></p>
+</div>
+
+<% end %>

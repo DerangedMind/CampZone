@@ -5,6 +5,9 @@ class Kid < ApplicationRecord
 
   has_one :medical_info
 
+  has_many :groups_kids
+  has_many :groups, through: :groups_kids
+
   validates :first_name, :last_name, presence: true
   validates :birthdate, presence: true
   validates :sin, :medicare, presence: true
