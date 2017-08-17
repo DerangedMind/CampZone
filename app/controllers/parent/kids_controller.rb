@@ -48,8 +48,7 @@ class Parent::KidsController < Parent::PortalController
       :first_name,
       :last_name,
       :birthdate,
-      :sin,
-      :medicare
+      :sin
     )
   end
 
@@ -59,7 +58,8 @@ class Parent::KidsController < Parent::PortalController
       :conditions,
       :medications,
       :dietary_restrictions,
-      :epi_pen
+      :epi_pen,
+      :medicare
     )
   end
 end

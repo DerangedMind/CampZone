@@ -57,8 +57,7 @@ class Director::KidsController < Director::PortalController
       :first_name,
       :last_name,
       :birthdate,
-      :sin,
-      :medicare
+      :sin
     )
   end
 
@@ -68,7 +67,8 @@ class Director::KidsController < Director::PortalController
       :conditions,
       :medications,
       :dietary_restrictions,
-      :epi_pen
+      :epi_pen,
+      :medicare
     )
   end
 

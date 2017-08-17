@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170816190000) do
+ActiveRecord::Schema.define(version: 20170817163111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,7 +69,6 @@ ActiveRecord::Schema.define(version: 20170816190000) do
     t.string   "last_name"
     t.date     "birthdate"
     t.string   "sin"
-    t.string   "medicare"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -88,6 +87,7 @@ ActiveRecord::Schema.define(version: 20170816190000) do
     t.boolean  "epi_pen"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.string   "medicare"
   end
 
   create_table "parents", force: :cascade do |t|

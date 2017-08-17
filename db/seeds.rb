@@ -112,8 +112,7 @@ puts "Creating Parents and Kids..."
       first_name: Faker::Pokemon.name,
       last_name: "of #{Faker::HarryPotter.location}",
       birthdate: Faker::Date.birthday(5, 14),
-      sin: Faker::Number.number(9),
-      medicare: Faker::Number.number(12)
+      sin: Faker::Number.number(9)
     })
     KidsParent.create!({
       parent_id: parent.id,
@@ -125,7 +124,8 @@ puts "Creating Parents and Kids..."
       conditions: Faker::Lorem.word,
       medications: "Some kind of medication lol",
       dietary_restrictions: "Can't eat food",
-      epi_pen: true
+      epi_pen: true,
+      medicare: Faker::Number.number(12)
       })
     GroupsKid.create!({
       kid_id: kid.id,
