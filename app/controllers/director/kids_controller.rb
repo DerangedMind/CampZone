@@ -10,8 +10,8 @@ class Director::KidsController < Director::PortalController
 
   def create
     @kid = Kid.new(kid_params)
-    @medical_info = MedicalInfo.new(kid_medical_params)
     @parent_id = Parent.find_by(user_id: User.find_by(email: params[:parent_email]).id).id
+    puts @parent_id
 
     if @kid.save
       puts "KID SAVED"
@@ -19,8 +19,6 @@ class Director::KidsController < Director::PortalController
         parent_id: @parent_id,
         kid_id: @kid.id,
       )
-      @medical_info.kid_id = @kid.id
-      @medical_info.save
       redirect_to kid_path(:id => @kid.id)
     else
       puts "KID NOT SAVED"
@@ -32,7 +30,6 @@ class Director::KidsController < Director::PortalController
   def show
     @kid = Kid.find(params[:id])
     @parents = @kid.parents
-    @medical_info = MedicalInfo.find_by(kid_id: @kid.id)
   end
 
   def edit
@@ -57,17 +54,7 @@ class Director::KidsController < Director::PortalController
       :first_name,
       :last_name,
       :birthdate,
-      :sin
-    )
-  end
-
-  def kid_medical_params
-    params.permit(
-      :allergies,
-      :conditions,
-      :medications,
-      :dietary_restrictions,
-      :epi_pen,
+      :sin,
       :medicare
     )
   end

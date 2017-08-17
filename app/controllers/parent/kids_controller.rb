@@ -7,7 +7,6 @@ class Parent::KidsController < Parent::PortalController
 
   def show
     @kid = Kid.find_by_id(params[:id])
-    @medical_info = MedicalInfo.find_by(kid_id: @kid.id)
   end
 
   def new
@@ -16,15 +15,7 @@ class Parent::KidsController < Parent::PortalController
 
   def create
     @kid = Kid.new(kid_params)
-    @kid_medical = MedicalInfo.new(kid_medical_params)
-    @parent = Parent.find_by(user_id: current_user.id)
     if @kid.save
-      @kid_medical.kid_id = @kid.id
-      @kid_medical.save
-      KidsParent.create(
-        kid_id: @kid.id,
-        parent_id: @parent.id
-      )
       puts "Kid created!"
     else
       puts "Kid not created."
@@ -44,21 +35,11 @@ class Parent::KidsController < Parent::PortalController
   private
 
   def kid_params
-    params.permit(
+    params.require(:kid).permit(
       :first_name,
       :last_name,
       :birthdate,
-      :sin
-    )
-  end
-
-  def kid_medical_params
-    params.permit(
-      :allergies,
-      :conditions,
-      :medications,
-      :dietary_restrictions,
-      :epi_pen,
+      :sin,
       :medicare
     )
   end
