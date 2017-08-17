@@ -1,6 +1,8 @@
 class Group < ApplicationRecord
 
-  has_many :kids
+  has_many :groups_kids
+  has_many :kids, through: :groups_kids
+
   has_many :counselors_groups
   has_many :counselors, through: :counselors_groups
 
