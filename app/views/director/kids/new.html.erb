@@ -2,49 +2,37 @@
   Add a Kid to Camp!
 </h1>
 
-<%= form_tag(:action => "create") do %>
+<%= form_for @kid, url: director_kids_path, method: 'post' do |form| %>
+  <h3> General Information </h3>
 
-<h3> General Information </h3>
+  <p>First Name: <%= form.text_field("first_name") %></p>
+  <p>Last Name: <%= form.text_field("last_name") %></p>
+  <p>Birthday: <%= form.date_field("birthdate") %></p>
+  <p>Social Insurance Number: <%= form.text_field("sin") %></p>
+  <p>Parent Email: <%= email_field_tag("parent_email")%></p>
 
-<p>First Name:
-  <%=text_field_tag("first_name") %></p>
+  <h3> Medical Information </h3>
 
-<p>Last Name:
-  <%=text_field_tag("last_name") %></p>
+  <p>Medicare: <%= form.text_field("medicare") %></p>
 
-</p>Birthday:
-<%=date_field_tag("birthdate") %></p>
+  <p>Allergies: <%= text_area_tag('allergies') %> </p>
+  No Allergies: <%= check_box_tag('allergies', 'no allergies') %>
 
-<p>Social Insurance Number:
-<%=text_field_tag("sin") %></p>
+  <p>Conditions: <%= text_area_tag('conditions') %> </p>
+  No conditions: <%= check_box_tag('conditions', 'no conditions') %>
 
-<p>Parent Email:
-<%=email_field_tag("parent_email")%></p>
+  <p>Medications: <%= text_area_tag('medications') %> </p>
+  No medications: <%= check_box_tag('medications', 'no medications') %>
 
-<h3> Medical Information </h3>
+  <p>Dietary Restrictions: <%= text_area_tag('dietary_restrictions')%> </p>
+  No Dietary Restrictions: <%= check_box_tag('dietary_restrictions', 'no dietary restrictions') %>
 
-<p>Medicare:
-<%=text_field_tag('medicare') %></p>
+  <p>Epi-Pen <%= select_tag('epi_pen', "<option value=true>Yes</option><option value=false>No</option>".html_safe)%> </p>
 
-<p>Allergies:
-<%= text_area_tag('allergies') %> </p>
-No Allergies: <%= check_box_tag('allergies', 'no allergies') %>
+  <p>Medicare: <%= form.text_field("medicare") %></p>
 
-<p>Conditions:
-<%= text_area_tag('conditions') %> </p>
-No conditions: <%= check_box_tag('conditions', 'no conditions') %>
+  <p>Parent Email: <%= email_field_tag :parent_email %></p>
 
-<p>Medications:
-<%= text_area_tag('medications') %> </p>
-No medications: <%= check_box_tag('medications', 'no medications') %>
-
-<p>Dietary Restrictions:
-<%= text_area_tag('dietary_restrictions')%> </p>
-No Dietary Restrictions: <%= check_box_tag('dietary_restrictions', 'no dietary restrictions') %>
-
-<p>Epi-Pen
-<%= select_tag('epi_pen', "<option value=true>Yes</option><option value=false>No</option>".html_safe)%> </p>
-
-<%= submit_tag("Submit") %>
+  <%= submit_tag("Submit") %>
 
 <% end %>
