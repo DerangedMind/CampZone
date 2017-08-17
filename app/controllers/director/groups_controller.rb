@@ -15,13 +15,14 @@ class Director::GroupsController < Director::PortalController
 
   def create
     @group = Group.new(group_params)
-
+    @director = Director.find_by(user_id: current_user.id)
+    @group.camp_id = @director.camps[0].id
     if @group.save
       puts "Group saved!"
       redirect_to director_group_path(:id => @group.id)
     else
       puts "Group not saved."
-      redirect_to '/groups/new'
+      redirect_to new_director_group_path
     end
 
   end
@@ -48,7 +49,6 @@ class Director::GroupsController < Director::PortalController
 
   def group_params
     params.require(:group).permit(
-      :camp_id,
       :name,
       :min_age,
       :max_age,
@@ -58,7 +58,6 @@ class Director::GroupsController < Director::PortalController
 
     def group_update_params
       params.require(:group).permit(
-      :camp_id,
       :name,
       :min_age,
       :max_age,

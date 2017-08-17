@@ -1,6 +1,6 @@
 <h1>Create a Group!</h1>
 
-<%= form_for @group, url: director_groups, method: "post"  do |form| %>
+<%= form_for @group, url: director_groups_path, method: "post" do |form| %>
 
   <%= form.label :name %>
   <%= form.text_field :name %>
