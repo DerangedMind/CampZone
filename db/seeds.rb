@@ -54,7 +54,7 @@ puts "Creating Counselors..."
   user = User.create!({
     first_name: Faker::Zelda.character,
     last_name: "of #{Faker::Zelda.location}",
-    email: "#{Faker::Cat.name}@campers.com",
+    email: "#{Faker::Cat.name}#{rand(6)}@campers.com",
     password: "password",
     role: "counselor"
   })
@@ -118,6 +118,10 @@ puts "Creating Parents and Kids..."
     KidsParent.create!({
       parent_id: parent.id,
       kid_id: kid.id
+    })
+    GroupsKid.create!({
+      kid_id: kid.id,
+      group_id: 1
     })
   end
 end

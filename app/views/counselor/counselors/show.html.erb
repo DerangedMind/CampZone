@@ -24,7 +24,7 @@
 <div>
   <p>
     Group Name:
-    <%= group.name %>
+    <%= link_to group.name, "/c/groups/#{group.id}" %>
   </p>
   <p>Start Date:
     <%= group.start_date %>
