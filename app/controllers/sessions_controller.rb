@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if @user = User.authenticate_with_credentials(params[:email], params[:password])
       puts "Login SUCCESS"
       session[:user_id] = @user.id
-      # redirect_to_role_portal @user
+      redirect_to_role_portal @user
     else
       puts "Login FAILED"
       flash.now[:error] = "Invalid username or password."
