@@ -23,6 +23,12 @@
             <li><%= link_to :Groups, groups_path %></li>
             <li><%= link_to :Kids, kids_path %></li>
           <% end %>
+          <% if current_user.role == "counselor" %>
+            <li><%= link_to :Profile, dashboard_index_path %></li>
+            <li><%= link_to :Counselors, counselors_path %></li>
+            <li><%= link_to :Groups, groups_path %></li>
+            <li><%= link_to :Kids, kids_path %></li>
+          <% end %>
           <li><a href="/logout">Logout</a></li>
         <% else %>
           <li><a href="/login">Login</a></li>
