@@ -2,22 +2,24 @@
   Add a Kid to Camp!
 </h1>
 
-<%= form_tag(:action => "create") do %>
+<%= form_for @kid, url: director_kids_path, method: 'post' do |form| %>
 
+<<<<<<< 9786ccddf28fc5eaff14741653c5e4674cf71ee7
 <h3> General Information </h3>
 
 <p>First Name:
   <%=text_field_tag("first_name") %></p>
+=======
+  <p>First Name: <%= form.text_field("first_name") %></p>
+>>>>>>> update new kid form to form_for. uses tag within form. update more routes
 
-<p>Last Name:
-  <%=text_field_tag("last_name") %></p>
+  <p>Last Name: <%= form.text_field("last_name") %></p>
 
-</p>Birthday:
-<%=date_field_tag("birthdate") %></p>
+  </p>Birthday: <%= form.date_field("birthdate") %></p>
 
-<p>Social Insurance Number:
-<%=text_field_tag("sin") %></p>
+  <p>Social Insurance Number: <%= form.text_field("sin") %></p>
 
+<<<<<<< 9786ccddf28fc5eaff14741653c5e4674cf71ee7
 <p>Parent Email:
 <%=email_field_tag("parent_email")%></p>
 
@@ -44,7 +46,12 @@ No Dietary Restrictions: <%= check_box_tag('dietary_restrictions', 'no dietary r
 
 <p>Epi-Pen
 <%= select_tag('epi_pen', "<option value=true>Yes</option><option value=false>No</option>".html_safe)%> </p>
+=======
+  <p>Medicare: <%= form.text_field("medicare") %></p>
 
-<%= submit_tag("Submit") %>
+  <p>Parent Email: <%= email_field_tag :parent_email %></p>
+>>>>>>> update new kid form to form_for. uses tag within form. update more routes
+
+  <%= submit_tag("Submit") %>
 
 <% end %>

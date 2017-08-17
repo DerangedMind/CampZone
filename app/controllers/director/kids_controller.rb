@@ -10,16 +10,21 @@ class Director::KidsController < Director::PortalController
 
   def create
     @kid = Kid.new(kid_params)
+    
     @medical_info = MedicalInfo.new(kid_medical_params)
-    @parent_id = Parent.find_by(user_id: User.find_by(email: params[:parent_email]).id).id
+    @medical_info.kid_id = @kid.id
+
+    @parent = Parent.where("
+      user_id IN (
+        SELECT id FROM users
+        WHERE email = ?
+      )",
+      params[:parent_email]
+    )
+    @kid.parents << @parent
 
     if @kid.save
       puts "KID SAVED"
-      KidsParent.create(
-        parent_id: @parent_id,
-        kid_id: @kid.id,
-      )
-      @medical_info.kid_id = @kid.id
       @medical_info.save
       redirect_to director_kid_path(:id => @kid.id)
     else
@@ -41,7 +46,13 @@ class Director::KidsController < Director::PortalController
 
   def update
     @kid = Kid.find(params[:id])
-    @kid.update(kid_params)
+    if @kid.update(kid_params)
+      redirect_to director_kid_path(:id => @kid.id)
+    else
+      flash[:error] = @kid.errors.full_messages
+      redirect_to edit_director_kid_path(:id => @kid.id)
+    end
+
   end
 
   def destroy
@@ -53,7 +64,7 @@ class Director::KidsController < Director::PortalController
   private
 
   def kid_params
-    params.permit(
+    params.require(:kid).permit(
       :first_name,
       :last_name,
       :birthdate,
