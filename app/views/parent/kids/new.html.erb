@@ -5,24 +5,24 @@
   <div class="col-md-8 col-xs-10">
     <div class="form-box clearfix">
 
-      <%= form_tag(:action => 'create') do %>
+      <%= form_for @kid, url: new_parent_kid_path do |form| %>
       General Information:
       <div class="form-group">
         <h3 class="text-center">Create a New Kid!</h3>
         <label>First Name</label>
-        <%= text_field_tag('first_name')%>
+        <%= form.text_field('first_name')%>
       </div>
       <div class="form-group">
         <label>Last Name</label>
-        <%= text_field_tag("last_name")%>
+        <%= form.text_field("last_name")%>
       </div>
       <div class="form-group">
         <label>Birthdate</label>
-        <%= date_field_tag("birthdate") %>
+        <%= form.date_field("birthdate") %>
       </div>
       <div class="form-group">
-        <label>SIN</label>
-        <%=text_field_tag("sin")%>
+        <label>Social Insurance Number</label>
+        <%= form.text_field("sin")%>
       </div>
 
       Medical Information:
@@ -59,7 +59,7 @@
       </div>
       <div class="form_group">
         <label>
-          Epi Pen
+          Does your child have an epi-pen?
         </label>
         <%= select_tag('epi_pen', "<option value=true>Yes</option><option value=false>No</option>".html_safe)%>
       </div>
