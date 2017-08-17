@@ -12,10 +12,10 @@ class Director::CampsController < Director::PortalController
     @camp = Camp.new(camp_params)
 
     if @camp.save
-      redirect_to '/'
+      redirect_to director_dashboard_index_path
     else
       flash[:error] = @camp.errors.full_messages
-      redirect_to new_camp_path
+      redirect_to new_director_camp_path
     end
   end
 
