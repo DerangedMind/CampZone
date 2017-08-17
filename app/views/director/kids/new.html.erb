@@ -2,26 +2,20 @@
   Add a Kid to Camp!
 </h1>
 
-<%= form_tag(:action => "create") do %>
+<%= form_for @kid, url: director_kids_path, method: 'post' do |form| %>
 
-<p>First Name:
-  <%=text_field_tag("first_name") %></p>
+  <p>First Name: <%= form.text_field("first_name") %></p>
 
-<p>Last Name:
-  <%=text_field_tag("last_name") %></p>
+  <p>Last Name: <%= form.text_field("last_name") %></p>
 
-</p>Birthday:
-<%=date_field_tag("birthdate") %></p>
+  </p>Birthday: <%= form.date_field("birthdate") %></p>
 
-<p>Social Insurance Number:
-<%=text_field_tag("sin") %></p>
+  <p>Social Insurance Number: <%= form.text_field("sin") %></p>
 
-<p>Medicare:
-<%=text_field_tag('medicare') %></p>
+  <p>Medicare: <%= form.text_field("medicare") %></p>
 
-<p>Parent Email:
-<%=email_field_tag("parent_email")%></p>
+  <p>Parent Email: <%= email_field_tag :parent_email %></p>
 
-<%= submit_tag("Submit") %>
+  <%= submit_tag("Submit") %>
 
 <% end %>

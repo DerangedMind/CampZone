@@ -6,5 +6,4 @@ class Parent < ApplicationRecord
 
   validates :user_id, presence: true
   validates :address, :phone_number, presence: true
-
 end
