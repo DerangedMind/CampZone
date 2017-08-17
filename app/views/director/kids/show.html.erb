@@ -12,10 +12,6 @@
 </h3>
 <%= @kid.sin %>
 <h3>
-  Medicare Number:
-</h3>
-<%= @kid.medicare %>
-<h3>
   Current Group:
 </h3>
 GROUP HERE
@@ -40,6 +36,34 @@ GROUP HERE
   Counselors:
 </h3>
 GROUP COUNSELORS HERE
+
+<h3>
+  Medical Information:
+</h3>
+
+<p> Medicare </p>
+<%= @medical_info.medicare %>
+
+<p>
+  Allergies:
+</p>
+<%=@medical_info.allergies %>
+</p>
+<p>
+Conditions:
+</p>
+<%=@medical_info.conditions %>
+</p>
+<p>
+Medication:
+</p>
+<%=@medical_info.medications %>
+</p>
+<p>
+Epi Pen:
+</p>
+<%=@medical_info.epi_pen %>
+</p>
 
 <br/>
 <%= link_to "Edit Child Information", edit_kid_path(:id => @kid.id) %>
