@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   post 'signup', to: 'users#create'
 
   scope module: 'director', path: 'd', as: 'director' do
-    resources :directors, except: [:index]
+    resources :directors, except: [:index, :show, :edit, :update]
     resources :counselors
     resources :camps
     resources :groups

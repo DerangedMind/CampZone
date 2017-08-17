@@ -27,6 +27,23 @@ class Director::DirectorsController < Director::PortalController
 
   end
 
+  def show
+    @user = current_user
+  end
+
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    if @user.update(director_params)
+      redirect_to director_profile_path
+    else
+      redirect_to director_settings_path
+    end
+  end
+
   private
 
   def director_params
@@ -34,7 +51,7 @@ class Director::DirectorsController < Director::PortalController
       :first_name,
       :last_name,
       :email,
-      :password,
+      :password
     )
   end
 
