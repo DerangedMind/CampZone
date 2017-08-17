@@ -32,12 +32,15 @@ No Allergies: <%= check_box_tag('allergies', 'no allergies') %>
 
 <p>Conditions:
 <%= text_area_tag('conditions') %> </p>
+No conditions: <%= check_box_tag('conditions', 'no conditions') %>
 
 <p>Medications:
 <%= text_area_tag('medications') %> </p>
+No medications: <%= check_box_tag('medications', 'no medications') %>
 
 <p>Dietary Restrictions:
 <%= text_area_tag('dietary_restrictions')%> </p>
+No Dietary Restrictions: <%= check_box_tag('dietary_restrictions', 'no dietary restrictions') %>
 
 <p>Epi-Pen
 <%= select_tag('epi_pen', "<option value=true>Yes</option><option value=false>No</option>".html_safe)%> </p>

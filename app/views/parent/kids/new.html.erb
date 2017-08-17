@@ -33,21 +33,25 @@
       <div class="form_group">
         <label>Allergies</label>
         <%= text_area_tag("allergies") %>
+        No Allergies: <%= check_box_tag('allergies', 'no allergies') %>
       </div>
       <div class="form_group">
         <label>Conditions</label>
         <%= text_area_tag("conditions") %>
+        No conditions: <%= check_box_tag('conditions', 'no conditions') %>
       </div>
       <div class="form_group">
         <label>Medications
         </label>
         <%= text_area_tag("medications") %>
+        No medications: <%= check_box_tag('medications', 'no medications') %>
       </div>
       <div class="form_group">
         <label>
           Dietary Restrictions
         </label>
         <%= text_area_tag("dietary_restrictions") %>
+        No Dietary Restrictions: <%= check_box_tag('dietary_restrictions', 'no dietary restrictions') %>
       </div>
       <div class="form_group">
         <label>
