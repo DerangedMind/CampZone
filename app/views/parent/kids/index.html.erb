@@ -6,7 +6,6 @@
     <th> Last Name </th>
     <th> Birthdate </th>
     <th> SIN </th>
-    <th> Medicare </th>
   </tr>
   <% @kids.each do |kid| %>
     <tr>
@@ -14,7 +13,6 @@
       <td> <%= kid.last_name %> </td>
       <td> <%= kid.birthdate %> </td>
       <td> <%= kid.sin %> </td>
-      <td> <%= kid.medicare %> </td>
       <td> <%= link_to "Edit Kid", edit_kid_path(:id => kid.id) %> </td>
     </tr>
   <% end %>
