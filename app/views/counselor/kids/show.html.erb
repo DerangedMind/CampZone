@@ -21,7 +21,9 @@
 </h3>
 <% @parents.each do |parent| %>
 <div>
-  <p>Name: <%= parent.user.first_name %> <%= parent.user.last_name %></p>
+  <p>Name:
+    <%= parent.user.first_name %> <%= parent.user.last_name %>
+  </p>
   <p>Email:
     <%= parent.user.email %></p>
   <p>Phone Number:
