@@ -1,6 +1,6 @@
 <h1> Edit <%= @group.name %> </h1>
 
-<%= form_for @group, url: director_group_path, method: 'put' do |form| %>
+<%= form_for @group, url: director_group_path(:id => @group.id), method: 'put' do |form| %>
 
   <%= form.label :name %>
   <%= form.text_field :name %>
