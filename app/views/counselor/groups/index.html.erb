@@ -8,7 +8,7 @@
           <img src="<%= Faker::Avatar.image("counselor-avatar", "50x50", "png", "set3") %>">
         </div>
         <div class="col-sm-6 col-xs-6 name">
-          <%= link_to group.name, group_path(:id => group.id) %>
+          <%= link_to group.name, counselor_group_path(:id => group.id) %>
         </div>
         <div class="col-sm-2 col-xs-3 alias">
           <%= group.min_age %> - <%= group.max_age %>

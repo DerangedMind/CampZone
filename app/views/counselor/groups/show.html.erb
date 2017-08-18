@@ -11,7 +11,7 @@
         <img src="<%= Faker::Avatar.image("counselor-avatar", "50x50", "png", "set2") %>">
       </div>
       <div class="col-sm-6 col-xs-6 name">
-        <%= link_to ("#{counselor.user.first_name} #{counselor.user.last_name}"), counselor_path(:id => counselor.id) %>
+        <%= link_to ("#{counselor.user.first_name} #{counselor.user.last_name}"), counselor_kid_path(:id => counselor.id) %>
       </div>
       <div class="col-sm-2 col-xs-3 alias">
         <%= counselor.alias %>
@@ -31,7 +31,7 @@
         <div class="user-card-sm">
           <img src="<%= Faker::Avatar.image("counselor-avatar", "50x50", "png", "set4") %>">
           <br>
-          <%= link_to ("#{kid.first_name} #{kid.last_name}"), kid_path(:id => kid.id) %>
+          <%= link_to ("#{kid.first_name} #{kid.last_name}"), counselor_kid_path(:id => kid.id) %>
         </div>
       </div>
     <% if (index.odd?)  %></div><% end %>

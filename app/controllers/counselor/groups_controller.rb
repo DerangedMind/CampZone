@@ -1,5 +1,9 @@
 class Counselor::GroupsController < ApplicationController
 
+  def index
+    @groups = Group.all.order(start_date: :desc)
+  end
+
   def show
     @current_group = Group.find(params[:id])
 

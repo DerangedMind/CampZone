@@ -8,7 +8,7 @@
         <div class="user-card-sm">
           <img src="<%= Faker::Avatar.image("counselor-avatar", "50x50", "png", "set4") %>">
           <br>
-          <%= link_to ("#{kid.first_name} #{kid.last_name}"), kid_path(:id => kid.id) %>
+          <%= link_to ("#{kid.first_name} #{kid.last_name}"), counselor_kid_path(:id => kid.id) %>
         </div>
       </div>
     <% if (index.odd?)  %></div><% end %>
