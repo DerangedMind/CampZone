@@ -23,6 +23,17 @@ class ApplicationController < ActionController::Base
   end
   helper_method :counselor?
 
+  def role_path
+    if director?
+      "d"
+    elsif counselor?
+      "c"
+    elsif parent?
+      "p"
+    end
+  end
+  helper_method :role_path
+
   def authorize
     redirect_to '/login' unless current_user
   end
