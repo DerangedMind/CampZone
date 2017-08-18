@@ -9,6 +9,9 @@
       #AF2BBF, #663399
       // #663399, purple
     );
+  -webkit-box-shadow: 0px 0px 20px 4px rgba(0,0,0,0.67);
+  -moz-box-shadow: 0px 0px 20px 4px rgba(0,0,0,0.67);
+  box-shadow: 0px 0px 20px 4px rgba(0,0,0,0.67);
   .navbar-brand {
     font-weight: 300;
     font-size: 2em;
