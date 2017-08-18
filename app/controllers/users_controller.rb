@@ -8,6 +8,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def confirm_email
+    user = User.find_by_confirm_token(params[:id])
+    if user
+      user.email_activate
+      puts "EMAIL CONFIRM PASSED!"
+      redirect_to login_path
+    else
+      puts "EMAIL CONFIRM FAILED!"
+      redirect_to login_path
+    end
+  end
+
   def create
     unless @user = existing_user(params[:user][:email])
       @user = User.new(user_params)
@@ -17,8 +29,9 @@ class UsersController < ApplicationController
     end
 
     if @user.save
+      UserMailer.registration_confirmation(@user).deliver
       puts "#{@user.role} SAVED"
-      redirect_to new_parent_parent_path
+      redirect_to login_path
     else
       redirect_to signup_path
     end

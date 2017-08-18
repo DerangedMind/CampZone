@@ -6,9 +6,13 @@ class SessionsController < ApplicationController
 
   def create
     if @user = User.authenticate_with_credentials(params[:email], params[:password])
-      puts "Login SUCCESS"
-      session[:user_id] = @user.id
-      redirect_to_role_portal @user
+      if @user.email_confirmed
+        puts "Login SUCCESS"
+        session[:user_id] = @user.id
+        redirect_to_role_portal @user
+      else
+        puts "ACCOUNT NOT ACTIVE LOL"
+      end
     else
       puts "Login FAILED"
       flash.now[:error] = "Invalid username or password."
@@ -24,7 +28,7 @@ class SessionsController < ApplicationController
 
   def redirect_to_role_portal(user)
     if user.role == "parent"
-      redirect_to parent_profile_path(:id => Parent.find_by_user_id(user.id).id)
+      redirect_to parent_profile_path
     elsif user.role == "counselor"
       redirect_to counselor_profile_path(:id => Counselor.find_by_user_id(user.id).id)
     elsif user.role == "director"

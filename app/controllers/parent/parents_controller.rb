@@ -1,7 +1,7 @@
 class Parent::ParentsController < Parent::PortalController
 
   def show
-    @parent = Parent.find_by_id(params[:id])
+    @parent = current_user
   end
 
   def new

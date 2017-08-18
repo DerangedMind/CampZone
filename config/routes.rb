@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   post 'signup', to: 'users#create'
 
+  resources :users do
+    member do
+      get :confirm_email
+    end
+  end
+
   scope module: 'director', path: 'd', as: 'director' do
     resources :directors, except: [:index]
     resources :counselors
