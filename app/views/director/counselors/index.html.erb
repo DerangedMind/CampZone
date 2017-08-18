@@ -1,19 +1,24 @@
 <h1> All Counselors </h1>
 
-<h3> Total Counselors <%= @counselors.count %></h3> 
-<div class="col-sm-1"></div>
-<div class="col-sm-10 item-list">
-  <% @counselors.each do |counselor| %>
-    <div class="row user-card">
-      <div class="col-sm-2 col-xs-3">
-        <img src="<%= Faker::Avatar.image("counselor-avatar", "50x50", "png", "set2") %>">
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 item-list">
+    <%= link_to new_director_counselor_path, class:"btn btn-success pull-right add-btn" do %>
+      <i class="glyphicon glyphicon-plus"></i> Add Counselor
+    <% end %>
+    <h3> Total Counselors <%= @counselors.count %></h3> 
+    <br />
+    <% @counselors.each do |counselor| %>
+      <div class="row user-card">
+        <div class="col-sm-2 col-xs-3">
+          <img src="<%= Faker::Avatar.image("counselor-avatar#{rand(7)*4}", "50x50", "png", "set2") %>">
+        </div>
+        <div class="col-sm-6 col-xs-6 name">
+          <%= link_to ("#{counselor.user.first_name} #{counselor.user.last_name}"), director_counselor_path(:id => counselor.id) %>
+        </div>
+        <div class="col-sm-2 col-xs-3 alias">
+          <%= counselor.alias %>
+        </div>
       </div>
-      <div class="col-sm-6 col-xs-6 name">
-        <%= link_to ("#{counselor.user.first_name} #{counselor.user.last_name}"), director_counselor_path(:id => counselor.id) %>
-      </div>
-      <div class="col-sm-2 col-xs-3 alias">
-        <%= counselor.alias %>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

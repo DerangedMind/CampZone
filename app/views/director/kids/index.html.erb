@@ -1,18 +1,23 @@
 <h1> All Kids </h1>
-  <h3> Total Kids: <%= @kids.count %></h3> 
-  <div class="item-list">
 
-  <% @kids.each_with_index do |kid, index| %> 
-    <% if index.even? %><div class="row" id="kids-row"><% end %>
-      <div class="col-sm-6 col-xs-6">
-        <div class="user-card-sm">
-          <img src="<%= Faker::Avatar.image("counselor-avatar", "50x50", "png", "set4") %>">
-          <br>
-          <%= link_to ("#{kid.first_name} #{kid.last_name}"), director_kid_path(:id => kid.id) %>
-        </div>
-      </div>
-    <% if (index.odd?)  %></div><% end %>
-  <% end %>
-
+  <div class="row">
+    <div class="col-md-offset-1 col-md-10">
+      <%= link_to new_director_kid_path, class:"btn btn-success pull-right" do %>
+        <i class="glyphicon glyphicon-plus"></i> Add Kid
+      <% end %>
+      <h3> Total Kids: <%= @kids.count %></h3> 
+      <div class="item-list">
+      <% @kids.each_with_index do |kid, index| %> 
+        <% if index.even? %><div class="row" id="kids-row"><% end %>
+          <div class="col-sm-6 col-xs-6">
+            <div class="user-card-sm text-center">
+              <img class="center-block" src="<%= Faker::Avatar.image("counselor-avatar#{rand(7)*4}", "50x50", "png", "set4") %>">
+              <br>
+              <%= link_to ("#{kid.first_name} #{kid.last_name}"), director_kid_path(:id => kid.id) %>
+            </div>
+          </div>
+        <% if (index.odd?)  %></div><% end %>
+      <% end %>
+    </div>
   </div>
 </div>
