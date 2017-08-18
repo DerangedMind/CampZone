@@ -21,6 +21,7 @@ class Director::CounselorsController < Director::PortalController
 
     if @user.save
       puts "USER SAVED"
+      UserMailer.registration_confirmation(@user).deliver
       @counselor = Counselor.create(
         user_id: @user.id,
         alias: "none",
@@ -50,6 +51,19 @@ class Director::CounselorsController < Director::PortalController
     @counselor.update(update_counselor_params)
     puts "COUNSELOR UPDATED"
     redirect_to director_counselor_path(:id => @counselor.id)
+  end
+
+  def confirm_email
+    user = User.find_by_confirm_token(params[:id])
+    if user
+      user.email_activate
+      flash[:success] = "Welcome to the Sample App! Your email has been confirmed.
+      Please sign in to continue."
+      redirect_to login_path
+    else
+      flash[:error] = "Sorry. User does not exist"
+      redirect_to login_path
+    end
   end
 
   private
