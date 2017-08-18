@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     get "profile", to: 'counselors#show'
     get "settings", to: 'counselors#edit'
     put "profile", to: 'counselors#update'
+    get :confirm_email
   end
 
   scope module: 'parent', path: 'p', as: 'parent' do
