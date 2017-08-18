@@ -13,7 +13,8 @@ class UsersController < ApplicationController
     if user
       user.email_activate
       flash[:notice] = "Thank you for Confirming your email! You can now enjoy using CampZone!"
-      redirect_to login_path
+      session[:user_id] = user.id
+      redirect_to_role_portal(user)
     end
   end
 
@@ -33,6 +34,18 @@ class UsersController < ApplicationController
     else
       flash[:alert] = "Oops! Something went wrong, please try again."
       redirect_to signup_path
+    end
+  end
+
+  def redirect_to_role_portal(user)
+    if user.role == "parent"
+      redirect_to parent_profile_path
+    elsif user.role == "counselor"
+      redirect_to counselor_profile_path
+    elsif user.role == "director"
+      redirect_to director_dashboard_index_path
+    else
+      raise "no role assigned"
     end
   end
 
