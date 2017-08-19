@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
     if @user.save
       UserMailer.registration_confirmation(@user).deliver
-      flash[:notice] = "Thank you for creating an account. A confirmation email has been sent to the email you provided. Please click on the link to verify email."
+      flash[:notice] = "Thank you for creating an account. A confirmation email has been sent to the email you provided. Please click on the link to verify your account."
       redirect_to login_path
     else
       flash[:alert] = "Oops! Something went wrong, please try again."
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
     if user.role == "parent"
       redirect_to parent_profile_path
     elsif user.role == "counselor"
-      redirect_to counselor_profile_path
+      redirect_to counselor_profile_path #EDIT PASSWORD
     elsif user.role == "director"
       redirect_to director_dashboard_index_path
     else

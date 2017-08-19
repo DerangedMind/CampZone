@@ -15,6 +15,9 @@ class Director::DirectorsController < Director::PortalController
       )
       if @director.save
         puts "DIRECTOR SAVED"
+        UserMailer.registration_confirmation(@user).deliver
+        flash[:notice] = "Director Created! Please ask new director to verify email"
+        redirect_to director_dashboard_index_path
       else
         puts "DIRECTOR NOT SAVED"
         redirect_to new_director_director_path

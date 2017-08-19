@@ -21,7 +21,6 @@ class Director::CounselorsController < Director::PortalController
 
     if @user.save
       puts "USER SAVED"
-      UserMailer.registration_confirmation(@user).deliver
       @counselor = Counselor.create(
         user_id: @user.id,
         alias: "none",
@@ -30,6 +29,8 @@ class Director::CounselorsController < Director::PortalController
       )
       if @counselor.save
         puts "COUNSELOR SAVED"
+        UserMailer.registration_confirmation(@user).deliver
+        flash[:notice] = "Counselor created! Please ask counselor to verify email!"
         redirect_to director_counselor_path(:id => @counselor.id)
       else
         puts "COUNSELOR NOT SAVED - DESTROYING USER"
