@@ -98,13 +98,22 @@ puts "Creating Parents and Kids..."
     email: "#{Faker::Lovecraft.word}#{count * rand(7) + 1}@campers.com",
     password: "password",
     role: "parent"
-    })
+  })
 
-    parent = Parent.create!({
-      user_id: user.id,
-      address: "123 Street",
-      phone_number: "5140001111"
-    })
+  address = Address.create!({
+    city: Faker::Address.city,
+    province: Faker::Address.state_abbr,
+    country: Faker::Address.country,
+    street_address: Faker::Address.street_address,
+    apt_number: Faker::Address.secondary_address,
+    postal_code: Faker::Address.postcode.to_s
+  })
+
+  parent = Parent.create!({
+    user_id: user.id,
+    address_id: address.id,
+    phone_number: Faker::PhoneNumber.phone_number
+  })
 
   random = 1 + rand(3)
   random.times do |count|
@@ -146,9 +155,12 @@ test_parent_user = User.create(
 
 test_parent = Parent.create(
   user_id: test_parent_user.id,
-  address: "123 Test Street",
+  address_id: Parent.find(KidsParent.find_by_kid_id(3).parent_id).address_id,
   phone_number: "5141234567"
 )
+
+# find address through prent.
+# find prent with kid id 3
 
 KidsParent.create(
   parent_id: test_parent.id,
