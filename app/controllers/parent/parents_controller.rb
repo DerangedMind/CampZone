@@ -2,6 +2,7 @@ class Parent::ParentsController < Parent::PortalController
 
   def show
     @parent = Parent.find_by_user_id(current_user.id)
+    @kids = @parent.kids
   end
 
   def new
