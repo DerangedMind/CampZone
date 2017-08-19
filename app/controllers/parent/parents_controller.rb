@@ -1,7 +1,7 @@
 class Parent::ParentsController < Parent::PortalController
 
   def show
-    @parent = Parent.find_by_id(params[:id])
+    @parent = Parent.find_by_user_id(current_user.id)
   end
 
   def new
@@ -14,7 +14,7 @@ class Parent::ParentsController < Parent::PortalController
 
     if @parent.save
       puts "Parent created!"
-      redirect_to parent_profile_path(:id => @parent.id)
+      redirect_to parent_profile_path
     else
       puts "Parent not created."
       redirect_to new_parent_parent_path
