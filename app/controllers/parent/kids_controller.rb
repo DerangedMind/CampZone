@@ -1,10 +1,5 @@
 class Parent::KidsController < Parent::PortalController
 
-  def index
-    @kids = Kid.all
-    # Placeholder, will be updated to only show specific parent's kids.
-  end
-
   def show
     @kid = Kid.find_by_id(params[:id])
     @medical_info = MedicalInfo.find_by(kid_id: @kid.id)
