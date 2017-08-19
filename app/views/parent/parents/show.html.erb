@@ -1,7 +1,13 @@
 <%= @parent.user.first_name %> <%= @parent.user.last_name %>
 
-<%= @parent.address %>
+<br />
 
+<%= @parent.address.street_address %> - <%= @parent.address.apt_number %>
+<br />
+<%= @parent.address.postal_code %>
+<br />
+<%= @parent.address.city %>, <%= @parent.address.province %>, <%= @parent.address.country %>
+<br />
 <%= @parent.phone_number %>
 
 <div class="item-list">
