@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
     if @user.save
       puts "#{@user.role} SAVED"
+      session[:user_id] = @user.id
       redirect_to new_parent_parent_path
     else
       redirect_to signup_path
