@@ -12,7 +12,6 @@ class UsersController < ApplicationController
     user = User.find_by_confirm_token(params[:id])
     if user
       user.email_activate
-      flash[:notice] = "Thank you for Confirming your email! You can now enjoy using CampZone!"
       session[:user_id] = user.id
       redirect_to_role_portal(user)
     end
@@ -39,10 +38,13 @@ class UsersController < ApplicationController
 
   def redirect_to_role_portal(user)
     if user.role == "parent"
+      flash[:notice] = "Thank you for confirming your email! You can now enjoy using CampZone!"
       redirect_to parent_profile_path
     elsif user.role == "counselor"
-      redirect_to counselor_profile_path #EDIT PASSWORD
+      flash[:notice] = "Thank you for confirming your email. Please set-up your account to continue"
+      redirect_to counselor_settings_path
     elsif user.role == "director"
+      flash[:notice] = "Thank you for confirming your email! You can now enjoy using CampZone!"
       redirect_to director_dashboard_index_path
     else
       raise "no role assigned"

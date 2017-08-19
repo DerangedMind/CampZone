@@ -22,6 +22,10 @@ $navbar-default-brand-hover-color: #fff;
 
 $font-family-sans-serif: 'Work Sans', sans-serif;
 
+#alert-message{
+  margin: 0px
+}
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "top_nav";
