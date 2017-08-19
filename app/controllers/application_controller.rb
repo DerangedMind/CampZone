@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     current_user && current_user.role == "counselor"
   end
   helper_method :counselor?
-  
+
   def authorize
     redirect_to '/login' unless current_user
   end
