@@ -3,7 +3,7 @@
 <div class="row text-center">
 
   <div class="col-md-4">
-    <h3> Total Groups: <%= @groups.count %></h3> 
+    <h3> Total Groups: <%= @groups.count %></h3>
     <%= link_to "View All Groups", director_groups_path, class:"btn btn-primary" %>
     <br />
      <div class="item-list">
@@ -24,7 +24,7 @@
   </div>
 
   <div class="col-md-4">
-    <h3> Total Counselors <%= @counselors.count %></h3> 
+    <h3> Total Counselors <%= @counselors.count %></h3>
     <%= link_to "View All Counselors", director_counselors_path, class:"btn btn-primary" %>
     <br />
     <div class="item-list">
@@ -46,11 +46,11 @@
 
   <div class="col-md-4">
     <h3> Total Kids: <%= @kids.count %></h3>
-    <%= link_to "View All Kids", director_kids_path, class:"btn btn-primary" %> 
+    <%= link_to "View All Kids", director_kids_path, class:"btn btn-primary" %>
     <br />
     <div class="item-list">
 
-    <% @kids.each_with_index do |kid, index| %> 
+    <% @kids.each_with_index do |kid, index| %>
       <% if index.even? %><div class="row" id="kids-row"><% end %>
         <div class="col-sm-6 col-xs-6">
           <div class="user-card-sm">
