@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default nav-pills">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#user-dropdown" aria-expanded="false">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-dropdown" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <% if current_user %>
           <span><img class="nav-avatar" src="<%= Faker::Avatar.image("avatar", "30x30", "png", "set4") %>"> <%= current_user.first_name %> <span class="glyphicon glyphicon-chevron-down"></span></span>
@@ -13,10 +13,9 @@
       </button>
       <%= link_to :CampZone, director_dashboard_index_path, class:"navbar-brand" %>
     </div>
-    <div class="collapse navbar-collapse" id="user-dropdown">
+    <div class="collapse navbar-collapse" id="nav-dropdown">
       <ul class="nav navbar-nav pull-right">
         <% if current_user %>
-          <li class="navbar-text hidden-xs">Welcome, <%= current_user.first_name %></li>
           <% if current_user.role == "director" %>
             <li><%= link_to :Dashboard, director_dashboard_index_path %></li>
             <li><%= link_to :Counselors, director_counselors_path %></li>
@@ -24,12 +23,19 @@
             <li><%= link_to :Kids, director_kids_path %></li>
           <% end %>
           <% if current_user.role == "counselor" %>
-            <li><%= link_to :Profile, counselor_profile_path %></li>
-
             <li><%= link_to :Groups, counselor_groups_path %></li>
             <li><%= link_to :Kids, counselor_kids_path %></li>
           <% end %>
-          <li><a href="/logout">Logout</a></li>
+          <li class="dropdown hidden-xs">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.first_name %> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="settings">Settings</a></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+          </li>
+          <li class="divider" role="separator"></li>
+          <li class="visible-xs"><a href="settings">Settings</a></li>
+          <li class="visible-xs"><a href="/logout">Logout</a></li>
         <% else %>
           <li><a href="/login">Login</a></li>
         <% end %>

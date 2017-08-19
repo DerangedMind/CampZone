@@ -1,70 +1,102 @@
-<h1> Welcome <%= current_user.first_name %></h1>
+<h1> Welcome, <%= current_user.first_name %></h1>
 
 <div class="row text-center">
 
-  <div class="col-md-4">
-    <h3> Total Groups: <%= @groups.count %></h3>
-    <%= link_to "View All Groups", director_groups_path, class:"btn btn-primary" %>
-    <br />
-     <div class="item-list">
-      <% @groups.each do |group| %>
-        <div class="row user-card">
-          <div class="col-sm-2 col-xs-3">
-            <img src="<%= Faker::Avatar.image("counselor-avatar", "50x50", "png", "set3") %>">
-          </div>
-          <div class="col-sm-6 col-xs-6 name">
-            <%= link_to group.name, director_group_path(:id => group.id) %>
-          </div>
-          <div class="col-sm-2 col-xs-3 alias">
-
-          </div>
+  <div class="col-md-6">
+    <div class="col-md-offset-1 col-md-10">
+      <h3> Groups: <%= @groups.count %></h3> 
+      <div class="row">
+        <div class="col-xs-6 col-sm-offset-2 col-sm-4 col-md-offset-1 col-md-5">
+          <%= link_to director_groups_path, class:"btn btn-primary btn-block" do %>
+            <i class="glyphicon glyphicon-eye-open"></i> Show All
+          <% end %>
         </div>
-      <% end %>
+        <div class="col-xs-6 col-sm-4 col-md-5">
+          <%= link_to new_director_group_path, class:"btn btn-success btn-block" do %>
+            <i class="glyphicon glyphicon-plus"></i> Add Group
+          <% end %>
+        </div>
+      </div>
+      <br />
+       <div class="item-list">
+        <% @groups.each do |group| %>
+          <div class="row user-card">
+            <div class="col-sm-2 col-xs-3">
+              <img src="<%= Faker::Avatar.image("group-avatar#{rand(7)*4}", "50x50", "png", "set3") %>">
+            </div>
+            <div class="col-sm-6 col-xs-6 name">
+              <%= link_to group.name, director_group_path(:id => group.id) %>
+            </div>
+            <div class="col-sm-2 col-xs-3 alias">
+              <%= group.min_age %> - <%= group.max_age %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 
-  <div class="col-md-4">
-    <h3> Total Counselors <%= @counselors.count %></h3>
-    <%= link_to "View All Counselors", director_counselors_path, class:"btn btn-primary" %>
-    <br />
-    <div class="item-list">
-      <% @counselors.each do |counselor| %>
-        <div class="row user-card">
-          <div class="col-sm-2 col-xs-3">
-            <img src="<%= Faker::Avatar.image("counselor-avatar", "50x50", "png", "set2") %>">
-          </div>
-          <div class="col-sm-6 col-xs-6 name">
-            <%= link_to ("#{counselor.user.first_name} #{counselor.user.last_name}"), director_counselor_path(:id => counselor.id) %>
-          </div>
-          <div class="col-sm-2 col-xs-3 alias">
-            <%= counselor.alias %>
-          </div>
+  <div class="col-md-6">
+    <div class="col-md-offset-1 col-md-10">
+      <h3>Counselors: <%= @counselors.count %></h3> 
+      <div class="row">
+        <div class="col-xs-6 col-sm-offset-2 col-sm-4 col-md-offset-1 col-md-5">
+          <%= link_to director_counselors_path, class:"btn btn-primary btn-block" do %>
+            <i class="glyphicon glyphicon-eye-open"></i> Show All
+          <% end %>
         </div>
-      <% end %>
+        <div class="col-xs-6 col-sm-4 col-md-5">
+          <%= link_to new_director_counselor_path, class:"btn btn-success btn-block" do %>
+            <i class="glyphicon glyphicon-plus"></i> Add Counselor
+          <% end %>
+        </div>
+      </div>
+      <br />
+      <div class="item-list">
+        <% @counselors.each do |counselor| %>
+          <div class="row user-card">
+            <div class="col-sm-2 col-xs-3">
+              <img src="<%= Faker::Avatar.image("counselor-avatar#{rand(7)*4}", "50x50", "png", "set2") %>">
+            </div>
+            <div class="col-sm-6 col-xs-6 name">
+              <%= link_to ("#{counselor.user.first_name} #{counselor.user.last_name}"), director_counselor_path(:id => counselor.id) %>
+            </div>
+            <div class="col-sm-2 col-xs-3 alias">
+              <%= counselor.alias %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
+</div>
 
-  <div class="col-md-4">
-    <h3> Total Kids: <%= @kids.count %></h3>
-    <%= link_to "View All Kids", director_kids_path, class:"btn btn-primary" %>
+<div class="row text-center"> 
+  <div class="col-md-offset-1 col-md-10">
+    <h3>Kids: <%= @kids.count %></h3>
+    <div class="row">
+      <div class="col-xs-6 col-sm-offset-2 col-sm-4 col-md-offset-2 col-md-4">
+        <%= link_to director_kids_path, class:"btn btn-primary btn-block" do %>
+          <i class="glyphicon glyphicon-eye-open"></i> Show All
+        <% end %>
+      </div>
+      <div class="col-xs-6 col-sm-4 col-md-4">
+        <%= link_to new_director_kid_path, class:"btn btn-success pull-right" do %>
+          <i class="glyphicon glyphicon-plus"></i> Add Kid
+        <% end %>
+      </div>
+    </div>
     <br />
     <div class="item-list">
-
-    <% @kids.each_with_index do |kid, index| %>
-      <% if index.even? %><div class="row" id="kids-row"><% end %>
-        <div class="col-sm-6 col-xs-6">
+    <% @kids.each_with_index do |kid, index| %> 
+        <div class="col-lg-3 col-sm-4 col-xs-6 kid-card">
           <div class="user-card-sm">
-            <img src="<%= Faker::Avatar.image("counselor-avatar", "50x50", "png", "set4") %>">
-            <br>
+            <img src="<%= Faker::Avatar.image("kid-avatar#{rand(7)*4}", "50x50", "png", "set4") %>">
+            <p></p>
             <%= link_to ("#{kid.first_name} #{kid.last_name}"), director_kid_path(:id => kid.id) %>
           </div>
         </div>
-      <% if (index.odd?)  %></div><% end %>
     <% end %>
-
     </div>
   </div>
-
-  <br />
-
 </div>

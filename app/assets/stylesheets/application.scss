@@ -19,9 +19,19 @@ $navbar-default-link-hover-color: #eee;
 $navbar-default-link-color: #ccc;
 $navbar-default-color: #eee;
 $navbar-default-brand-hover-color: #fff;
+$dropdown-bg: transparent;
+$dropdown-link-hover-bg: transparent;
+$navbar-default-bg: transparent;
+$component-active-bg: transparent;
 
 $font-family-sans-serif: 'Work Sans', sans-serif;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "top_nav";
+
+body {
+  background-color: #5FB0B7;
+}
+
+
