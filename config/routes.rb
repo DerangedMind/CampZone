@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   post 'signup', to: 'users#create'
 
   scope module: 'director', path: 'd', as: 'director' do
-    resources :directors, except: [:index]
+    resources :directors, except: [:index, :show, :edit, :update]
     resources :counselors
     resources :camps
     resources :groups
@@ -22,8 +22,8 @@ Rails.application.routes.draw do
   end
 
   scope module: 'counselor', path: 'c', as: 'counselor' do
-    resources :groups, only: [:show]
-    resources :kids, only: [:show]
+    resources :groups, only: [:show, :index]
+    resources :kids, only: [:show, :index]
     resources :parents, only: [:show]
     get "profile", to: 'counselors#show'
     get "settings", to: 'counselors#edit'

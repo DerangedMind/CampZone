@@ -22,6 +22,10 @@
             <li><%= link_to :Groups, director_groups_path %></li>
             <li><%= link_to :Kids, director_kids_path %></li>
           <% end %>
+          <% if current_user.role == "counselor" %>
+            <li><%= link_to :Groups, counselor_groups_path %></li>
+            <li><%= link_to :Kids, counselor_kids_path %></li>
+          <% end %>
           <li class="dropdown hidden-xs">
             <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.first_name %> <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -32,7 +36,6 @@
           <li class="divider" role="separator"></li>
           <li class="visible-xs"><a href="settings">Settings</a></li>
           <li class="visible-xs"><a href="/logout">Logout</a></li>
-            </ul>
         <% else %>
           <li><a href="/login">Login</a></li>
         <% end %>
