@@ -7,6 +7,7 @@ class Director::GroupsController < Director::PortalController
   def show
     @group = Group.find params[:id]
     @counselors = @group.counselors
+    @kids = @group.kids
     @camp = @group.camp
   end
 
