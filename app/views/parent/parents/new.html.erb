@@ -4,7 +4,7 @@
   <div class="col-md-2 col-xs-1"></div>
   <div class="col-md-8 col-xs-10">
     <div class="form-box clearfix">
-      <%= form_for @parent, url: new_parent_parent_path do |form| %>
+      <%= form_for @parent, url: parent_parents_path, method: 'post' do |form| %>
         <h3 class="text-center">Contact Info</h3>
         <div class="form-group">
           <label for="parents_address">Address</label>
