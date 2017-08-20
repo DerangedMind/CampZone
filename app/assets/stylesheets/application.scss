@@ -10,28 +10,58 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require normalize-rails
  *= require_tree .
  *= require_self
  */
 
-$navbar-default-link-active-color: #eee;
-$navbar-default-link-hover-color: #eee;
-$navbar-default-link-color: #ccc;
-$navbar-default-color: #eee;
-$navbar-default-brand-hover-color: #fff;
-$dropdown-bg: transparent;
-$dropdown-link-hover-bg: transparent;
-$navbar-default-bg: transparent;
-$component-active-bg: transparent;
-
-$font-family-sans-serif: 'Work Sans', sans-serif;
-
-@import "bootstrap-sprockets";
-@import "bootstrap";
 @import "top_nav";
 
 body {
+  margin-top: 70px;
   background-color: #5FB0B7;
+  font-family: 'Work Sans', sans-serif;
 }
 
+.fl-r {
+  float: right;
+}
+.fl-l {
+  float: left;
+}
+.al-l {
+  text-align: left;
+}
+.al-c {
+  text-align: center;
+}
+.al-r {
+  text-align: right;
+}
+.cl-b {
+  clear: both;
+}
 
+@media screen and (max-width: 767px) {
+  body {
+    margin-top: 110px;
+  }
+  .fl-r-xs {
+    float: right;
+  }
+  .fl-l-xs {
+    float: left;
+  }
+  .al-l-xs {
+    text-align: left;
+  }
+  .al-c-xs {
+    text-align: center;
+  }
+  .al-r-xs {
+    text-align: right;
+  }
+  .cl-b-xs {
+    clear: both;
+  }
+}
