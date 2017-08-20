@@ -11,7 +11,7 @@ class Director::KidsController < Director::PortalController
   def create
     @kid = Kid.new(kid_params)
     current_date = Date.today
-    age = ((current_date - @kid.birthdate ).to_i)/365
+    age = ((current_date - @kid.birthdate).to_i)/365
     @medical_info = MedicalInfo.new(kid_medical_params)
     @parent = Parent.where("user_id = ?", User.find_by(email: params[:parent_email]).id)
     @group = Group.where("min_age <= ? AND max_age >= ?", age, age)

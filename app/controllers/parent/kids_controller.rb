@@ -18,17 +18,23 @@ class Parent::KidsController < Parent::PortalController
     @kid = Kid.new(kid_params)
     @kid_medical = MedicalInfo.new(kid_medical_params)
     @parent = Parent.find_by(user_id: current_user.id)
+    current_date = Date.today
+    age = ((current_date - @kid.birthdate).to_i)/365
+    @group = Group.where("min_age <= ? AND max_age >= ?", age, age)
+
     if @kid.save
+      puts "KID SAVED"
       @kid_medical.kid_id = @kid.id
       @kid_medical.save
-      KidsParent.create(
-        kid_id: @kid.id,
-        parent_id: @parent.id
-      )
-      puts "Kid created!"
+      puts "KID MEDICAL SAVED"
+      @kid.parents << @parent
+      puts "KID PARENTS SAVED"
+      @kid.groups << @group
+      puts "KID GROUP SAVED"
+      redirect_to parent_kid_path(:id => @kid.id)
     else
       puts "Kid not created."
-      redirect_to 'kids/new'
+      redirect_to new_parent_kid_path
     end
   end
 
@@ -44,7 +50,7 @@ class Parent::KidsController < Parent::PortalController
   private
 
   def kid_params
-    params.permit(
+    params.require(:kid).permit(
       :first_name,
       :last_name,
       :birthdate,
