@@ -1,0 +1,23 @@
+<h1> All Camps </h1>
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10">
+    <%= link_to new_director_camp_path, class:"btn btn-success pull-right add-btn" do %>
+      <i class="glyphicon glyphicon-plus"></i> Add Camp
+    <% end %>
+    <h3> Total Camps: <%= @camps.count %></h3>
+    <br />
+    <div class="item-list">
+      <% @camps.each do |camp| %>
+        <div class="row user-card">
+          <div class="col-sm-2 col-xs-3">
+            <img src="<%= Faker::Avatar.image("counselor-avatar#{rand(7)*4}", "50x50", "png", "set3") %>">
+          </div>
+          <div class="col-sm-6 col-xs-6 name">
+            <%= link_to camp.name, director_camp_path(:id => camp.id) %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
