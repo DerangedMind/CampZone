@@ -14,10 +14,13 @@ class Director::CampsController < Director::PortalController
 
   def create
     @camp = Camp.new(camp_params)
+    # @director = Director.find_by(user_id: current_user.id)
 
     if @camp.save
+      puts "CAMP SAVED"
       redirect_to director_dashboard_index_path
     else
+      puts "CAMP NOT SAVED"
       flash[:error] = @camp.errors.full_messages
       redirect_to new_director_camp_path
     end
