@@ -1,0 +1,29 @@
+.form-group {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.form-control {
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 2em;
+  border-bottom: 1px solid black;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  background-color: transparent;
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+      transition: background-color 5000s ease-in-out 0s;
+  }
+  &:active,
+  &:focus {
+    outline: none;
+    border-bottom-width: 3px;
+  }
+}
