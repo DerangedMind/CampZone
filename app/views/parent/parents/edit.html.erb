@@ -1,6 +1,6 @@
 <h1> Edit Parent Information </h1>
 
-<%= form_for @parent, url: "/parent/#{params[:id]}" do |form| %>
+<%= form_for @parent, url: parent_profile_path, method: 'put' do |form| %>
 
   <%= form.label :address %>
   <%= form.text_field :address %>

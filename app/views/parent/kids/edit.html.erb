@@ -1,6 +1,6 @@
 <h1> Edit Kid Information </h1>
 
-<%= form_for @kid, url: "/kids/#{params[:id]}" do |form| %>
+<%= form_for @kid, url: parent_kid_path, method: 'put' do |form| %>
 
   <%= form.label :first_name %>
   <%= form.text_field :first_name %>
