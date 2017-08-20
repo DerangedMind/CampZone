@@ -14,7 +14,7 @@
         </div>
       <% end %>
     </article>
-    <%= form_for @camp, url: new_director_camp_path do |form| %>
+    <%= form_for @camp, url: director_camps_path, method: "post" do |form| %>
     <div class="form-group">
       <%= form.label :name %>
       <%= form.text_field :name, class: 'form-control', autofocus: true %>
