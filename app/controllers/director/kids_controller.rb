@@ -10,9 +10,6 @@ class Director::KidsController < Director::PortalController
 
   def create
     @kid = Kid.new(kid_params)
-    
-    @medical_info = MedicalInfo.new(kid_medical_params)
-    @medical_info.kid_id = @kid.id
 
     @parent = Parent.where("
       user_id IN (
@@ -24,12 +21,17 @@ class Director::KidsController < Director::PortalController
     @kid.parents << @parent
 
     if @kid.save
-      puts "KID SAVED"
-      @medical_info.save
-      redirect_to director_kid_path(:id => @kid.id)
+      @medical_info = MedicalInfo.new(kid_medical_params)
+      @medical_info.kid_id = @kid.id
+      if @medical_info.save
+        redirect_to director_kid_path(:id => @kid.id)
+      else
+        @kid.delete
+        flash[:notice] = @kid_medical.errors.full_messages
+        redirect_to new_director_kid_path
+      end
     else
-      puts "KID NOT SAVED"
-      puts @kid.errors.full_messages
+      flash[:notice] = @kid.errors.full_messages
       redirect_to new_director_kid_path
     end
   end
