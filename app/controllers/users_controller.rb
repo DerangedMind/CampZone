@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 
   def redirect_to_role_portal(user)
     if user.role == "parent"
-      flash[:notice] = "Thank you for confirming your email! You can now enjoy using CampZone!"
+      flash[:notice] = "Thank you for confirming your email! Please fill in the information below!"
       redirect_to parent_profile_path #LINK TO ADDRESS FORM
     elsif user.role == "counselor"
       flash[:notice] = "Thank you for confirming your email. Please set-up your account to continue"
