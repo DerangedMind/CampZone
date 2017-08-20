@@ -39,6 +39,8 @@ gem 'font-awesome-rails'
 gem 'money-rails'
 gem 'carrierwave'
 gem 'faker'
+gem 'normalize-rails'
+gem 'normalize-scss'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
