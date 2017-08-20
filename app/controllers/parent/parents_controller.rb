@@ -59,23 +59,8 @@ class Parent::ParentsController < Parent::PortalController
   end
 
   def parent_params
-<<<<<<< HEAD
-    params.require(:parent).permit(
-=======
     params.permit(
->>>>>>> 146e1f2b7fa9c1543e52311a5aace1f79cad7e75
       :phone_number
-    )
-  end
-
-  def address_params
-    params.permit(
-      :city,
-      :province,
-      :country,
-      :street_address,
-      :apt_number,
-      :postal_code
     )
   end
 end
