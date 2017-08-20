@@ -1,5 +1,9 @@
 class Director::CampsController < Director::PortalController
 
+  def index
+    @camps = Camp.all
+  end
+
   def show
     @camp = Camp.find_by_id(params[:id])
   end

@@ -1,4 +1,4 @@
-<h1 class="text-center"> Create a camp! </h1>
+<h1 class="text-center"> Create a Camp! </h1>
 
 <section class="row">
   <div class="col-md-2 col-xs-1"></div>
@@ -14,7 +14,7 @@
         </div>
       <% end %>
     </article>
-    <%= form_for @camp do |form| %>
+    <%= form_for @camp, url: new_director_camp_path do |form| %>
     <div class="form-group">
       <%= form.label :name %>
       <%= form.text_field :name, class: 'form-control', autofocus: true %>
