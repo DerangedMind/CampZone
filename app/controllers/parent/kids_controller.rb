@@ -21,11 +21,11 @@ class Parent::KidsController < Parent::PortalController
         redirect_to parent_profile_path
       else
         @kid.delete
-        flash[:notice] = @kid_medical.errors.full_messages
+        flash[:alert] = @kid_medical.errors.full_messages
         redirect_to new_parent_kid_path
       end
     else
-      flash[:notice] = @kid.errors.full_messages
+      flash[:alert] = @kid.errors.full_messages
       redirect_to new_parent_kid_path
     end
   end

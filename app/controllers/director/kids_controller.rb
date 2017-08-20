@@ -27,11 +27,11 @@ class Director::KidsController < Director::PortalController
         redirect_to director_kid_path(:id => @kid.id)
       else
         @kid.delete
-        flash[:notice] = @kid_medical.errors.full_messages
+        flash[:alert] = @kid_medical.errors.full_messages
         redirect_to new_director_kid_path
       end
     else
-      flash[:notice] = @kid.errors.full_messages
+      flash[:alert] = @kid.errors.full_messages
       redirect_to new_director_kid_path
     end
   end

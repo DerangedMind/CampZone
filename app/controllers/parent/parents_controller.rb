@@ -27,22 +27,20 @@ class Parent::ParentsController < Parent::PortalController
       else
         puts "Parent not created."
         @address.delete
-        flash[:notice] = @parent.errors.full_messages
+        flash[:alert] = @parent.errors.full_messages
         redirect_to new_parent_parent_path
       end
     else
-      flash[:notice] = @address.errors.full_messages
+      flash[:alert] = @address.errors.full_messages
       redirect_to new_parent_parent_path
     end
   end
 
   def edit
+    @parent = Parent.find_by_user_id(current_user.id)
   end
 
   def update
-  end
-
-  def destroy
   end
 
   private
