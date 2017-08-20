@@ -9,26 +9,31 @@ class Parent::ParentsController < Parent::PortalController
     @parent = Parent.find_by_user_id(current_user.id)
     if @parent
       redirect_to parent_profile_path
-    else
-      @parent = Parent.new
     end
+    @address = Address.new
   end
 
   def create
-    @parent = Parent.new(parent_params)
-    @parent.user_id = current_user.id
-
     @address = Address.new(address_params)
-    @parent.address_id = @address.id
 
-    if @parent.save
-      puts "Parent created!"
-      redirect_to parent_profile_path
+    if @address.save
+      @parent = Parent.new(parent_params)
+      @parent.user_id = current_user.id
+      @parent.address_id = @address.id
+
+      if @parent.save
+        puts "Parent created!"
+        redirect_to parent_profile_path
+      else
+        puts "Parent not created."
+        @address.delete
+        flash[:notice] = @parent.errors.full_messages
+        redirect_to new_parent_parent_path
+      end
     else
-      puts "Parent not created."
+      flash[:notice] = @address.errors.full_messages
       redirect_to new_parent_parent_path
     end
-
   end
 
   def edit
@@ -42,8 +47,23 @@ class Parent::ParentsController < Parent::PortalController
 
   private
 
+  def address_params
+    params.require(:address).permit(
+      :city,
+      :province,
+      :country,
+      :street_address,
+      :apt_number,
+      :postal_code
+    )
+  end
+
   def parent_params
+<<<<<<< HEAD
     params.require(:parent).permit(
+=======
+    params.permit(
+>>>>>>> 146e1f2b7fa9c1543e52311a5aace1f79cad7e75
       :phone_number
     )
   end
