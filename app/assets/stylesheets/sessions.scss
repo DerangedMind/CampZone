@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#login-page {
+  margin-top: -70px;
+}
 .right-login {
   height: 100vh;
   background-image: 
@@ -12,7 +15,11 @@
   z-index: -1;
   .title-login {
     padding-top: 20vh;
-    color: #eee
+    color: #eee;
+    h1 {
+      font-weight: 400;
+    }
+    
   }
   .logo-login {
     width: 100%;
@@ -23,7 +30,6 @@
   margin-top: 25vh;
 }
 .login-form {
-  
   h2 {
     margin: 10px 20px;
   }
@@ -34,6 +40,7 @@
 
 @media screen and (max-width: 767px) {
   #login-page {
+    margin-top: -110px;
     background-image: 
       linear-gradient(
         to top right,
@@ -41,8 +48,8 @@
       );
   }
   .login {
-    margin-top: 5vh;
-    height: 95vh;
+    margin-top: 0vh;
+    height: 100vh;
     h1 {
       color: #eee;
       font-weight: 300;
