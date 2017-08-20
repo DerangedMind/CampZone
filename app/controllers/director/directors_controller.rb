@@ -15,6 +15,7 @@ class Director::DirectorsController < Director::PortalController
       )
       if @director.save
         puts "DIRECTOR SAVED"
+        redirect_to new_director_camp_path
       else
         puts "DIRECTOR NOT SAVED"
         redirect_to new_director_director_path
