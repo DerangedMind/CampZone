@@ -10,22 +10,21 @@ class Director::KidsController < Director::PortalController
 
   def create
     @kid = Kid.new(kid_params)
-    
+    current_date = Date.today
+    age = ((current_date - @kid.birthdate ).to_i)/365
     @medical_info = MedicalInfo.new(kid_medical_params)
-    @medical_info.kid_id = @kid.id
-
-    @parent = Parent.where("
-      user_id IN (
-        SELECT id FROM users
-        WHERE email = ?
-      )",
-      params[:parent_email]
-    )
-    @kid.parents << @parent
+    @parent = Parent.where("user_id = ?", User.find_by(email: params[:parent_email]).id)
+    @group = Group.where("min_age <= ? AND max_age >= ?", age, age)
 
     if @kid.save
       puts "KID SAVED"
+      @medical_info.kid_id = @kid.id
       @medical_info.save
+      puts "MEDICAL INFO SAVED"
+      @kid.parents << @parent
+      puts "PARENTS SAVED"
+      @kid.groups << @group
+      puts "GROUPS SAVED"
       redirect_to director_kid_path(:id => @kid.id)
     else
       puts "KID NOT SAVED"
@@ -37,6 +36,7 @@ class Director::KidsController < Director::PortalController
   def show
     @kid = Kid.find(params[:id])
     @parents = @kid.parents
+    @groups = @kid.groups
     @medical_info = MedicalInfo.find_by(kid_id: @kid.id)
   end
 
