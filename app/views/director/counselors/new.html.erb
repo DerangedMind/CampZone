@@ -16,6 +16,10 @@
           <label for="counselors_email">Email address</label>
             <%= form.text_field :email, class: 'form-control', placeholder: 'Email address' %>
         </div>
+        <div class"form-group">
+          <label for="group"> Group Name </label>
+          <%= text_field_tag("name", nil, class: 'form-control') %>
+        </div>
 
         <%= form.submit "Create account", class: 'btn btn-success pull-right' %>
 

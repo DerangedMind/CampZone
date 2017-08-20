@@ -19,6 +19,8 @@ class Director::CounselorsController < Director::PortalController
     @user.role = "counselor"
     @user.password = "password"
 
+    @group = Group.find_by(:name => params[:name])
+
     if @user.save
       puts "USER SAVED"
       @counselor = Counselor.create(
@@ -29,6 +31,7 @@ class Director::CounselorsController < Director::PortalController
       )
       if @counselor.save
         puts "COUNSELOR SAVED"
+        @counselor.groups << @group
         UserMailer.registration_confirmation(@user).deliver
         flash[:notice] = "Counselor created! Please ask counselor to verify email!"
         redirect_to director_counselor_path(:id => @counselor.id)
