@@ -1,12 +1,12 @@
 <h1> All Counselors </h1>
 
-<div class="row">
-  <div class="col-sm-offset-1 col-sm-10 item-list">
-    <%= link_to new_director_counselor_path, class:"btn btn-success pull-right add-btn" do %>
-      <i class="glyphicon glyphicon-plus"></i> Add Counselor
-    <% end %>
-    <h3> Total Counselors: <%= @counselors.count %></h3>
-    <br />
+<div class="col-sm-offset-1 col-sm-10">
+  <%= link_to new_director_counselor_path, class:"btn fl-r" do %>
+    Add Counselor
+  <% end %>
+  <h3> Total Counselors <%= @counselors.count %></h3> 
+  <br />
+  <div class="item-list">
     <% @counselors.each do |counselor| %>
       <div class="row user-card">
         <div class="col-sm-2 col-xs-3">
