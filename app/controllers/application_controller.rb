@@ -1,6 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  def calculate_age(kid)
+    current_date = Date.today
+    age = ((current_date - kid.birthdate).to_i)/365
+    return age
+  end
+
   def current_user
     if session[:user_id]
       @current_user ||= User.find(session[:user_id])

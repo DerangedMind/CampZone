@@ -14,7 +14,17 @@
 <h3>
   Current Group:
 </h3>
-GROUP HERE
+<% @groups.each do |group| %>
+<div>
+  <p>Group Name:
+  <%= group.name %></p>
+  <p>Age Range:
+  <%= group.min_age %> - <%= group.max_age %></p>
+  <p>Year:
+  <%= group.start_date %></p>
+</div>
+<% end %>
+
 <h3>
   Parents:
 </h3>
@@ -41,7 +51,9 @@ GROUP COUNSELORS HERE
   Medical Information:
 </h3>
 
-<p> Medicare </p>
+<p>
+  Medicare
+</p>
 <%= @medical_info.medicare %>
 
 <p>

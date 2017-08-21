@@ -39,6 +39,7 @@ gem 'font-awesome-rails'
 gem 'money-rails'
 gem 'carrierwave'
 gem 'faker'
+gem 'figaro'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

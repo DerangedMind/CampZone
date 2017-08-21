@@ -1,0 +1,8 @@
+Hello <%= @user.first_name %> and welcome to CampZone!
+<br />
+
+Thanks for Registering! To confirm your registration, please click the link below:
+<%= confirm_email_user_url(@user.confirm_token) %>
+
+<br />
+Thank you!
