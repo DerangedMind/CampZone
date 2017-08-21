@@ -4,15 +4,34 @@
 }
 
 .item-list {
+  margin-bottom: 20px;
+  a {
+      font-weight: 500;
+      text-decoration: none;
+      color: #333;
+      padding-bottom: 5px;
+      &:hover {
+        border-bottom: 1px #dd3344 solid;
+      }
+    }
   .user-card {
+    clear: both;
     margin: 10px 0 5px;
     background-color: #e3e3e3;
     border-radius: 2px;
     -webkit-box-shadow: 2px 2px 20px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 2px 2px 20px 0px rgba(0,0,0,0.75);
     box-shadow: 2px 2px 20px 0px rgba(0,0,0,0.75);
-    a {
-      font-weight: 500;
+    &:before,
+    &:after {
+      content: " ";
+      display: table;
+    }
+    &:after {
+      clear: both;
+    }
+    img {
+      vertical-align: middle;
     }
     .name {
       padding: 10px 0;
@@ -30,7 +49,7 @@
     background-color: #e3e3e3;
     border-radius: 2px;
     padding: 10px;
-    height: 90%;
+    height: 100%;
     -webkit-box-shadow: 2px 2px 20px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 2px 2px 20px 0px rgba(0,0,0,0.75);
     box-shadow: 2px 2px 20px 0px rgba(0,0,0,0.75);
@@ -51,6 +70,15 @@
     height: 110px;
     padding-left: 5px;
     padding-right: 5px;
+    margin-top: 10px;
+    &:before,
+    &:after {
+      content: " ";
+      display: table;
+    }
+    &:after {
+      clear: both;
+    }
   }
 }
 

@@ -1,12 +1,10 @@
 .btn {
-  
   &.btn-submit {
     background-color: #AF2BBF;
     &:hover {
       background-color: #A14EBF;
     }
   }
-  
 }
 
 .btn {
@@ -51,5 +49,13 @@
   }
   &.btn-wide {
     width: 100%;
+  }
+}
+
+.btn-row {
+  div {
+    padding-left: 10px;
+    padding-right: 10px;
+    display: inline;
   }
 }
