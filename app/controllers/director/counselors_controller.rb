@@ -33,7 +33,7 @@ class Director::CounselorsController < Director::PortalController
         if @group == nil
           @counselor.destroy!
           @user.destroy!
-          flah[:alert] = "Group does not exist!"
+          flash[:alert] = "Group does not exist!"
           redirect_to new_director_counselor_path
         else
         @counselor.groups << @group
