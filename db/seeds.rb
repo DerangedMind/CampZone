@@ -9,22 +9,13 @@ Camp.destroy_all
 
 puts "Creating Camp..."
 
-camp = Camp.create!(
-  name: Faker::HarryPotter.location,
-  address: '123 Magic Lane',
-  phone_number: '5551234567'
-)
-
-puts "Creating Group..."
-
-Group.destroy_all
-
-group = Group.create!({
-  camp_id: camp.id,
-  name: Faker::StarTrek.location,
-  min_age: 12,
-  max_age: 14,
-  start_date: Date.current.next_week(:monday)
+address = Address.create!({
+  city: Faker::Address.city,
+  province: Faker::Address.state_abbr,
+  country: Faker::Address.country,
+  street_address: Faker::Address.street_address,
+  apt_number: Faker::Address.secondary_address,
+  postal_code: Faker::Address.postcode.to_s
 })
 
 puts "Creating Director..."
@@ -44,9 +35,28 @@ director_user = User.create!({
 })
 
 director = Director.create!({
-  user_id: director_user.id,
-  camp_ids: [camp.id]
+  user_id: director_user.id
 })
+
+camp = Camp.create!(
+  name: Faker::HarryPotter.location,
+  address_id: 1,
+  phone_number: '5551234567',
+  director_id: 1
+)
+
+puts "Creating Group..."
+
+Group.destroy_all
+
+group = Group.create!({
+  camp_id: camp.id,
+  name: Faker::StarTrek.location,
+  min_age: 12,
+  max_age: 14,
+  start_date: Date.current.next_week(:monday)
+})
+
 
 acc_status = ["inactive", "active", "pending"]
 
