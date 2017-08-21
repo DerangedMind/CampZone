@@ -1,11 +1,8 @@
 class Director::CampsController < Director::PortalController
 
-  def index
-    @camps = Camp.find_by_id(params[:id])
-  end
-
   def show
-    @camp = Camp.find_by_id(params[:id])
+    @director = Director.find_by_user_id(current_user.id)
+    @camp = Camp.find_by_director_id(@director.id)
   end
 
   def new
@@ -18,7 +15,7 @@ class Director::CampsController < Director::PortalController
 
     if @address.save
       @camp = Camp.new(camp_params)
-      @camp.directors << Director.find_by_user_id(current_user.id)
+      @camp.director << Director.find_by_user_id(current_user.id)
       @camp.address_id = @address.id
 
       if @camp.save

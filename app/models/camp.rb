@@ -1,9 +1,8 @@
 class Camp < ApplicationRecord
-  has_many :camps_directors
-  has_many :directors, through: :camps_directors
   has_many :groups
 
   has_one :address
+  belongs_to :director
 
   validates :name, :phone_number,
               presence: true
