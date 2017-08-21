@@ -13,7 +13,7 @@
 
   <h3> Medical Information </h3>
 
-  <p>Medicare: <%= form.text_field("medicare") %></p>
+  <p>Medicare: <%= text_field_tag("medicare") %></p>
 
   <p>Allergies: <%= text_area_tag('allergies') %> </p>
   No Allergies: <%= check_box_tag('allergies', 'no allergies') %>
@@ -29,9 +29,6 @@
 
   <p>Epi-Pen <%= select_tag('epi_pen', "<option value=true>Yes</option><option value=false>No</option>".html_safe)%> </p>
 
-  <p>Medicare: <%= form.text_field("medicare") %></p>
-
-  <p>Parent Email: <%= email_field_tag :parent_email %></p>
 
   <%= submit_tag("Submit") %>
 

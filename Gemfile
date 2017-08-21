@@ -41,6 +41,7 @@ gem 'carrierwave'
 gem 'faker'
 gem 'normalize-rails'
 gem 'normalize-scss'
+gem 'figaro'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
