@@ -18,8 +18,9 @@
         <% if current_user %>
           <% if current_user.role == "director" %>
             <li><%= link_to :Dashboard, director_dashboard_index_path %></li>
-            <li><%= link_to :Counselors, director_counselors_path %></li>
+            <li><%= link_to :Camps, director_camps_path %></li>
             <li><%= link_to :Groups, director_groups_path %></li>
+            <li><%= link_to :Counselors, director_counselors_path %></li>
             <li><%= link_to :Kids, director_kids_path %></li>
           <% end %>
           <% if current_user.role == "counselor" %>

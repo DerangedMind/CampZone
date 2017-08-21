@@ -5,7 +5,7 @@
     <%= link_to new_director_group_path, class:"btn btn-success pull-right add-btn" do %>
       <i class="glyphicon glyphicon-plus"></i> Add Group
     <% end %>
-    <h3> Total Groups <%= @groups.count %></h3> 
+    <h3> Total Groups: <%= @groups.count %></h3>
     <br />
     <div class="item-list">
       <% @groups.each do |group| %>
@@ -23,5 +23,4 @@
       <% end %>
     </div>
   </div>
-
 </div>
