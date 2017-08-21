@@ -4,11 +4,17 @@ Rails.application.routes.draw do
   root 'splash#index'
 
   get 'login', to: 'sessions#new'
-  post 'login', to: 'sessions#create'
+  post 'login', to: 'sessions#create', as: 'post_login'
   get 'logout', to: 'sessions#destroy'
 
   get 'signup', to: 'users#new'
   post 'signup', to: 'users#create'
+
+  resources :users do
+    member do
+      get :confirm_email
+    end
+  end
 
   scope module: 'director', path: 'd', as: 'director' do
     resources :directors, except: [:index, :show, :edit, :update]
@@ -29,6 +35,7 @@ Rails.application.routes.draw do
     get "profile", to: 'counselors#show'
     get "settings", to: 'counselors#edit'
     put "profile", to: 'counselors#update'
+    get :confirm_email
   end
 
   scope module: 'parent', path: 'p', as: 'parent' do

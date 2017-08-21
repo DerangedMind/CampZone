@@ -29,7 +29,9 @@ director_user = User.create!({
   last_name: "of #{Faker::Zelda.location}",
   email: "admin@couchlyfe.com",
   password: "password",
-  role: "director"
+  role: "director",
+  email_confirmed: true,
+  confirm_token: nil
 })
 
 director = Director.create!({
@@ -85,7 +87,9 @@ test_counselor_user = User.create(
   last_name: "TEST",
   email: "counselor@campzone.com",
   password: "password",
-  role: "counselor"
+  role: "counselor",
+  email_confirmed: true,
+  confirm_token: nil
 )
 
 test_counselor = Counselor.create(
@@ -160,7 +164,9 @@ test_parent_user = User.create(
   last_name: "TEST",
   email: "parent@campzone.com",
   password: "password",
-  role: "parent"
+  role: "parent",
+  email_confirmed: true,
+  confirm_token: nil
 )
 
 test_parent = Parent.create(
