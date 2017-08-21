@@ -1,7 +1,7 @@
 class Director::CampsController < Director::PortalController
 
   def index
-    @camps = Camp.all
+    @camps = Camp.find_by_id(params[:id])
   end
 
   def show
@@ -14,8 +14,8 @@ class Director::CampsController < Director::PortalController
 
   def create
     @camp = Camp.new(camp_params)
-    # @director = Director.find_by(user_id: current_user.id)
 
+    # @director = Director.find_by(user_id: current_user.id)
     if @camp.save
       puts "CAMP SAVED"
       redirect_to director_dashboard_index_path
