@@ -15,8 +15,6 @@
  *= require_self
  */
 
-@import "top_nav";
-
 $screen-xs-max: 767px;
 $screen-sm-max: 991px;
 $screen-md-max: 1199px;
@@ -24,6 +22,8 @@ $screen-md-max: 1199px;
 $screen-sm-min: 768px;
 $screen-md-min: 992px;
 $screen-lg-min: 1200px;
+
+$default-bg-color: #5FB0B7;
 
 html {
   box-sizing: border-box;
@@ -37,7 +37,7 @@ html {
 
 body {
   margin-top: 70px;
-  background-color: #5FB0B7;
+  background-color: $default-bg-color;
   font-family: 'Work Sans', sans-serif;
 }
 
@@ -72,6 +72,26 @@ body {
   &:after {
     clear: both;
   }
+}
+
+.vp-10 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.vp-15 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.hp-10 {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.hp-0 {
+  padding-left: 0;
+  padding-right: 0;
+}
+.va-m {
+  vertical-align: middle;
 }
 
 .fl-r {
