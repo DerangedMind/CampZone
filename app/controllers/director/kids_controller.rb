@@ -27,8 +27,7 @@ class Director::KidsController < Director::PortalController
       puts "GROUPS SAVED"
       redirect_to director_kid_path(:id => @kid.id)
     else
-      puts "KID NOT SAVED"
-      puts @kid.errors.full_messages
+      flash[:alert] = @kid.errors.full_messages
       redirect_to new_director_kid_path
     end
   end
