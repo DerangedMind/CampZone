@@ -1,7 +1,8 @@
 class Parent::ParentsController < Parent::PortalController
 
   def show
-    @parent = Parent.find_by_user_id(current_user.id)
+    @parent = Parent.find_by(user_id: current_user.id)
+    puts current_user.inspect
     @kids = @parent.kids
   end
 

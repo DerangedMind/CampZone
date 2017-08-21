@@ -19,13 +19,13 @@
         )
     %>
     <% if flash[:notice] %>
-      <div class="alert-message" id="alert-success">
+      <div class="alert-success">
         <%= flash[:notice] %>
       </div>
     <% end %>
 
     <% if flash[:alert] %>
-      <div class='alert-message' id="alert-error">
+      <div class="alert-error">
           <%= flash[:alert] %>
       </div>
     <% end %>
