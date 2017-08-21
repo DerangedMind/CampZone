@@ -10,26 +10,45 @@ class Director::KidsController < Director::PortalController
 
   def create
     @kid = Kid.new(kid_params)
-    current_date = Date.today
-    age = ((current_date - @kid.birthdate).to_i)/365
+    age = calculate_age(@kid)
     @medical_info = MedicalInfo.new(kid_medical_params)
-    @parent = Parent.where("user_id = ?", User.find_by(email: params[:parent_email]).id)
     @group = Group.where("min_age <= ? AND max_age >= ?", age, age)
 
     if @kid.save
       puts "KID SAVED"
       @medical_info.kid_id = @kid.id
-      @medical_info.save
+      if @medical_info.save
       puts "MEDICAL INFO SAVED"
-      @kid.parents << @parent
-      puts "PARENTS SAVED"
-      @kid.groups << @group
-      puts "GROUPS SAVED"
-      redirect_to director_kid_path(:id => @kid.id)
+        if User.find_by(email: params[:parent_email]) != nil
+          @kid.parents << Parent.where("user_id = ?", User.find_by(email: params[:parent_email]).id)
+          puts "PARENTS SAVED"
+          if @group != []
+            @kid.groups << @group
+            puts "GROUPS SAVED"
+            redirect_to director_kid_path(:id => @kid.id)
+          else
+            @kid.destroy!
+            @medical_info.destroy!
+            @kid.parents.destroy
+            flash[:alert] = "This group does not exist!"
+            redirect_to new_director_kid_path
+          end
+        else
+          @kid.destroy!
+          @medical_info.destroy!
+          flash[:alert] = "Cannot find parent account!"
+          redirect_to new_director_kid_path
+        end
+      else
+        @kid.destroy!
+        flash[:alert] = @MedicalInfo.errors.full_messages
+        redirect_to new_director_kid_path
+      end
     else
       flash[:alert] = @kid.errors.full_messages
       redirect_to new_director_kid_path
     end
+
   end
 
   def show

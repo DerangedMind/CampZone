@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
     if @user.save
       UserMailer.registration_confirmation(@user).deliver
-      flash[:notice] = "Thank you for creating an account. A confirmation email has been sent to the email you provided. Please click on the link to verify your account."
+      flash[:notice] = "Thank you for creating an account. A confirmation email has been sent #{@user.email}. Please click on the link to verify your account."
       redirect_to login_path
     else
       flash[:alert] = "Oops! Something went wrong, please try again."

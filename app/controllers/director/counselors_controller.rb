@@ -19,8 +19,6 @@ class Director::CounselorsController < Director::PortalController
     @user.role = "counselor"
     @user.password = "password"
 
-    @group = Group.find_by(:name => params[:name])
-
     if @user.save
       puts "USER SAVED"
       @counselor = Counselor.create(
@@ -31,13 +29,22 @@ class Director::CounselorsController < Director::PortalController
       )
       if @counselor.save
         puts "COUNSELOR SAVED"
+        @group = Group.find_by(:name => params[:name])
+        if @group == nil
+          @counselor.destroy!
+          @user.destroy!
+          flah[:alert] = "Group does not exist!"
+          redirect_to new_director_counselor_path
+        else
         @counselor.groups << @group
         UserMailer.registration_confirmation(@user).deliver
         flash[:notice] = "Counselor created! Please ask counselor to verify email!"
         redirect_to director_counselor_path(:id => @counselor.id)
+        end
       else
         puts "COUNSELOR NOT SAVED - DESTROYING USER"
         @user.destroy!
+        flash[:alert] = "Oops! Looks like something went wrong, please try again!"
         redirect_to new_director_counselor_path
       end
     else
