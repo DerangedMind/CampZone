@@ -1,10 +1,5 @@
 class Parent::KidsController < Parent::PortalController
 
-  def index
-    @kids = Kid.all
-    # Placeholder, will be updated to only show specific parent's kids.
-  end
-
   def show
     @kid = Kid.find_by_id(params[:id])
     @medical_info = MedicalInfo.find_by(kid_id: @kid.id)
@@ -16,19 +11,22 @@ class Parent::KidsController < Parent::PortalController
 
   def create
     @kid = Kid.new(kid_params)
-    @kid_medical = MedicalInfo.new(kid_medical_params)
-    @parent = Parent.find_by(user_id: current_user.id)
+    @kid.parents << Parent.find_by_user_id(current_user.id)
+
     if @kid.save
+      @kid_medical = MedicalInfo.new(kid_medical_params)
       @kid_medical.kid_id = @kid.id
-      @kid_medical.save
-      KidsParent.create(
-        kid_id: @kid.id,
-        parent_id: @parent.id
-      )
-      puts "Kid created!"
+
+      if @kid_medical.save
+        redirect_to parent_profile_path
+      else
+        @kid.delete
+        flash[:alert] = @kid_medical.errors.full_messages
+        redirect_to new_parent_kid_path
+      end
     else
-      puts "Kid not created."
-      redirect_to 'kids/new'
+      flash[:alert] = @kid.errors.full_messages
+      redirect_to new_parent_kid_path
     end
   end
 
@@ -44,7 +42,7 @@ class Parent::KidsController < Parent::PortalController
   private
 
   def kid_params
-    params.permit(
+    params.require(:kid).permit(
       :first_name,
       :last_name,
       :birthdate,

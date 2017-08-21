@@ -1,69 +1,70 @@
-<h1>Create a Kid!</h1>
+<h1>Child Registration</h1>
 
 <div class="row">
   <div class="col-md-2 col-xs-1"></div>
   <div class="col-md-8 col-xs-10">
     <div class="form-box clearfix">
+      
+      <h3 class="text-center">Who will be joining us this summer?</h3>
 
-      <%= form_for @kid, url: new_parent_kid_path do |form| %>
-      General Information:
-      <div class="form-group">
-        <h3 class="text-center">Create a New Kid!</h3>
-        <label>First Name</label>
-        <%= form.text_field('first_name')%>
-      </div>
-      <div class="form-group">
-        <label>Last Name</label>
-        <%= form.text_field("last_name")%>
-      </div>
-      <div class="form-group">
-        <label>Birthdate</label>
-        <%= form.date_field("birthdate") %>
-      </div>
-      <div class="form-group">
-        <label>Social Insurance Number</label>
-        <%= form.text_field("sin")%>
-      </div>
+      <%= form_for @kid, url: parent_kids_path, method: 'post' do |form| %>
+        General Information:
+        <div class="form-group">
+          <label>First Name</label>
+          <%= form.text_field('first_name')%>
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <%= form.text_field("last_name")%>
+        </div>
+        <div class="form-group">
+          <label>Birthdate</label>
+          <%= form.date_field("birthdate") %>
+        </div>
+        <div class="form-group">
+          <label>Social Insurance Number</label>
+          <%= form.text_field("sin")%>
+        </div>
 
-      Medical Information:
-      <div class="form-group">
-        <label>Medicare</label>
-        <%= text_field_tag("medicare") %>
-      </div>
-      <div class="form_group">
-        <label>Allergies</label>
-        <%= text_area_tag("allergies") %>
-        No Allergies:
-        <%= check_box_tag('allergies', 'no allergies') %>
-      </div>
-      <div class="form_group">
-        <label>Conditions</label>
-        <%= text_area_tag("conditions") %>
-        No conditions:
-        <%= check_box_tag('conditions', 'no conditions') %>
-      </div>
-      <div class="form_group">
-        <label>Medications
-        </label>
-        <%= text_area_tag("medications") %>
-        No medications:
-        <%= check_box_tag('medications', 'no medications') %>
-      </div>
-      <div class="form_group">
-        <label>
-          Dietary Restrictions
-        </label>
-        <%= text_area_tag("dietary_restrictions") %>
-        No Dietary Restrictions:
-        <%= check_box_tag('dietary_restrictions', 'no dietary restrictions') %>
-      </div>
-      <div class="form_group">
-        <label>
-          Does your child have an epi-pen?
-        </label>
-        <%= select_tag('epi_pen', "<option value=true>Yes</option><option value=false>No</option>".html_safe)%>
-      </div>
-      <%= submit_tag("Submit")%>
+        Medical Information:
+        <div class="form-group">
+          <label>Medicare</label>
+          <%= text_field_tag("medicare") %>
+        </div>
+        <div class="form_group">
+          <label>Allergies</label>
+          <%= text_area_tag("allergies") %>
+          No Allergies:
+          <%= check_box_tag('allergies', 'no allergies') %>
+        </div>
+        <div class="form_group">
+          <label>Conditions</label>
+          <%= text_area_tag("conditions") %>
+          No conditions:
+          <%= check_box_tag('conditions', 'no conditions') %>
+        </div>
+        <div class="form_group">
+          <label>Medications
+          </label>
+          <%= text_area_tag("medications") %>
+          No medications:
+          <%= check_box_tag('medications', 'no medications') %>
+        </div>
+        <div class="form_group">
+          <label>
+            Dietary Restrictions
+          </label>
+          <%= text_area_tag("dietary_restrictions") %>
+          No Dietary Restrictions:
+          <%= check_box_tag('dietary_restrictions', 'no dietary restrictions') %>
+        </div>
+        <div class="form_group">
+          <label>
+            Does your child have an epi-pen?
+          </label>
+          <%= select_tag('epi_pen', "<option value=true>Yes</option><option value=false>No</option>".html_safe)%>
+        </div>
+        <%= submit_tag("Submit")%>
       <% end %>
     </div>
   </div>
