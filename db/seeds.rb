@@ -38,7 +38,7 @@ director = Director.create!({
 
 camp = Camp.create!(
   name: Faker::HarryPotter.location,
-  address_id: address.id,
+  address_id: 1,
   phone_number: '5551234567',
   director_id: 1
 )

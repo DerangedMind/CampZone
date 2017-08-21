@@ -1,4 +1,5 @@
 class Address < ApplicationRecord
+  belongs_to :camp
 
   validates :city,
             :province,

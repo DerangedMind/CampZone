@@ -3,6 +3,7 @@ class Director::CampsController < Director::PortalController
   def show
     @director = Director.find_by_user_id(current_user.id)
     @camp = Camp.find_by_director_id(@director.id)
+    @address = Address.find(@camp.address_id)
   end
 
   def new
