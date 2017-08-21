@@ -10,6 +10,7 @@ class Director::CampsController < Director::PortalController
 
   def new
     @camp = Camp.new
+    @address = Address.new
   end
 
   def create
@@ -40,7 +41,6 @@ class Director::CampsController < Director::PortalController
   def camp_params
     params.require(:camp).permit(
       :name,
-      :address,
       :phone_number
     )
   end
