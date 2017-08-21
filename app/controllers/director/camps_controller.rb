@@ -14,15 +14,25 @@ class Director::CampsController < Director::PortalController
   end
 
   def create
-    @camp = Camp.new(camp_params)
+    @address = Address.new(address_params)
 
-    # @director = Director.find_by(user_id: current_user.id)
-    if @camp.save
-      puts "CAMP SAVED"
-      redirect_to director_dashboard_index_path
+    if @address.save
+      @camp = Camp.new(camp_params)
+      @camp.directors << Director.find_by_user_id(current_user.id)
+      @camp.address_id = @address.id
+
+      if @camp.save
+        puts "CAMP CREATED"
+        redirect_to director_dashboard_index_path
+      else
+        puts "CAMP NOT CREATED"
+        @address.delete
+        flash[:alert] = @camp.errors.full_messages
+        redirect_to new_director_camp_path
+      end
+
     else
-      puts "CAMP NOT SAVED"
-      flash[:error] = @camp.errors.full_messages
+      flash[:alert] = @address.errors.full_messages
       redirect_to new_director_camp_path
     end
   end
@@ -38,11 +48,22 @@ class Director::CampsController < Director::PortalController
 
   private
 
+  def address_params
+    params.require(:address).permit(
+      :street_address,
+      :apt_number,
+      :city,
+      :province,
+      :country,
+      :postal_code
+    )
+  end
+
   def camp_params
-    params.require(:camp).permit(
+    params.permit(
       :name,
       :phone_number
     )
   end
-
 end
+

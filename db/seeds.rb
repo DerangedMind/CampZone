@@ -9,9 +9,18 @@ Camp.destroy_all
 
 puts "Creating Camp..."
 
+address = Address.create!({
+  city: Faker::Address.city,
+  province: Faker::Address.state_abbr,
+  country: Faker::Address.country,
+  street_address: Faker::Address.street_address,
+  apt_number: Faker::Address.secondary_address,
+  postal_code: Faker::Address.postcode.to_s
+})
+
 camp = Camp.create!(
   name: Faker::HarryPotter.location,
-  address: '123 Magic Lane',
+  address_id: address.id,
   phone_number: '5551234567'
 )
 
