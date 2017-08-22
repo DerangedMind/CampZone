@@ -32,16 +32,18 @@ class UsersController < ApplicationController
       @user.role = "parent"
     else
       flash[:alert] = "This email is already in use, please use a different email"
-      redirect_to signup_path
+      redirect_to signup_parent_path
     end
 
     if @user.save
+      puts "USER PARENT SAVED"
       UserMailer.registration_confirmation(@user).deliver
-      flash[:notice] = "Thank you for creating an account. A confirmation email has been sent #{@user.email}. Please click on the link to verify your account."
+      flash[:notice] = "Thank you for creating an account. A confirmation email has been sent to #{@user.email}. Please click on the link to verify your account."
       redirect_to login_path
     else
+      puts "USER PARENT NOT SAVED"
       flash[:alert] = "Oops! Something went wrong, please try again."
-      redirect_to signup_path
+      redirect_to signup_parent_path
     end
   end
 
@@ -57,47 +59,19 @@ class UsersController < ApplicationController
         puts "DIRECTOR SAVED"
         UserMailer.registration_confirmation(@user).deliver
         flash[:notice] = "Director Created! Please ask new director to verify email"
-        redirect_to_role_portal
+        redirect_to login_path
       else
         puts "DIRECTOR NOT SAVED"
         flash[:alert] = "Oops! Something went wrong, please try again"
-        redirect_to new_director_director_path
+        redirect_to signup_director_path
       end
     else
       puts "USER NOT SAVED"
       flash[:alert] = "Oops! Something went wrong, please try again!"
-      redirect_to new_director_director_path
+      redirect_to signup_director_path
     end
   end
 
-<<<<<<< HEAD
-  def create_director
-    @user= User.new(director_params)
-    @user.role = "director"
-    if @user.save
-      puts "USER SAVED"
-      @director = Director.new(
-        user_id: @user.id
-      )
-      if @director.save
-        puts "DIRECTOR SAVED"
-        UserMailer.registration_confirmation(@user).deliver
-        flash[:notice] = "Director Created! Please ask new director to verify email"
-        redirect_to director_dashboard_index_path
-      else
-        puts "DIRECTOR NOT SAVED"
-        flash[:alert] = "Oops! Something went wrong, please try again"
-        redirect_to new_director_director_path
-      end
-    else
-      puts "USER NOT SAVED"
-      flash[:alert] = "Oops! Something went wrong, please try again!"
-      redirect_to new_director_director_path
-    end
-  end
-
-=======
->>>>>>> 4fd941006758c99f49d76901fc612a62bcb5da9c
   def redirect_to_role_portal(user)
     if user.role == "parent"
       redirect_to new_parent_parent_path
