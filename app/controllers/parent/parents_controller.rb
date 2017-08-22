@@ -43,7 +43,22 @@ class Parent::ParentsController < Parent::PortalController
   end
 
   def update
+    @parent = Parent.find_by_user_id(current_user.id)
+    @address = @parent.address
+
+    if @parent.update(parent_params)
+      if @address.update(address_update_params)
+        flash[:notice] = "Profile has been updated!"
+        redirect_to parent_profile_path
+      else
+        flash[:alert] = @address.errors.full_messages
+        redirect_to parent_settings_path
+    end
+    else
+      flash[:alert] = @parent.errors.full_messages
+      redirect_to parent_settings_path
   end
+end
 
   private
 
@@ -59,8 +74,21 @@ class Parent::ParentsController < Parent::PortalController
   end
 
   def parent_params
-    params.permit(
+    params.require(:parent).permit(
       :phone_number
     )
   end
+
+  def address_update_params
+    params.permit(
+      :city,
+      :province,
+      :country,
+      :street_address,
+      :apt_number,
+      :postal_code
+    )
+  end
+
+
 end
