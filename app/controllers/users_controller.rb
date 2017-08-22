@@ -60,10 +60,12 @@ class UsersController < ApplicationController
         redirect_to director_dashboard_index_path
       else
         puts "DIRECTOR NOT SAVED"
+        flash[:alert] = "Oops! Something went wrong, please try again"
         redirect_to new_director_director_path
       end
     else
       puts "USER NOT SAVED"
+      flash[:alert] = "Oops! Something went wrong, please try again!"
       redirect_to new_director_director_path
     end
   end
