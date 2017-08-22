@@ -1,6 +1,14 @@
 class UsersController < ApplicationController
 
-  def new
+  def new_parent
+    if current_user
+      redirect_to_role_portal(current_user)
+    else
+      @user = User.new
+    end
+  end
+
+  def new_director
     if current_user
       redirect_to_role_portal(current_user)
     else
@@ -18,22 +26,49 @@ class UsersController < ApplicationController
     end
   end
 
-  def create
+  def create_parent
     unless @user = existing_user(params[:user][:email])
       @user = User.new(user_params)
       @user.role = "parent"
     else
       flash[:alert] = "This email is already in use, please use a different email"
-      redirect_to signup_path
+      redirect_to signup_parent_path
     end
 
     if @user.save
+      puts "USER PARENT SAVED"
       UserMailer.registration_confirmation(@user).deliver
-      flash[:notice] = "Thank you for creating an account. A confirmation email has been sent #{@user.email}. Please click on the link to verify your account."
+      flash[:notice] = "Thank you for creating an account. A confirmation email has been sent to #{@user.email}. Please click on the link to verify your account."
       redirect_to login_path
     else
-      flash[:alert] = "Oops! Something went wrong, please try again."
-      redirect_to signup_path
+      puts "USER PARENT NOT SAVED"
+      flash[:alert] = @parent.errors.full_messages
+      redirect_to signup_parent_path
+    end
+  end
+
+  def create_director
+    @user= User.new(user_params)
+    @user.role = "director"
+    if @user.save
+      puts "USER SAVED"
+      @director = Director.new(
+        user_id: @user.id
+      )
+      if @director.save
+        puts "DIRECTOR SAVED"
+        UserMailer.registration_confirmation(@user).deliver
+        flash[:notice] = "Director Created! Please ask new director to verify email"
+        redirect_to login_path
+      else
+        puts "DIRECTOR NOT SAVED"
+        flash[:alert] = @director.errors.full_messages
+        redirect_to signup_director_path
+      end
+    else
+      puts "USER NOT SAVED"
+      flash[:alert] = @director.errors.full_messages
+      redirect_to signup_director_path
     end
   end
 

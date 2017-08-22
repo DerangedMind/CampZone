@@ -16,7 +16,8 @@ class Director::CampsController < Director::PortalController
 
     if @address.save
       @camp = Camp.new(camp_params)
-      @camp.director << Director.find_by_user_id(current_user.id)
+      puts current_user.id
+      @camp.director_id = Director.find_by_user_id(current_user.id).id
       @camp.address_id = @address.id
 
       if @camp.save

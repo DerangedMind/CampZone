@@ -14,7 +14,8 @@
   <body>
     <%= render "/layouts/top_nav" unless (
           current_page?(login_path) ||
-          current_page?(signup_path) ||
+          current_page?(signup_director_path) ||
+          current_page?(signup_parent_path) ||
           current_page?(root_path)
         )
     %>
