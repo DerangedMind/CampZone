@@ -61,17 +61,25 @@ class Director::KidsController < Director::PortalController
 
   def edit
     @kid = Kid.find(params[:id])
+    @medical_info = MedicalInfo.find_by_kid_id(@kid.id)
   end
 
   def update
     @kid = Kid.find(params[:id])
+    @medical_info = MedicalInfo.find_by_kid_id(@kid.id)
+
     if @kid.update(kid_params)
-      redirect_to director_kid_path(:id => @kid.id)
+      if @medical_info.update(kid_medical_params)
+        flash[:notice] = "#{@kid.first_name}'s information has been updated!"
+        redirect_to director_kid_path(:id => @kid.id)
+      else
+        flash[:alert] = @medical_info.errors.full_messages
+        redirect_to edit_director_kid_path(:id => @kid.id)
+      end
     else
-      flash[:error] = @kid.errors.full_messages
+      flash[:alert] = @kid.errors.full_messages
       redirect_to edit_director_kid_path(:id => @kid.id)
     end
-
   end
 
   def destroy
