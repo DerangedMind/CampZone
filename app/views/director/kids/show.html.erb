@@ -17,7 +17,7 @@
 <% @groups.each do |group| %>
 <div>
   <p>Group Name:
-  <%= group.name %></p>
+  <%= link_to group.name, director_group_path(:id => group.id) %></p>
   <p>Age Range:
   <%= group.min_age %> - <%= group.max_age %></p>
   <p>Year:
