@@ -26,23 +26,24 @@ class Parent::KidsController < Parent::PortalController
           if @group != []
             @kid.groups << @group
             puts "GROUPS SAVED"
+            flash[:notice] = "Thank you for registering #{@kid.first_name}"
             redirect_to parent_kid_path(:id => @kid.id)
           else
-            @kid.destroy!
-            @medical_info.destroy!
+            @kid.destroy
+            @medical_info.destroy
             @kid.parents.destroy
             flash[:alert] = "This group does not exist!"
             redirect_to new_parent_kid_path
           end
         else
-          @kid.destroy!
-          @medical_info.destroy!
+          @kid.destroy
+          @medical_info.destroy
           flash[:alert] = "Cannot find parent account!"
           redirect_to new_parent_kid_path
         end
       else
         @kid.destroy!
-        flash[:alert] = @MedicalInfo.errors.full_messages
+        flash[:alert] = @medical_info.errors.full_messages
         redirect_to new_parent_kid_path
       end
     else
