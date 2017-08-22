@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     elsif user.role == "counselor"
       redirect_to counselor_settings_path
     elsif user.role == "director"
-      redirect_to director_dashboard_index_path
+      redirect_to new_director_camp_path
     else
       raise "no role assigned"
     end
