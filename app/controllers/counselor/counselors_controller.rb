@@ -12,9 +12,19 @@ class Counselor::CounselorsController < Counselor::PortalController
   def update
     @counselor = Counselor.find_by(user_id: current_user.id)
     @user = User.find(@counselor.user_id)
-    @counselor.update(counselor_update_params)
-    @user.update(update_password_params)
-    redirect_to counselor_profile_path
+
+    if @counselor.update(counselor_update_params)
+      if @user.update(update_password_params)
+        flash[:notice] = "Information successfully updated!"
+        redirect_to counselor_profile_path
+      else
+        flash[:alert] = @user.errors.full_messages
+        redirect_to = counselor_settings_path
+      end
+    else
+      flash[:alert] = @counselor.errors.full_messages
+      redirect_to counselor_settings_path
+    end
   end
 
   private
