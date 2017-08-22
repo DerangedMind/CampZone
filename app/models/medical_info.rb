@@ -6,6 +6,5 @@ class MedicalInfo < ApplicationRecord
             :conditions,
             :medications,
             :dietary_restrictions,
-            :epi_pen,
               presence: true
 end

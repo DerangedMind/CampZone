@@ -24,7 +24,7 @@
 
   Dietary Restrictions <%= text_area_tag("dietary_restrictions", @medical_info.dietary_restrictions) %>
 
-  Epi Pen <%= select_tag('epi_pen', "<option value=true>Yes</option><option value=false>No</option>".html_safe, prompt: "Select")%>
+  Epi Pen <%= select_tag('epi_pen', "<option value=true>Yes</option> <option value=false>No</option>".html_safe)%>
 
   <%= form.submit "Submit" %>
 

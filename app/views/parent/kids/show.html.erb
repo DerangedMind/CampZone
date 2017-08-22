@@ -6,7 +6,7 @@
 
 <h3> Social Insurance Number: </h3> <%= @kid.sin %>
 
-<h3> Group: </h3> GROUP HERE with link_to
+<h3> Group: </h3> <%= @group.name %>
 
 <h2> Medical Information </h2>
 
@@ -21,3 +21,7 @@
 <h3> Dietary Restrictions: </h3> <%= @medical_info.dietary_restrictions %>
 
 <h3> Epi Pen: </h3> <%= @medical_info.epi_pen %>
+
+<br />
+
+<%=link_to "Edit Information", edit_parent_kid_path(:id => params[:id]) %>
