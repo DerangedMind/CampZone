@@ -27,7 +27,7 @@
   <p>Dietary Restrictions: <%= text_area_tag('dietary_restrictions')%> </p>
   No Dietary Restrictions: <%= check_box_tag('dietary_restrictions', 'no dietary restrictions') %>
 
-  <p>Epi-Pen <%= select_tag('epi_pen', "<option value=true>Yes</option><option value=false>No</option>".html_safe)%> </p>
+  <p>Epi-Pen <%= select_tag('epi_pen', "<option value=true>Yes</option><option value=false>No</option>".html_safe, prompt: "Select")%> </p>
 
 
   <%= submit_tag("Submit") %>
