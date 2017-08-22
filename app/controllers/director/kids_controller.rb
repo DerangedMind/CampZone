@@ -56,6 +56,7 @@ class Director::KidsController < Director::PortalController
     @parents = @kid.parents
     @groups = @kid.groups
     @medical_info = MedicalInfo.find_by(kid_id: @kid.id)
+    @counselors = @groups[0].counselors
   end
 
   def edit

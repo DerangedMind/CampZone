@@ -43,10 +43,11 @@
 <% end %>
 
 <h3>
-  Counselors:
+  Current Counselors:
 </h3>
-GROUP COUNSELORS HERE
-
+<% @counselors.each do |counselor| %>
+<p><%= link_to counselor.alias, director_counselor_path(:id => counselor.id) %> </p>
+<% end %>
 <h3>
   Medical Information:
 </h3>
