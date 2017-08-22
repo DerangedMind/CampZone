@@ -42,7 +42,7 @@ class UsersController < ApplicationController
       redirect_to login_path
     else
       puts "USER PARENT NOT SAVED"
-      flash[:alert] = "Oops! Something went wrong, please try again."
+      flash[:alert] = @parent.errors.full_messages
       redirect_to signup_parent_path
     end
   end
@@ -62,12 +62,12 @@ class UsersController < ApplicationController
         redirect_to login_path
       else
         puts "DIRECTOR NOT SAVED"
-        flash[:alert] = "Oops! Something went wrong, please try again"
+        flash[:alert] = @director.errors.full_messages
         redirect_to signup_director_path
       end
     else
       puts "USER NOT SAVED"
-      flash[:alert] = "Oops! Something went wrong, please try again!"
+      flash[:alert] = @director.errors.full_messages
       redirect_to signup_director_path
     end
   end
