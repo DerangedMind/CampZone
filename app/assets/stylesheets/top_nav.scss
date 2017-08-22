@@ -1,3 +1,32 @@
+.nav {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #eee;
+  .nav-list {
+    list-style-type: none;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    padding: 5px 10px;
+    display: flex;
+    li {
+      > a, a {
+        color: #ccc;
+        text-decoration: none;
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+      > a:hover, a:hover {
+        color: #eee;
+        border-bottom: 2px #dd3344 solid;
+      }
+    }
+  }
+}
+
 .navbar {
   border: none;
   position: absolute;
