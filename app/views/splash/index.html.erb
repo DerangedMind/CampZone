@@ -9,21 +9,32 @@
     </ul>
   </nav>
   <article class="al-c">
-    <h1 class="">Organize Your Summer Camp</h1>
-    <h3 class="">Spend More Time Leading, Less Time Managing</h3>
-    <p class="">An organizational tool to help camp directors, counselors, and parents spend more time doing what matters.</p>
+    <h1>Organize Your Summer Camp</h1>
 
-    <p>Register your camp and get organizing!</p>
-    <input type="text" name="camp_search" placeholder="">
-    <p class="existing">Already have an account? <%= link_to "Login Here!", login_path %></p>
+    <h3 class="al-c">Spend more time leading and less time managing</h3>
+    <p class="col-xs-12 col-sm-8 col-md-6">An organizational tool to help camp directors, counselors, and parents spend more time doing what matters.</p>
+
+    
+    <div class="director-cta">
+    <h3>Register your camp and get organized!</h3>
+      <p>What's the name of your camp?</p>
+      <div class="splash-input">
+        <input type="text" name="camp_search" placeholder="Whispering Rock Psychic Camp">
+        <button type="submit">Submit</button>
+      </div>
+    </div>
+
+    <%= link_to camps_path class="parent-cta"><h4>Parents click here to find a local camp!</h4></div>
+    
+    <p class="existing">Already have an account? <%= link_to "Click here to login!", login_path %></p>
+    
   </article>
+  <nav class="nav nav-bottom">
+    <ul class="nav-list">
+      <li><a href="https://facebook.com/"><%= fa_icon "facebook-official" %></a></li>
+      <li><a href="https://twitter.com/"><%= fa_icon "twitter" %></a></li>
+      <li><a href="https://linkedin.com/"><%= fa_icon "linkedin" %></a></li>
+      <li><a href="https://github.com/"><%= fa_icon "github" %></a></li>
+    </ul>
+  </nav>
 </main>
-
-<section class="splash-row">
-  <div class="">
-    <h2>Keep track of Counselors</h2>
-  </div>
-  <div class="">
-    <img src="<%= Faker::LoremPixel.image('120x120') %>">
-  </div>
-</section>
