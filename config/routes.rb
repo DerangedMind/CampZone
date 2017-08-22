@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create', as: 'post_login'
   get 'logout', to: 'sessions#destroy'
 
-  get 'signup/parent', to: 'users#new_parent'
-  post 'signup/parent', to: 'users#create_parent'
-
   get 'signup/director', to: 'users#new_director'
   post 'signup/director', to: 'users#create_director'
+
+  get 'signup/parent', to: 'users#new_parent'
+  post 'signup/parent', to: 'users#create_parent'
 
   resources :users do
     member do
