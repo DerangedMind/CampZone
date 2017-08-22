@@ -59,6 +59,21 @@ class Parent::KidsController < Parent::PortalController
   end
 
   def update
+    @kid = Kid.find(params[:id])
+    @medical_info = MedicalInfo.find_by_kid_id(@kid.id)
+
+    if @kid.update(kid_params)
+      if @medical_info.update(kid_medical_params)
+        flash[:notice] = "#{@kid.first_name}'s information has been updated!"
+        redirect_to parent_kid_path(:id => params[:id])
+      else
+        flash[:alert] = @medical_info.errors.full_messages
+        redirect_to edit_parent_kid_path(:id => params[:id])
+      end
+    else
+      flash[:alert] = @kid.errors.full_messages
+      redirect_to edit_parent_kid_path(:id => params[:id])
+    end
   end
 
   def destroy
