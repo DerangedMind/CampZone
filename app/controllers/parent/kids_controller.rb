@@ -3,6 +3,7 @@ class Parent::KidsController < Parent::PortalController
   def show
     @kid = Kid.find_by_id(params[:id])
     @medical_info = MedicalInfo.find_by(kid_id: @kid.id)
+    @group = @kid.groups[0]
   end
 
   def new
@@ -26,23 +27,24 @@ class Parent::KidsController < Parent::PortalController
           if @group != []
             @kid.groups << @group
             puts "GROUPS SAVED"
+            flash[:notice] = "Thank you for registering #{@kid.first_name}"
             redirect_to parent_kid_path(:id => @kid.id)
           else
-            @kid.destroy!
-            @medical_info.destroy!
+            @kid.destroy
+            @medical_info.destroy
             @kid.parents.destroy
             flash[:alert] = "This group does not exist!"
             redirect_to new_parent_kid_path
           end
         else
-          @kid.destroy!
-          @medical_info.destroy!
+          @kid.destroy
+          @medical_info.destroy
           flash[:alert] = "Cannot find parent account!"
           redirect_to new_parent_kid_path
         end
       else
         @kid.destroy!
-        flash[:alert] = @MedicalInfo.errors.full_messages
+        flash[:alert] = @medical_info.errors.full_messages
         redirect_to new_parent_kid_path
       end
     else
@@ -53,9 +55,26 @@ class Parent::KidsController < Parent::PortalController
   end
 
   def edit
+    @kid = Kid.find(params[:id])
+    @medical_info = MedicalInfo.find_by_kid_id(@kid.id)
   end
 
   def update
+    @kid = Kid.find(params[:id])
+    @medical_info = MedicalInfo.find_by_kid_id(@kid.id)
+
+    if @kid.update(kid_params)
+      if @medical_info.update(kid_medical_params)
+        flash[:notice] = "#{@kid.first_name}'s information has been updated!"
+        redirect_to parent_kid_path(:id => params[:id])
+      else
+        flash[:alert] = @medical_info.errors.full_messages
+        redirect_to edit_parent_kid_path(:id => params[:id])
+      end
+    else
+      flash[:alert] = @kid.errors.full_messages
+      redirect_to edit_parent_kid_path(:id => params[:id])
+    end
   end
 
   def destroy
