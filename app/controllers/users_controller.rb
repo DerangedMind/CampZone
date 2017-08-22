@@ -16,14 +16,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def new_director
-    if current_user
-      redirect_to_role_portal(current_user)
-    else
-      @user = User.new
-    end
-  end
-
   def confirm_email
     user = User.find_by_confirm_token(params[:id])
     if user
@@ -78,6 +70,7 @@ class UsersController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
   def create_director
     @user= User.new(director_params)
     @user.role = "director"
@@ -103,6 +96,8 @@ class UsersController < ApplicationController
     end
   end
 
+=======
+>>>>>>> 4fd941006758c99f49d76901fc612a62bcb5da9c
   def redirect_to_role_portal(user)
     if user.role == "parent"
       redirect_to new_parent_parent_path
