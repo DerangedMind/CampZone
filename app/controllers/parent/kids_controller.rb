@@ -54,6 +54,8 @@ class Parent::KidsController < Parent::PortalController
   end
 
   def edit
+    @kid = Kid.find(params[:id])
+    @medical_info = MedicalInfo.find_by_kid_id(@kid.id)
   end
 
   def update
