@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  def new
+  def new_parent
     if current_user
       redirect_to_role_portal(current_user)
     else
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def create
+  def create_parent
     unless @user = existing_user(params[:user][:email])
       @user = User.new(user_params)
       @user.role = "parent"
