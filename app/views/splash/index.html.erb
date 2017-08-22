@@ -1,20 +1,29 @@
-<h1>Welcome to CampZone!</h1>
-<br />
+<main class="top-box clearfix">
+  <nav class="nav">
+    <div class="navbar-header fl-l">
+      CampZone
+    </div>
+    <ul class="nav-list">
+      <li><a href="/signup">Signup</a></li>
+      <li><a href="/login">Login</a></li>
+    </ul>
+  </nav>
+  <article class="al-c">
+    <h1 class="">Organize Your Summer Camp</h1>
+    <h3 class="">Spend More Time Leading, Less Time Managing</h3>
+    <p class="">An organizational tool to help camp directors, counselors, and parents spend more time doing what matters.</p>
 
-<h3>Are you a new Director?</h3>
-<%= link_to ("Create a Director Account!"), new_director_director_path %>
-<br />
+    <p>Register your camp and get organizing!</p>
+    <input type="text" name="camp_search" placeholder="">
+    <p class="existing">Already have an account? <%= link_to "Login Here!", login_path %></p>
+  </article>
+</main>
 
-
-<h3>Ready to have a blast leading kids this summer?</h3>
-<%= link_to ("Login to your Counselor Account!"), login_path %>
-<br />
-
-
-<h3>Can't wait to send your kids off for the Summer?</h3>
-<%= link_to ("Create a Parent Account to Sign them up!"), new_parent_parent_path %>
-<br />
-
-<h3>Already have an Account?</h3>
-<%= link_to ("Login Here!"), login_path %>
-<br />
+<section class="splash-row">
+  <div class="">
+    <h2>Keep track of Counselors</h2>
+  </div>
+  <div class="">
+    <img src="<%= Faker::LoremPixel.image('120x120') %>">
+  </div>
+</section>
