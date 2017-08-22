@@ -8,6 +8,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def new_director
+
+  end
+
   def confirm_email
     user = User.find_by_confirm_token(params[:id])
     if user
@@ -34,6 +38,29 @@ class UsersController < ApplicationController
     else
       flash[:alert] = "Oops! Something went wrong, please try again."
       redirect_to signup_path
+    end
+  end
+
+  def create_director
+    @user= User.new(director_params)
+    @user.role = "director"
+    if @user.save
+      puts "USER SAVED"
+      @director = Director.new(
+        user_id: @user.id
+      )
+      if @director.save
+        puts "DIRECTOR SAVED"
+        UserMailer.registration_confirmation(@user).deliver
+        flash[:notice] = "Director Created! Please ask new director to verify email"
+        redirect_to director_dashboard_index_path
+      else
+        puts "DIRECTOR NOT SAVED"
+        redirect_to new_director_director_path
+      end
+    else
+      puts "USER NOT SAVED"
+      redirect_to new_director_director_path
     end
   end
 
