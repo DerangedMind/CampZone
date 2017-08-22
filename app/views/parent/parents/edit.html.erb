@@ -2,11 +2,20 @@
 
 <%= form_for @parent, url: parent_profile_path, method: 'put' do |form| %>
 
-  <%= form.label :address %>
-  <%= form.text_field :address %>
-
   <%= form.label :phone_number %>
   <%= form.telephone_field :phone_number %>
+
+  City <%= text_field_tag('city', @address.city) %>
+
+  Province <%= text_field_tag('province', @address.province) %>
+
+  Country <%= text_field_tag('country', @address.country) %>
+
+  Street Address <%= text_field_tag('street_address', @address.street_address) %>
+
+  Apartment Number <%= text_field_tag('apt_number', @address.apt_number) %>
+
+  Postal Code<%= text_field_tag('postal_code', @address.postal_code) %>
 
   <%= form.submit "Submit" %>
 

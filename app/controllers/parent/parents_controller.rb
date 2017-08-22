@@ -39,6 +39,7 @@ class Parent::ParentsController < Parent::PortalController
 
   def edit
     @parent = Parent.find_by_user_id(current_user.id)
+    @address = @parent.address
   end
 
   def update
