@@ -54,7 +54,7 @@ class UsersController < ApplicationController
   end
 
   def create_director
-    @user= User.new(director_params)
+    @user= User.new(user_params)
     @user.role = "director"
     if @user.save
       puts "USER SAVED"
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
         puts "DIRECTOR SAVED"
         UserMailer.registration_confirmation(@user).deliver
         flash[:notice] = "Director Created! Please ask new director to verify email"
-        redirect_to director_dashboard_index_path
+        redirect_to_role_portal
       else
         puts "DIRECTOR NOT SAVED"
         flash[:alert] = "Oops! Something went wrong, please try again"
