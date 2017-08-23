@@ -12,5 +12,10 @@
     <%= link_to new_director_kid_path, class:"btn fl-l" do %>
       Add Kid
     <% end %>
+
   </div>
 </div>
+
+    <%= render 'layouts/card_list', card_size: "6", people: @groups, type: "group", role: "d" %>
+
+    <%= render 'layouts/card_list', card_size: "6", people: @counselors, type: "counselor", role: "d" %>
