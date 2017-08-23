@@ -34,6 +34,7 @@
   nav {
     flex: 1;
     min-height: 42px;
+    max-height: 70px;
     justify-content: space-around;
     background-color: rgba(16,16,16,0.75);
     color: #ccc;
@@ -64,6 +65,10 @@
     flex: 11;
   }
   .card-list {
+    max-height: 33vh;
+    margin-top: 0;
+    margin-bottom: 0;
+    top: 6px;
     article {
       padding-left: 15px;
       padding-right: 15px;
@@ -214,6 +219,7 @@
   .top-box {
     margin-top: -110px;
     .card-list {
+      margin-top: 25px;
       article {
         padding-left: 0;
         padding-right: 0;
