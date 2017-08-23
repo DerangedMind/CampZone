@@ -18,7 +18,7 @@
         </div>
         <div class"form-group">
           <label for="group"> Group Name </label>
-          <%= text_field_tag("name", nil, class: 'form-control') %>
+          <%= select_tag('name', options_from_collection_for_select(@groups,'name','name')) %>
         </div>
 
         <%= form.submit "Create account", class: 'btn btn-success pull-right' %>
