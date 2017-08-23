@@ -6,7 +6,7 @@
     <div class="card-info">
       <div class="card-details">
         <p><%= person.user.first_name %> <%= person.user.last_name %></p>
-        <p><%= person.alias %></p>
+        <p><%= link_to person.alias, "/#{role}/counselors/#{person.id}"%></p>
       </div>
       <div class="card-details">
         <p><%= person.user.email %></p>

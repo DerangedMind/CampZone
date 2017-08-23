@@ -17,7 +17,7 @@
 <% @groups.each do |group| %>
 <div>
   <p>Group Name:
-  <%= group.name %></p>
+  <%= link_to group.name, director_group_path(:id => group.id) %></p>
   <p>Age Range:
   <%= group.min_age %> - <%= group.max_age %></p>
   <p>Year:
@@ -43,10 +43,11 @@
 <% end %>
 
 <h3>
-  Counselors:
+  Current Counselors:
 </h3>
-GROUP COUNSELORS HERE
-
+<% @counselors.each do |counselor| %>
+<p><%= link_to counselor.alias, director_counselor_path(:id => counselor.id) %> </p>
+<% end %>
 <h3>
   Medical Information:
 </h3>

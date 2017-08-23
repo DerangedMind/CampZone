@@ -44,11 +44,12 @@ class Director::CounselorsController < Director::PortalController
       else
         puts "COUNSELOR NOT SAVED - DESTROYING USER"
         @user.destroy!
-        flash[:alert] = "Oops! Looks like something went wrong, please try again!"
+        flash[:alert] = @counselor.errors.full_messages
         redirect_to new_director_counselor_path
       end
     else
       puts "User NOT SAVED"
+      flash[:alert] = @user.errors.full_messages
       redirect_to new_director_counselor_path
     end
   end
