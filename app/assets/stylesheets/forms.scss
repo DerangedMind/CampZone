@@ -3,6 +3,33 @@
 .form-group {
   margin-top: 10px;
   margin-bottom: 10px;
+
+  ::-webkit-input-placeholder { /* Chrome */
+    color: #333;
+    font-weight: 300;
+    font-size: .85em;
+    font-style: italic;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    color: #333;
+    font-weight: 300;
+    font-size: .85em;
+    font-style: italic;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    color: #333;
+    opacity: 1;
+    font-weight: 300;
+    font-size: .85em;
+    font-style: italic;
+  }
+  :-moz-placeholder { /* Firefox 4 - 18 */
+    color: #333;
+    opacity: 1;
+    font-weight: 300;
+    font-size: .85em;
+    font-style: italic;
+  }
 }
 
 .form-control {
