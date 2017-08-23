@@ -15,3 +15,15 @@
 <div class="row">
   <%= render 'layouts/card_list', card_size: "6", people: @kids, type: "kid" %>
 </div>
+
+  <%= link_to new_director_group_path, class:"btn fl-r" do %>
+    Add Group
+  <% end %>
+
+  <%= link_to new_director_counselor_path, class:"btn fl-r" do %>
+    Add Counselor
+  <% end %>
+
+  <%= link_to new_director_kid_path, class:"btn fl-r" do %>
+    Add Kid
+  <% end %>
