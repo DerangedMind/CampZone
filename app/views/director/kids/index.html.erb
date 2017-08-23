@@ -1,18 +1,1 @@
-<h1> All Kids </h1>
-
-<div class="col-md-offset-1 col-md-10">
-  <%= link_to new_director_kid_path, class:"btn fl-r" do %>
-    Add Kid
-  <% end %>
-  <h3> Total Kids: <%= @kids.count %></h3> 
-  <div class="item-list">
-    <% @kids.each_with_index do |kid, index| %> 
-      <div class="col-lg-3 col-sm-4 col-xs-6 kid-card">
-        <div class="user-card-sm al-c">
-          <img class="va-m" src="<%= Faker::Avatar.image("counselor-avatar#{rand(7)*4}", "50x50", "png", "set4") %>">
-          <%= link_to ("#{kid.first_name} #{kid.last_name}"), director_kid_path(:id => kid.id) %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
+<%= render 'layouts/card_list', card_size: "6", people: @kids, type: "kid", role: "d" %>
