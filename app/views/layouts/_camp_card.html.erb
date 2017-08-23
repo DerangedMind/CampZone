@@ -1,7 +1,7 @@
 <% 
   camp = object
-  addresses = objects[1]
-  directors = objects[2]
+  address = objects[1].find { |a| a.id == camp.address_id }
+  director = objects[2].find { |d| d.id == camp.director_id }
 
 %>
 <div class="card">
@@ -13,8 +13,8 @@
     <div class="card-info">
       <div class="card-details">
         <p><i>Camp:</i> <b><%= camp.name %></b></p>
-        <p><i>Director:</i> <b><%= directors[i].inspect %> <%= %></b></p>
-        <p><%= addresses[i].city %>, <%= addresses[i].province %>, <%= addresses[i].country %></p>
+        <p><i>Director:</i> <b><%= director.first_name %> <%= director.last_name %></b></p>
+        <p><%= address.city %>, <%= address.province %>, <%= address.country %></p>
       </div>
       <div class="card-details">
         <p ></p>

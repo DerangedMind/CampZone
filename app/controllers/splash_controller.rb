@@ -9,6 +9,7 @@ class SplashController < ApplicationController
       |camp| camp.address_id
     }
     @addresses = Address.find(addresses)
-    @directors = User.find_by_role("director")
+    @directors = User.where(role: "director").all
+    puts @directors.inspect
   end
 end
