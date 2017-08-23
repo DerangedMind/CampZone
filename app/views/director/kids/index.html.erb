@@ -1,3 +1,11 @@
+<div class="col-sm-offset-1 col-sm-10">
+  <h1>All Kids</h1>
+  <%= link_to new_director_kid_path, class:"btn fl-r" do %>
+    Add Kid
+  <% end %>
+  <h3> Total Kids: <%= @kids.count %></h3>
+</div>
+
 <% if @kids.count != 0 %>
 <%= render 'layouts/card_list', objects: [@kids], type: "kid", role: "d" %>
 <% end %>

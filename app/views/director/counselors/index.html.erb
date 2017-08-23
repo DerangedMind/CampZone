@@ -1,3 +1,11 @@
+<div class="col-sm-offset-1 col-sm-10">
+  <h1>All Counselors</h1>
+  <%= link_to new_director_counselor_path, class:"btn fl-r" do %>
+    Add Counselor
+  <% end %>
+  <h3> Total Counselors: <%= @counselors.count %></h3>
+</div>
+
 <% if @counselors.count != 0 %>
 <%= render 'layouts/card_list', objects: [@counselors], type: "counselor", role: "d" %>
 <% end %>
