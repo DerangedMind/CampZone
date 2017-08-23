@@ -1,17 +1,19 @@
+<% kid = object %>
+
 <div class="card">
   <div class="card-contents">
     <div class="card-avatar">
-      <img class="" src="<%= Faker::LoremPixel.image('70x70', false, 'people') %>">
+      <img class="" src="<%= Faker::LoremPixel.image('70x70', false, 'objects') %>">
     </div>
     <div class="card-info">
       <div class="card-details">
         <%= link_to "/#{role}/kids/#{person.id}" do %>
-          <p><%= person.first_name %> <%= person.last_name %></p>
+          <p><%= kid.first_name %> <%= kid.last_name %></p>
         <% end %>
-        <p><%= person.birthdate %></p>
+        <p><%= kid.birthdate %></p>
       </div>
       <div class="card-details">
-        <p><%= person.parents[0].phone_number %></p>
+        <p><%= kid.parents[0].phone_number %></p>
       </div>
     </div>
   </div>
