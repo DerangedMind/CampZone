@@ -12,7 +12,8 @@ class Director::KidsController < Director::PortalController
     @kid = Kid.new(kid_params)
     age = calculate_age(@kid)
     @medical_info = MedicalInfo.new(kid_medical_params)
-    @group = Group.where("min_age <= ? AND max_age >= ?", age, age)
+    @camp = Camp.find_by_director_id(Director.find_by_user_id(current_user.id).id)
+    @group = Group.where("min_age <= ? AND max_age >= ? AND camp_id = ?", age, age, @camp.id)
 
     if @kid.save
       puts "KID SAVED"
