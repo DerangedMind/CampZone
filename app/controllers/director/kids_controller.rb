@@ -1,7 +1,15 @@
 class Director::KidsController < Director::PortalController
 
   def index
-    @kids = Kid.all.order(last_name: :desc)
+    director = Director.find_by_user_id(current_user.id)
+    camp = director.camp
+    groups = camp.groups
+    @kids = []
+
+    groups.each do |group|
+      @kids += group.kids
+    end
+
   end
 
   def new
