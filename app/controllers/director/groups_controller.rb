@@ -18,12 +18,15 @@ class Director::GroupsController < Director::PortalController
   def create
     @group = Group.new(group_params)
     @director = Director.find_by(user_id: current_user.id)
-    @group.camp_id = @director.camps[0].id
+    @camp = Camp.find_by_director_id(@director.id)
+    @group.camp_id = @camp.id
     if @group.save
       puts "Group saved!"
+      flash[:notice] = "Group Created!"
       redirect_to director_group_path(:id => @group.id)
     else
       puts "Group not saved."
+      flash[:alert] = @group.errors.full_messages
       redirect_to new_director_group_path
     end
 
@@ -36,9 +39,14 @@ class Director::GroupsController < Director::PortalController
 
   def update
     @group = Group.find(params[:id])
-    @group.update!(group_update_params)
-    puts "GROUP UPDATED"
-    redirect_to director_group_path(:id => params[:id])
+    if @group.update(group_update_params)
+      puts "GROUP UPDATED"
+      flash[:notice] = "Group #{@group.name} information editted!"
+      redirect_to director_group_path(:id => params[:id])
+    else
+      flash[:alert] = @group.errors.full_messages
+      redirect_to edit_director_group_path(:id => params[:id])
+    end
   end
 
   def destroy
