@@ -12,14 +12,14 @@
 
   <article class="flex-3 al-c splash-text">
     <h1>Prepare for Summer</h1>
-    <%= link_to signup_parent_path, class: "primary-cta" do %>
-      <h4>Sign your kids up for camp quickly and easily with CampZone!</h4>
-    <% end %>
-
-    <div>
-    <p class="existing">Already have an account? <%= link_to "Click here to login!", login_path %></p>
-    <p class="secondary-cta">Camp Directors, want to list your camp on CampZone? <%= link_to "Click here to get started!", root_path %></p>
+    <div class="primary-cta">
+      <%= link_to "Sign your kids up for camp quickly and easily with CampZone!", signup_parent_path  %>
+      <p class="existing">Already have an account? <%= link_to "Click here to login!", login_path %></p>
     </div>
+    
+    <%= link_to root_path, class: "secondary-cta existing" do %>
+      Camp Directors, want to list your camp on CampZone? Click here to get started!
+    <% end %>
   </article>
 
   <div class="flex-3">
