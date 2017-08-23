@@ -20,11 +20,14 @@ class Director::DirectorsController < Director::PortalController
         redirect_to director_dashboard_index_path
       else
         puts "DIRECTOR NOT SAVED"
+        @user.destroy
+        flash[:alert] = @director.errors.full_messages
         redirect_to new_director_director_path
       end
 
     else
       puts "USER NOT SAVED"
+      flash[:alert] = @user.errors.full_messages
       redirect_to new_director_director_path
     end
 
@@ -41,8 +44,10 @@ class Director::DirectorsController < Director::PortalController
   def update
     @user = current_user
     if @user.update(director_params)
+      flash[:notice] = "Your information has been updated!"
       redirect_to director_profile_path
     else
+      flash[:alert] = @user.errors.full_messages
       redirect_to director_settings_path
     end
   end

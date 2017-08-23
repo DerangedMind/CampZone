@@ -5,12 +5,12 @@
     </div>
     <% if current_user %>
       <div class="navbar-header fl-r">
-        <img class="nav-avatar" src="<%= Faker::Avatar.image("avatar", "30x30", "png", "set4") %>"> 
+        <img class="nav-avatar" src="<%= Faker::Avatar.image("avatar", "30x30", "png", "set4") %>">
         <span class="nav-user"><%= current_user.first_name %></span>
       </div>
       <% end %>
     <div class="nav-links clearfix">
-        
+
       <ul class="al-r al-c-xs cl-b-xs">
         <% if current_user.role == "director" %>
           <li><%= link_to :Dashboard, director_dashboard_index_path %></li>
@@ -22,6 +22,7 @@
           <li><%= link_to :Groups, counselor_groups_path %></li>
           <li><%= link_to :Kids, counselor_kids_path %></li>
         <% end %>
+        <li><a href="profile">Profile</a></li>
         <li><a href="settings">Settings</a></li>
         <li><a href="/logout">Logout</a></li>
       </ul>
