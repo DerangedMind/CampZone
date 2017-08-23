@@ -23,7 +23,7 @@ class Director::GroupsController < Director::PortalController
     if @group.save
       puts "Group saved!"
       flash[:notice] = "Group Created!"
-      redirect_to director_dashboard_index_path
+      redirect_to director_group_path(:id => @group.id)
     else
       puts "Group not saved."
       flash[:alert] = @group.errors.full_messages
