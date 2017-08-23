@@ -1,6 +1,6 @@
 <h1> Edit Kid Information </h1>
 
-<%= form_for @kid, url: "/kids/#{params[:id]}" do |form| %>
+<%= form_for @kid, url: parent_kid_path, method: 'put' do |form| %>
 
   <%= form.label :first_name %>
   <%= form.text_field :first_name %>
@@ -14,8 +14,17 @@
   <%= form.label :sin %>
   <%= form.text_field :sin %>
 
-  <%= form.label :medicare %>
-  <%= form.text_field :medicare %>
+  Medicare <%= text_area_tag("medicare", @medical_info.medicare) %>
+
+  Allergies <%= text_area_tag("allergies", @medical_info.allergies) %>
+
+  Conditions <%= text_area_tag("conditions", @medical_info.conditions) %>
+
+  Medications <%= text_area_tag("medications", @medical_info.medications) %>
+
+  Dietary Restrictions <%= text_area_tag("dietary_restrictions", @medical_info.dietary_restrictions) %>
+
+  Epi Pen <%= select_tag('epi_pen', "<option value=true>Yes</option> <option value=false>No</option>".html_safe)%>
 
   <%= form.submit "Submit" %>
 

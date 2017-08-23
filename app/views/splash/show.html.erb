@@ -1,0 +1,32 @@
+<main class="top-box clearfix">
+  <nav class="nav">
+    <div class="navbar-header fl-l">
+      CampZone
+    </div>
+    <ul class="nav-list">
+      <li><%= link_to "Signup", signup_parent_path %></li>
+      <li><a href="/login">Login</a></li>
+    </ul>
+  </nav>
+  <article class="flex-6 al-c splash-text camp-list">
+    <h1>Prepare for Summer</h1>
+    <%= link_to signup_parent_path, class: "parent-cta" do %>
+      <h4>Sign your kids up for camp quickly and easily with CampZone!</h4>
+    <% end %>
+    <h3>Find a camp taking advantage of CampZone in your area!</h3>
+  </article>
+  <%= render "/layouts/card_list", type: "camp", people: @camps, card_size: "6" %>
+  <article class="flex-3 splash-text al-c">
+    <%= link_to signup_parent_path, class: "parent-cta director-jump" do %>
+      <h4>Camp Directors click here to start using CampZone for yourself!</h4>
+    <% end %>
+  </article>
+  <nav class="nav nav-bottom">
+    <ul class="nav-list">
+      <li><a href="https://facebook.com/"><%= fa_icon "facebook-official" %></a></li>
+      <li><a href="https://twitter.com/"><%= fa_icon "twitter" %></a></li>
+      <li><a href="https://linkedin.com/"><%= fa_icon "linkedin" %></a></li>
+      <li><a href="https://github.com/"><%= fa_icon "github" %></a></li>
+    </ul>
+  </nav>
+</main>

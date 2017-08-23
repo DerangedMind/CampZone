@@ -1,18 +1,1 @@
-<h1> All Kids </h1>
-  <h3> Total Kids: <%= @kids.count %></h3> 
-  <div class="item-list">
-
-  <% @kids.each_with_index do |kid, index| %> 
-    <% if index.even? %><div class="row" id="kids-row"><% end %>
-      <div class="col-sm-6 col-xs-6">
-        <div class="user-card-sm">
-          <img src="<%= Faker::Avatar.image("counselor-avatar", "50x50", "png", "set4") %>">
-          <br>
-          <%= link_to ("#{kid.first_name} #{kid.last_name}"), kid_path(:id => kid.id) %>
-        </div>
-      </div>
-    <% if (index.odd?)  %></div><% end %>
-  <% end %>
-
-  </div>
-</div>
+<%= render 'layouts/card_list', card_size: "6", people: @kids, type: "kid", role: "d" %>

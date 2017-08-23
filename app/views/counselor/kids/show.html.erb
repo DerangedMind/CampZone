@@ -7,24 +7,45 @@
   Birthdate:
 </h3>
 <%= @kid.birthdate %>
+
 <h3>
-  Social Insurance Number:
+  Group:
 </h3>
-<%= @kid.sin %>
+<%= @group.name %>
+
 <h3>
-  Medicare Number:
+  Medical Information:
 </h3>
-<%= @kid.medicare %>
+
+<div>
+  <p>Medicare Number:
+    <%= @kid.medical_info.medicare %>
+  </p>
+  <p>Allergies:
+    <%= @kid.medical_info.allergies %>
+  </p>
+  <p>Conditions:
+    <%= @kid.medical_info.conditions %>
+  </p>
+  <p>Medications:
+    <%= @kid.medical_info.medications %>
+  </p>
+  <p>Dietary Restrictions:
+    <%= @kid.medical_info.dietary_restrictions %>
+  </p>
+  <p>Epi Pen:
+    <%= @kid.medical_info.epi_pen %>
+  </p>
+</div>
 
 <h3>
   Parents:
 </h3>
 <% @parents.each do |parent| %>
 <div>
-  <p>First Name:
-    <%= parent.user.first_name %></p>
-  <p>Last Name:
-    <%= parent.user.last_name %></p>
+  <p>Name:
+    <%= parent.user.first_name %> <%= parent.user.last_name %>
+  </p>
   <p>Email:
     <%= parent.user.email %></p>
   <p>Phone Number:

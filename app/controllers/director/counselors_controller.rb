@@ -29,15 +29,28 @@ class Director::CounselorsController < Director::PortalController
       )
       if @counselor.save
         puts "COUNSELOR SAVED"
-        redirect_to counselor_path(:id => @counselor.id)
+        @group = Group.find_by(:name => params[:name])
+        if @group == nil
+          @counselor.destroy!
+          @user.destroy!
+          flash[:alert] = "Group does not exist!"
+          redirect_to new_director_counselor_path
+        else
+        @counselor.groups << @group
+        UserMailer.registration_confirmation(@user).deliver
+        flash[:notice] = "Counselor created! Please ask counselor to verify email!"
+        redirect_to director_counselor_path(:id => @counselor.id)
+        end
       else
         puts "COUNSELOR NOT SAVED - DESTROYING USER"
         @user.destroy!
-        redirect_to new_counselor_path
+        flash[:alert] = @counselor.errors.full_messages
+        redirect_to new_director_counselor_path
       end
     else
       puts "User NOT SAVED"
-      redirect_to new_counselor_path
+      flash[:alert] = @user.errors.full_messages
+      redirect_to new_director_counselor_path
     end
   end
 
@@ -49,7 +62,7 @@ class Director::CounselorsController < Director::PortalController
     @counselor = Counselor.find(params[:id])
     @counselor.update(update_counselor_params)
     puts "COUNSELOR UPDATED"
-    redirect_to counselor_path(:id => @counselor.id)
+    redirect_to director_counselor_path(:id => @counselor.id)
   end
 
   private

@@ -1,21 +1,17 @@
-<h1> <%= @group.name %> </h1>
-
+<h1> <%= @group.name %> at Camp <%= @camp.name %></h1>
 <h3> Age Range: </h3> <%= @group.min_age %> - <%= @group.max_age %>
 
-<h3> Counselors: </h3>
+<h3> Counselors: <%= @counselors.count %> </h3>
+<%= render 'layouts/card_list', card_size: "6", people: @counselors, type: "counselor", role: "d" %>
 
-<div class="item-list">
-  <% @counselors.each do |counselor| %>
-    <div class="row user-card">
-      <div class="col-sm-2 col-xs-3">
-        <img src="<%= Faker::Avatar.image("counselor-avatar", "50x50", "png", "set2") %>">
-      </div>
-      <div class="col-sm-6 col-xs-6 name">
-        <%= link_to ("#{counselor.user.first_name} #{counselor.user.last_name}"), counselor_path(:id => counselor.id) %>
-      </div>
-      <div class="col-sm-2 col-xs-3 alias">
-        <%= counselor.alias %>
-      </div>
-    </div>
-  <% end %>
+<h3 class="col-md-6"> Kids: <%=@kids.count %> </h3>
+
+<%= render 'layouts/card_list', card_size: "6", people: @kids, type: "kid", role: "d" %>
+
+
+<div class="col-md-12">
+  <%=link_to "Edit Group",  edit_director_group_path(:id => params[:id])%>
+</div>
+<div class="col-md-12">
+  <%= link_to "Delete Group", director_group_path, method: "delete"%>
 </div>

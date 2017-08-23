@@ -10,22 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170815201327) do
+ActiveRecord::Schema.define(version: 20170821230120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "addresses", force: :cascade do |t|
+    t.string   "city"
+    t.string   "province"
+    t.string   "country"
+    t.string   "street_address"
+    t.string   "apt_number"
+    t.string   "postal_code"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
   create_table "camps", force: :cascade do |t|
     t.string   "name"
-    t.string   "address"
     t.string   "phone_number"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-  end
-
-  create_table "camps_directors", id: false, force: :cascade do |t|
-    t.integer "camp_id",     null: false
-    t.integer "director_id", null: false
+    t.integer  "address_id"
+    t.integer  "director_id"
   end
 
   create_table "counselors", force: :cascade do |t|
@@ -69,7 +76,6 @@ ActiveRecord::Schema.define(version: 20170815201327) do
     t.string   "last_name"
     t.date     "birthdate"
     t.string   "sin"
-    t.string   "medicare"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -79,12 +85,24 @@ ActiveRecord::Schema.define(version: 20170815201327) do
     t.integer "parent_id", null: false
   end
 
+  create_table "medical_infos", force: :cascade do |t|
+    t.integer  "kid_id"
+    t.text     "allergies"
+    t.text     "conditions"
+    t.text     "medications"
+    t.text     "dietary_restrictions"
+    t.boolean  "epi_pen"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "medicare"
+  end
+
   create_table "parents", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "address"
     t.string   "phone_number"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "address_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -92,9 +110,11 @@ ActiveRecord::Schema.define(version: 20170815201327) do
     t.string   "last_name"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "role"
+    t.boolean  "email_confirmed", default: false
+    t.string   "confirm_token"
   end
 
 end

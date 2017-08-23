@@ -7,23 +7,33 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500" rel="stylesheet">
 
   </head>
 
   <body>
     <%= render "/layouts/top_nav" unless (
-          current_page?(login_path) || 
-          current_page?(new_user_path) ||
-          current_page?(root_path)
-        ) 
+          current_page?(login_path) ||
+          current_page?(signup_director_path) ||
+          current_page?(signup_parent_path) ||
+          current_page?(root_path) ||
+          current_page?(camps_path)
+        )
     %>
     <% if flash[:notice] %>
-      <div class="alert alert-warning">
+      <div class="alert-success">
         <%= flash[:notice] %>
       </div>
     <% end %>
-    <div class="container-fluid">
+
+    <% if flash[:alert] %>
+      <div class="alert-error">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
+
+    <div class="container">
       <%= yield %>
     </div>
   </body>

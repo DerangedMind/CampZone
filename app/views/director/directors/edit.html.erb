@@ -1,0 +1,12 @@
+<h1> Edit <%= @user.first_name %> <%= @user.last_name %> Information </h1>
+
+<%= form_for @user, url: director_profile_path, method: "put" do |form| %>
+
+<p> First Name: <%=form.text_field ('first_name') %> </p>
+<p> Last Name: <%=form.text_field ('last_name') %> </p>
+<p> Email: <%=form.email_field ('email') %> </p>
+<p> Password <%=form.password_field ('password') %> </p>
+
+<p> <%=form.submit ('Submit') %> </p>
+
+<% end %>

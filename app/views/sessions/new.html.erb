@@ -1,26 +1,31 @@
-<section id="login-page" class="row">
-  <div class="hidden-sm hidden-md hidden-lg col-xs-1"></div>
-  
-  <div class="col-sm-6 col-xs-10 login">
+<section id="login-page" class="row clearfix">  
+  <div class="col-sm-6 col-xs-12 login">
     <div class="visible-xs">
       <h1 class="text-center">CampZone</h1>
     </div>
-    <div class="login-form">
-      <h2>Login</h2>
-
-      <%= form_tag '/login' do %>
-        Email: <%= text_field_tag :email, "", :class => "form-control", :autofocus => true %>
-        Password: <%= password_field_tag :password, "", :class => 'form-control' %>
-        <br>
-        <div class="col-xs-offset-4 col-xs-4">
-          <%= submit_tag "Submit", :class => "btn btn-block btn-primary" %>
-        </div>
-      <% end %>
+    <div class="cl-b-xs">
+      <div class="col-xs-1 visible-xs"></div>
+      <div class="col-xs-10 login-form">
+        <h2>Login</h2>
+        <%= form_tag '/login' do %>
+          <div class="form-group">
+            Email: <%= text_field_tag :email, "", :class => "form-control", :autofocus => true %>
+          </div>
+          <div class="form-group">
+            Password: <%= password_field_tag :password, "", :class => 'form-control' %>
+          </div>
+          <br>
+          <div class="col-xs-3"></div>
+          <div class="col-xs-6">
+            <%= submit_tag "Submit", :class => "btn btn-wide btn-submit" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
   <div class="col-sm-6 hidden-xs right-login">
     <div class="title-login">
-      <h1 class="text-center">CampZone</h1>
+      <h1 class="al-c">CampZone</h1>
       <div class="col-xs-offset-2 col-xs-8">
         <%= image_tag("tent-icon", class: "logo-login") %>
       </div>
