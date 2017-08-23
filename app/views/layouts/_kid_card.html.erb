@@ -5,7 +5,7 @@
     </div>
     <div class="card-info">
       <div class="card-details">
-        <%= link_to director_kid_path(id: person.id) do %>
+        <%= link_to "/#{role}/kids/#{person.id}" do %>
           <p><%= person.first_name %> <%= person.last_name %></p>
         <% end %>
         <p><%= person.birthdate %></p>
