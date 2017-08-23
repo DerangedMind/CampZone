@@ -1,24 +1,9 @@
-<h1> All Groups </h1>
-
 <div class="col-sm-offset-1 col-sm-10">
+  <h1>All Groups</h1>
   <%= link_to new_director_group_path, class:"btn fl-r" do %>
     Add Group
   <% end %>
-  <h3> Total Groups <%= @groups.count %></h3>
-  <br />
-  <div class="item-list">
-    <% @groups.each do |group| %>
-      <div class="row user-card">
-        <div class="col-sm-2 col-xs-3">
-          <img src="<%= Faker::Avatar.image("counselor-avatar#{rand(7)*4}", "50x50", "png", "set3") %>">
-        </div>
-        <div class="col-sm-6 col-xs-6 name">
-          <%= link_to group.name, director_group_path(:id => group.id) %>
-        </div>
-        <div class="col-sm-2 col-xs-3 alias">
-          <%= group.min_age %> - <%= group.max_age %>
-        </div>
-      </div>
-    <% end %>
-  </div>
+  <h3> Total Groups: <%= @groups.count %></h3>
 </div>
+
+<%= render 'layouts/card_list', card_size: "6", people: @groups, type: "group", role: "d" %>
