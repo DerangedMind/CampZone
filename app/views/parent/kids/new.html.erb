@@ -64,6 +64,11 @@
           </label>
           <%= select_tag('epi_pen', "<option value=true>Yes</option><option value=false>No</option>".html_safe)%>
         </div>
+
+        <label> Which Camp would you like to register your child to? </label>
+        <div class="form_group">
+          <%= select_tag('camp', options_from_collection_for_select(@camps, "id", "name")) %>
+        </div>
         <%= submit_tag("Submit")%>
       <% end %>
     </div>
