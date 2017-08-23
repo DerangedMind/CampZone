@@ -6,4 +6,6 @@
   <h3> Total Groups: <%= @groups.count %></h3>
 </div>
 
+<% if @groups.count != 0 %>
 <%= render 'layouts/card_list', card_size: "6", objects: [@groups], type: "group", role: "d" %>
+<% end %>
