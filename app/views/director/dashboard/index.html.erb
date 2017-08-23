@@ -2,20 +2,6 @@
   <div class="col-xs-offset-1">
     <h1>Start your CampZone Experience!</h1>
 
-  <% if @groups.count == 0 && @counselors.count == 0 && @kids.count == 0 %>
-
-    <%= link_to new_director_group_path, class:"btn fl-l" do %>
-      Add Group
-    <% end %>
-    <%= link_to new_director_counselor_path, class:"btn fl-l" do %>
-      Add Counselor
-    <% end %>
-    <%= link_to new_director_kid_path, class:"btn fl-l" do %>
-      Add Kid
-    <% end %>
-
-  <% else %>
-
     <%= link_to new_director_group_path, class:"btn fl-l" do %>
       Add Group
     <% end %>
@@ -28,9 +14,8 @@
 
   </div>
 </div>
-
+<% unless @groups.count == 0 && @counselors.count == 0 && @kids.count == 0 %>
   <%= render :file => 'director/groups/index' %>
   <%= render :file => 'director/counselors/index' %>
   <%= render :file => 'director/kids/index' %>
-
 <% end %>
