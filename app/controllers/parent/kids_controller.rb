@@ -8,13 +8,14 @@ class Parent::KidsController < Parent::PortalController
 
   def new
     @kid = Kid.new
+    @camps = Camp.all
   end
 
   def create
     @kid = Kid.new(kid_params)
     @medical_info = MedicalInfo.new(kid_medical_params)
     age = calculate_age(@kid)
-    @group = Group.where("min_age <= ? AND max_age >= ?", age, age)
+    @group = Group.where("min_age <= ? AND max_age >= ? AND camp_id = ?", age, age, params[:camp])
 
     if @kid.save
       puts "KID SAVED"
