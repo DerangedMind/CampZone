@@ -1,7 +1,10 @@
 class Counselor::GroupsController < ApplicationController
 
   def index
-    @groups = Group.all.order(start_date: :desc)
+    counselor = Counselor.find_by_user_id(current_user.id)
+    counselor_groups = counselor.groups
+    camp = Camp.find(counselor_groups[0].camp_id)
+    @groups = camp.groups
   end
 
   def show
