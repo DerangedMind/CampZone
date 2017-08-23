@@ -1,3 +1,4 @@
+<div class="col-sm-offset-1 col-sm-10">
 <h1> <%= @counselor.user.first_name %> <%= @counselor.user.last_name %> </h1>
 
 <h3> Alias: </h3> <%=@counselor.alias %>
@@ -11,3 +12,4 @@
 <%= link_to "Edit Counselor", edit_director_counselor_path(:id => @counselor.id) %>
 <br />
 <%= link_to "View all Counselors", director_counselors_path %>
+</div>

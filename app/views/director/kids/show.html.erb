@@ -1,3 +1,4 @@
+<div class="col-sm-offset-1 col-sm-10">
 <h1>
   <%= @kid.first_name %>
   <%= @kid.last_name %>
@@ -82,3 +83,4 @@ Epi Pen:
 <%= link_to "Edit Child Information", edit_director_kid_path(:id => @kid.id) %>
 <br/>
 <%= link_to "Remove Child from Database", "/d/kids/#{@kid.id}", method: "DELETE" %>
+</div>
