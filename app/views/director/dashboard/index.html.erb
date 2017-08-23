@@ -16,6 +16,6 @@
   </div>
 </div>
 
-  <%= render 'layouts/card_list', card_size: "6", objects: @groups, type: "group", role: "d" %>
-  <%= render 'layouts/card_list', card_size: "6", objects: @counselors, type: "counselor", role: "d" %>
-  <%= render 'layouts/card_list', card_size: "6", objects: @kids, type: "kid", role: "d"%>
+  <%= render :file => 'director/groups/index' %>
+  <%= render :file => 'director/counselors/index' %>
+  <%= render :file => 'director/kids/index' %>
