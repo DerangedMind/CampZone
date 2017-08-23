@@ -14,6 +14,13 @@
 <%= form.label :social_insurance_number %>
 <%= form.text_field :sin %>
 
+Medicare <%= text_field_tag("medicare", @medical_info.medicare) %>
+Allergies <%= text_area_tag("allergies", @medical_info.allergies) %>
+Conditions <%= text_area_tag("conditions", @medical_info.conditions) %>
+Medications <%= text_area_tag("medications", @medical_info.medications) %>
+Dietary Restrictions<%= text_area_tag("dietary_restrictions", @medical_info.dietary_restrictions) %>
+Epi-Pen <%= select_tag('epi_pen', "<option value=true>Yes</option><option value=false>No</option>".html_safe)%>
+
 <%= form.submit "Submit" %>
 
 <% end %>
