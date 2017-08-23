@@ -5,9 +5,10 @@ class Counselor::GroupsController < ApplicationController
   end
 
   def show
-    @current_group = Group.find(params[:id])
-    @counselors = @current_group.counselors
-    @kids = @current_group.kids
+    @group = Group.find(params[:id])
+    @counselors = @group.counselors
+    @kids = @group.kids
+    @camp = @group.camp
   end
 
 end
