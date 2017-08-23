@@ -73,7 +73,7 @@ end
   end
 
   def parent_params
-    params.require(:parent).permit(
+    params.permit(
       :phone_number
     )
   end
