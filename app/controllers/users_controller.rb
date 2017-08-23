@@ -62,12 +62,13 @@ class UsersController < ApplicationController
         redirect_to login_path
       else
         puts "DIRECTOR NOT SAVED"
+        @user.destroy
         flash[:alert] = @director.errors.full_messages
         redirect_to signup_director_path
       end
     else
       puts "USER NOT SAVED"
-      flash[:alert] = @director.errors.full_messages
+      flash[:alert] = @user.errors.full_messages
       redirect_to signup_director_path
     end
   end
