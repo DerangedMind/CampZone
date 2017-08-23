@@ -15,7 +15,7 @@
     <% end %>
     <h3>Find a camp taking advantage of CampZone in your area!</h3>
   </article>
-  <%= render "/layouts/card_list", type: "camp", people: @camps, card_size: "6" %>
+  <%= render "/layouts/card_list", type: "camp", people: @camps, card_size: "6" role: 'p'%>
   <article class="flex-3 splash-text al-c">
     <%= link_to signup_parent_path, class: "parent-cta director-jump" do %>
       <h4>Camp Directors click here to start using CampZone for yourself!</h4>
