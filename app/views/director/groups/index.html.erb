@@ -6,4 +6,4 @@
   <h3> Total Groups: <%= @groups.count %></h3>
 </div>
 
-<%= render 'layouts/card_list', card_size: "6", people: @groups, type: "group", role: "d" %>
+<%= render 'layouts/card_list', card_size: "6", objects: [@groups], type: "group", role: "d" %>

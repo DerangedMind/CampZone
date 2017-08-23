@@ -5,10 +5,12 @@ class Director::DashboardController < Director::PortalController
     @camp = @director.camp
     @groups = @camp.groups
     @counselors = []
+    @kids = []
+
     @groups.each do |group|
       @counselors += group.counselors
+      @kids += group.kids
     end
-    @kids = Kid.where("id IN (select kid_id from groups_kids where group_id IN (select id from groups where camp_id = ?))", @camp.id)
+
   end
-  
 end
