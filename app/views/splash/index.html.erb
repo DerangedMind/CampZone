@@ -4,11 +4,11 @@
       CampZone
     </div>
     <ul class="nav-list">
-      <li><a href="/signup">Signup</a></li>
+      <li><%= link_to "Signup", signup_director_path %></li>
       <li><a href="/login">Login</a></li>
     </ul>
   </nav>
-  <article class="al-c">
+  <article class="flex-11 splash-text al-c">
     <h1>Organize Your Summer Camp</h1>
 
     <h3 class="al-c">Spend more time leading and less time managing</h3>
@@ -24,7 +24,9 @@
       </div>
     </div>
 
-    <%= link_to camps_path class="parent-cta"><h4>Parents click here to find a local camp!</h4></div>
+    <%= link_to camps_path, class: "parent-cta" do %>
+      <h4>Parents click here to find a local camp!</h4>
+    <% end %>
     
     <p class="existing">Already have an account? <%= link_to "Click here to login!", login_path %></p>
     

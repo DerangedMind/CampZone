@@ -4,5 +4,6 @@ class SplashController < ApplicationController
   end
 
   def show
+    @camps = Camp.find_each
   end
 end
