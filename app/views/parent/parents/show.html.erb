@@ -1,29 +1,12 @@
-<%= @parent.user.first_name %> <%= @parent.user.last_name %>
+<%= render 'layouts/card_list', card_size: "10", objects: [[@parent]], type: "parent", role: "p" %>
 
-<br />
-
-<%= @parent.address.street_address %> - <%= @parent.address.apt_number %>
-<br />
-<%= @parent.address.postal_code %>
-<br />
-<%= @parent.address.city %>, <%= @parent.address.province %>, <%= @parent.address.country %>
-<br />
-<%= @parent.phone_number %>
-
-<div class="item-list">
-<% @kids.each_with_index do |kid, index| %>
-  <% if index.even? %><div class="row" id="kids-row"><% end %>
-    <div class="col-sm-6 col-xs-6">
-      <div class="user-card-sm">
-        <img src="<%= Faker::Avatar.image("counselor-avatar", "50x50", "png", "set4") %>">
-        <br>
-        <%= link_to ("#{kid.first_name} #{kid.last_name}"), parent_kid_path(:id => kid.id) %>
-      </div>
-    </div>
-  <% if (index.odd?) %></div><% end %>
-<% end %>
+<div class="row">
+  <h3 class="col-md-offset-1">Kids: </h3>
 </div>
 
-<%= link_to new_parent_kid_path, class:"btn btn-success" do %>
+<%= render 'layouts/card_list', card_size: '6', objects: [@kids], type: "kid", role: "p" %>
+
+<div class="row">
+<%= link_to new_parent_kid_path, class:"btn btn-success col-md-offset-1" do %>
   <i class="glyphicon glyphicon-plus"></i> Add Kid
 <% end %>
