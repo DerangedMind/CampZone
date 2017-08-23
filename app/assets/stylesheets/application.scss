@@ -15,6 +15,8 @@
  *= require_self
  */
 
+ @import "font-awesome";
+
 $screen-xs-max: 767px;
 $screen-sm-max: 991px;
 $screen-md-max: 1199px;
@@ -68,7 +70,9 @@ body {
   }
 }
 
-.clearfix {
+.clearfix,
+.container,
+.row {
   &:before,
   &:after {
     content: " ";
@@ -85,14 +89,10 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  &:before,
-  &:after {
-    content: " ";
-    display: table;
-  }
-  &:after {
-    clear: both;
-  }
+}
+
+.row {
+  clear: both;
 }
 
 .vp-10 {

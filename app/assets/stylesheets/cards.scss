@@ -12,9 +12,8 @@
     clear: both;
   }
   .card {
-    display: flex;
-    flex: 1;
     background-color: #e3e3e3;
+    text-align: left;
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -56,6 +55,9 @@
       width: 100%;
       margin-left: 0;
       margin-right: 0;
+      .card {
+        width: 100%;
+      }
     }
   }
 }
