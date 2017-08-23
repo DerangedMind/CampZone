@@ -1,2 +1,3 @@
-
+<% if @counselors.count != 0 %>
 <%= render 'layouts/card_list', objects: [@counselors], type: "counselor", role: "d" %>
+<% end %>
