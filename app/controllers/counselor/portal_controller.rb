@@ -1,5 +1,5 @@
 class Counselor::PortalController < ApplicationController
-  before_filter :authorize_counselor
+  before_action :authorize_counselor
 
   def authorize_current_counselor
     if params[:id] = Counselor.find_by(user_id: current_user.id).id
