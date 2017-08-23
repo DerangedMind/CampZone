@@ -2,16 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.margin-fix {
-  margin-top: -70px;
-}
-
-@media (max-width: 767px) {
-  .margin-fix {
-    margin-top: -110px;
-  }
-}
-
 .top-box {
   overflow: hidden;
   display: flex;

@@ -1,3 +1,3 @@
 class Parent::PortalController < ApplicationController
-  before_filter :authorize_parent
+  before_action :authorize_parent
 end
