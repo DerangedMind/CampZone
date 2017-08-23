@@ -1,3 +1,4 @@
+<% counselor = object %>
 <div class="card">
   <div class="card-contents">
     <div class="card-avatar">
@@ -5,15 +6,15 @@
     </div>
     <div class="card-info">
       <div class="card-details">
-        <p><%= person.user.first_name %> <%= person.user.last_name %></p>
+        <p><%= counselor.user.first_name %> <%= counselor.user.last_name %></p>
         <% if role == "d" %>
-        <p><%= link_to person.alias, "/#{role}/counselors/#{person.id}"%></p>
+        <p><%= link_to counselor.alias, "/#{role}/counselors/#{counselor.id}"%></p>
         <% else %>
-        <p> <%= person.alias %> </p>
+        <p> <%= counselor.alias %> </p>
         <% end %>
       </div>
       <div class="card-details">
-        <p><%= person.user.email %></p>
+        <p><%= counselor.user.email %></p>
       </div>
     </div>
   </div>
