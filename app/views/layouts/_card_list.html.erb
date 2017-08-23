@@ -1,7 +1,7 @@
 <section class="col-sm-offset-1 col-sm-10 card-list">
-  <% people.each do |person| %>
-    <article class="col-md-<%= card_size %>">
-      <%= render "layouts/#{type}_card", person: person, role: role %>
+  <% objects[0].each_with_index do |object, i| %>
+    <article class="col-md-6">
+      <%= render "layouts/#{type}_card", objects: objects, object: object, i: i, role: role %>
     </article>
   <% end %>
 </section>

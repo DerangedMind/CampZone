@@ -8,9 +8,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500" rel="stylesheet">
-
   </head>
-
   <body>
     <%= render "/layouts/top_nav" unless (
           current_page?(login_path) ||
@@ -31,7 +29,6 @@
         <%= flash[:alert] %>
       </div>
     <% end %>
-
 
     <div class="container">
       <%= yield %>
