@@ -1,7 +1,14 @@
 class Director::CounselorsController < Director::PortalController
 
   def index
-    @counselors = Counselor.all
+    director = Director.find_by_user_id(current_user.id)
+    camp = director.camp
+    groups = camp.groups
+    @counselors = []
+
+    groups.each do |group|
+      @counselors += group.counselors
+    end
   end
 
   def show

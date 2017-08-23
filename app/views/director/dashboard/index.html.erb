@@ -16,6 +16,6 @@
   </div>
 </div>
 
-<div class="row">
-  <%= render 'layouts/card_list', objects: [@kids], type: "kid", role: "d" %>
-</div>
+  <%= render 'layouts/card_list', card_size: "6", objects: @groups, type: "group", role: "d" %>
+  <%= render 'layouts/card_list', card_size: "6", objects: @counselors, type: "counselor", role: "d" %>
+  <%= render 'layouts/card_list', card_size: "6", objects: @kids, type: "kid", role: "d"%>
