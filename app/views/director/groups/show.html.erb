@@ -1,53 +1,17 @@
 <h1> <%= @group.name %> at Camp <%= @camp.name %></h1>
 <h3> Age Range: </h3> <%= @group.min_age %> - <%= @group.max_age %>
 
-<h3> Counselors: </h3>
+<h3> Counselors: <%= @counselors.count %> </h3>
+<%= render 'layouts/card_list', card_size: "6", people: @counselors, type: "counselor", role: "d" %>
 
-<div class="item-list">
-  <% @counselors.each do |counselor| %>
-    <div class="row user-card">
-      <div class="col-sm-2 col-xs-3">
-        <img src="<%= Faker::Avatar.image("counselor-avatar", "50x50", "png", "set2") %>">
-      </div>
-      <div class="col-sm-6 col-xs-6 name">
-        <%= link_to ("#{counselor.user.first_name} #{counselor.user.last_name}"), director_counselor_path(:id => counselor.id) %>
-      </div>
-      <div class="col-sm-2 col-xs-3 alias">
-        <%= counselor.alias %>
-      </div>
-    </div>
-  <% end %>
-</div>
+<h3 class="col-md-6"> Kids: <%=@kids.count %> </h3>
 
-<div class="row text-center">
-  <div class="col-md-offset-1 col-md-10">
-    <h3>Kids: <%= @kids.count %></h3>
-    <div class="row">
-      <div class="col-xs-6 col-sm-offset-2 col-sm-4 col-md-offset-2 col-md-4">
-        <%= link_to "View All Kids", director_kids_path, class:"btn btn-primary btn-block" %>
-      </div>
-      <div class="col-xs-6 col-sm-4 col-md-4">
-        <%= link_to "+ add kid", new_director_kid_path, class:"btn btn-success btn-block" %>
-      </div>
-    </div>
-    <br />
-    <div class="item-list">
-    <% @kids.each_with_index do |kid, index| %>
-        <div class="col-lg-3 col-sm-4 col-xs-6 kid-card">
-          <div class="user-card-sm">
-            <img src="<%= Faker::Avatar.image("kid-avatar#{rand(7)*4}", "50x50", "png", "set4") %>">
-            <p></p>
-            <%= link_to ("#{kid.first_name} #{kid.last_name}"), director_kid_path(:id => kid.id) %>
-          </div>
-        </div>
-    <% end %>
-    </div>
-  </div>
-</div>
+<%= render 'layouts/card_list', card_size: "6", people: @kids, type: "kid", role: "d" %>
 
-<div>
-  <%=link_to "Edit Group",  edit_director_group_path(:id => params[:id]) %>
+
+<div class="col-md-12">
+  <%=link_to "Edit Group",  edit_director_group_path(:id => params[:id])%>
 </div>
-<div>
-  <%= link_to "Delete Group", director_group_path, method: "delete" %>
+<div class="col-md-12">
+  <%= link_to "Delete Group", director_group_path, method: "delete"%>
 </div>
