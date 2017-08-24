@@ -1,7 +1,13 @@
 <nav class="navbar">
   <div class="nav-list">
     <div class="navbar-header fl-l">
+    <% if director? %>
       <%= link_to :CampZone, director_dashboard_index_path, class:"navbar-brand" %>
+    <% elsif counselor? %>
+      <%= link_to :CampZone, counselor_groups_path, class:"navbar-brand" %>
+    <% elsif parent?%>
+      <%= link_to :CampZone, parent_profile_path, class:"navbar-brand" %>
+    <% end %>
     </div>
     <% if current_user %>
       <div class="navbar-header fl-r">
