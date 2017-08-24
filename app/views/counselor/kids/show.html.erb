@@ -43,8 +43,4 @@
   </div>
 </div>
 
-<% @parents.each do |parent| %>
-
-<%= render "/layouts/card_list", objects: [[parent]], type: "parent", role: 'c' %>
-
-<% end %>
+<%= render "/layouts/card_list", objects: [@parents], type: "parent", role: 'c' %>
