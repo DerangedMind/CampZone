@@ -17,19 +17,19 @@
     <% end %>
     <div class="nav-links clearfix">
       <ul class="al-r al-c-xs cl-b-xs">
-        <% if current_user.role == "director" %>
+        <% if director? %>
           <li><%= link_to :Dashboard, director_dashboard_index_path %></li>
           <li><%= link_to :Counselors, director_counselors_path %></li>
           <li><%= link_to :Groups, director_groups_path %></li>
           <li><%= link_to :Kids, director_kids_path %></li>
         <% end %>
-        <% if current_user.role == "counselor" %>
+        <% if counselor? %>
           <li><%= link_to :Groups, counselor_groups_path %></li>
           <li><%= link_to :Kids, counselor_kids_path %></li>
           <li><%= link_to :Profile, counselor_profile_path %></li>
           <li><%= link_to :Settings, counselor_settings_path %></li>
         <% end %>
-        <% if current_user.role == "parent" %>
+        <% if parent? %>
           <li><%= link_to :Profile, parent_profile_path %></li>
           <li><%= link_to :Settings, parent_settings_path %></li>
         <% end %>
