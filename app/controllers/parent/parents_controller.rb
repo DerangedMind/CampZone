@@ -2,7 +2,6 @@ class Parent::ParentsController < Parent::PortalController
 
   def show
     @parent = Parent.find_by(user_id: current_user.id)
-    puts current_user.inspect
     @kids = @parent.kids
   end
 
@@ -74,7 +73,7 @@ end
   end
 
   def parent_params
-    params.require(:parent).permit(
+    params.permit(
       :phone_number
     )
   end

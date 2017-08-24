@@ -21,6 +21,10 @@ class UsersController < ApplicationController
     if user
       user.email_activate
       session[:user_id] = user.id
+      if user.role == "counselor"
+        counselor = Counselor.find_by_user_id(user.id)
+        counselor.update(:account_status => "active")
+      end
       display_flash(user)
       redirect_to_role_portal(user)
     end
@@ -62,12 +66,13 @@ class UsersController < ApplicationController
         redirect_to login_path
       else
         puts "DIRECTOR NOT SAVED"
+        @user.destroy
         flash[:alert] = @director.errors.full_messages
         redirect_to signup_director_path
       end
     else
       puts "USER NOT SAVED"
-      flash[:alert] = @director.errors.full_messages
+      flash[:alert] = @user.errors.full_messages
       redirect_to signup_director_path
     end
   end

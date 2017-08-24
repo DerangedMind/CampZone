@@ -1,7 +1,9 @@
 class Director::GroupsController < Director::PortalController
 
   def index
-    @groups = Group.all.order(start_date: :desc)
+    director = Director.find_by_user_id(current_user.id)
+    camp = director.camp
+    @groups = camp.groups
   end
 
   def show

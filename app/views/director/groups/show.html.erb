@@ -1,17 +1,20 @@
-<h1> <%= @group.name %> at Camp <%= @camp.name %></h1>
-<h3> Age Range: </h3> <%= @group.min_age %> - <%= @group.max_age %>
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10">
 
-<h3> Counselors: <%= @counselors.count %> </h3>
-<%= render 'layouts/card_list', card_size: "6", people: @counselors, type: "counselor", role: "d" %>
+    <h1> <%= @group.name %> at Camp <%= @camp.name %></h1>
+    <h3> Age Range: </h3> <%= @group.min_age %> - <%= @group.max_age %>
+    <div class="row">
+      <h3> Counselors: <%= @counselors.count %> </h3>
+      <%= render 'layouts/card_list', objects: [@counselors], type: "counselor", role: "d" %>
+    </div>
+    <div class="row">
+      <h3 class="col-md-6"> Kids: <%=@kids.count %> </h3>
+      <%= render 'layouts/card_list', objects: [@kids], type: "kid", role: "d" %>
+    </div>
 
-<h3 class="col-md-6"> Kids: <%=@kids.count %> </h3>
-
-<%= render 'layouts/card_list', card_size: "6", people: @kids, type: "kid", role: "d" %>
-
-
-<div class="col-md-12">
-  <%=link_to "Edit Group",  edit_director_group_path(:id => params[:id])%>
-</div>
-<div class="col-md-12">
-  <%= link_to "Delete Group", director_group_path, method: "delete"%>
+    <div class="row al-c">
+      <%=link_to "Edit Group",  edit_director_group_path(:id => params[:id]), class: 'btn' %>
+      <%= link_to "Delete Group", director_group_path, method: "delete", class: 'btn' %>
+    </div>
+  </div>
 </div>

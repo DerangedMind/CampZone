@@ -8,32 +8,57 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500" rel="stylesheet">
-
   </head>
-
   <body>
     <%= render "/layouts/top_nav" unless (
-          current_page?(login_path) ||
-          current_page?(signup_director_path) ||
-          current_page?(signup_parent_path) ||
-          current_page?(root_path) ||
-          current_page?(camps_path)
-        )
+      current_page?(login_path) ||
+      current_page?(signup_director_path) ||
+      current_page?(signup_parent_path) ||
+      current_page?(root_path) ||
+      current_page?(camps_path)
+    )
     %>
-    <% if flash[:notice] %>
-      <div class="alert-success">
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
 
-    <% if flash[:alert] %>
-      <div class="alert-error">
-        <%= flash[:alert] %>
-      </div>
-    <% end %>
+    <% if (
+      current_page?(login_path) ||
+      current_page?(signup_director_path) ||
+      current_page?(signup_parent_path) ||
+      current_page?(root_path) ||
+      current_page?(camps_path)
+    ) %>
+      <% if flash[:notice] %>
+        <div class="alert alert-success alert-no-margin">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
 
+      <% if flash[:alert] %>
+        <div class="alert alert-error alert-no-margin">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+    <% end %>
 
     <div class="container">
+      <% unless (
+        current_page?(login_path) ||
+        current_page?(signup_director_path) ||
+        current_page?(signup_parent_path) ||
+        current_page?(root_path) ||
+        current_page?(camps_path)
+      ) %>
+        <% if flash[:notice] %>
+          <div class="alert alert-success">
+            <%= flash[:notice] %>
+          </div>
+        <% end %>
+
+        <% if flash[:alert] %>
+          <div class="alert alert-error">
+            <%= flash[:alert] %>
+          </div>
+        <% end %>
+      <% end %>
       <%= yield %>
     </div>
   </body>

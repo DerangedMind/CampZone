@@ -1,3 +1,3 @@
 class Director::PortalController < ApplicationController
-  before_filter :authorize_director
+  before_action :authorize_director
 end

@@ -1,7 +1,14 @@
 class Director::CounselorsController < Director::PortalController
 
   def index
-    @counselors = Counselor.all
+    director = Director.find_by_user_id(current_user.id)
+    camp = director.camp
+    groups = camp.groups
+    @counselors = []
+
+    groups.each do |group|
+      @counselors += group.counselors
+    end
   end
 
   def show
@@ -12,6 +19,9 @@ class Director::CounselorsController < Director::PortalController
 
   def new
     @user = User.new
+    director = Director.find_by_user_id(current_user.id)
+    camp = Camp.find_by_director_id(director.id)
+    @groups = camp.groups
   end
 
   def create
@@ -60,9 +70,14 @@ class Director::CounselorsController < Director::PortalController
 
   def update
     @counselor = Counselor.find(params[:id])
-    @counselor.update(update_counselor_params)
-    puts "COUNSELOR UPDATED"
-    redirect_to director_counselor_path(:id => @counselor.id)
+    if @counselor.update(update_counselor_params)
+      puts "COUNSELOR UPDATED"
+      flash[:notice] = "Counselor Information Updated!"
+      redirect_to director_counselor_path(:id => @counselor.id)
+    else
+      flash[:alert] = @counselor.errors.full_messages
+      redirect_to edit_director_counselor_path(:id => @counselor.id)
+    end
   end
 
   private

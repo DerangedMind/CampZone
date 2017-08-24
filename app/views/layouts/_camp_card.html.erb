@@ -1,21 +1,30 @@
-<% address = Address.find_by_id(person.address_id) %>
-<% user = User.find_by_id(person.director.user_id) %>
+<% 
+  camp = objects[0][i]
+  address = objects[1].select { |a| a.id == camp.address_id }
+  user = objects[2].select { |u| u.id.to_s == camp.director.user_id }
+%>
 <div class="card">
-  <%= link_to signup_parent_path do %>
   <div class="card-contents">
-    <div class="card-avatar">
-      <img class="" src="<%= Faker::LoremPixel.image('70x70', false, 'people') %>">
-    </div>
+    <img class="card-avatar" src="<%= Faker::LoremPixel.image('100x100', false, 'people') %>">
     <div class="card-info">
+      <div class="card-title">
+        <p><b><%= camp.name %></b></p>
+      </div>
       <div class="card-details">
-        <p><i>Camp:</i> <b><%= person.name %></b></p>
-        <p><i>Director:</i> <b><%= user.first_name %> <%= user.last_name %></b></p>
-        <p><%= address.city %>, <%= address.province %>, <%= address.country %></p>
+        <div class="attr-keys">
+          <p><i>Director:</i></p>
+          <p><i>Address:</i></p>
+        </div>
+        <div class="attr-values al-r">
+          <p><b><%= user[0].first_name %> <%= user[0].last_name %></b></p>
+          <p><%= address[0].city %>, <%= address[0].province %>, <%= address[0].country %></p>
+        </div>
+         
+        
       </div>
       <div class="card-details">
         <p ></p>
       </div>
     </div>
   </div>
-  <% end %>
 </div>

@@ -1,19 +1,29 @@
 <h1> Edit <%= @group.name %> </h1>
 
 <%= form_for @group, url: director_group_path(:id => @group.id), method: 'put' do |form| %>
+  <div class="row">
+    <div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8">
+      <div class="form-group">
+        <%= form.label :name %>
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
 
-  <%= form.label :name %>
-  <%= form.text_field :name %>
+      <div class="form-group">
+        <%= form.label :min_age%>
+        <%= form.number_field :min_age, class: "form-control" %>
+      </div>
+      
+      <div class="form-group">
+        <%= form.label :max_age %>
+        <%= form.number_field :max_age, class: "form-control" %>
+      </div>
 
-  <%= form.label :min_age%>
-  <%= form.number_field :min_age %>
+      <div class="form-group"> 
+        <%= form.label :start_date %>
+        <%= form.date_field :start_date, class: "form-control" %>
+      </div>
 
-  <%= form.label :max_age %>
-  <%= form.number_field :max_age %>
-
-  <%= form.label :start_date %>
-  <%= form.date_field :start_date %>
-
-  <%= form.submit "Submit" %>
-
+      <%= form.submit "Submit", class: "btn" %>
+    </div>
+  </div>
 <% end %>

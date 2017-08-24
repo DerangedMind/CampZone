@@ -4,17 +4,21 @@ class Parent::KidsController < Parent::PortalController
     @kid = Kid.find_by_id(params[:id])
     @medical_info = MedicalInfo.find_by(kid_id: @kid.id)
     @group = @kid.groups[0]
+    @camp = Camp.find(@group.camp_id)
+    @camp_address = Address.find(@camp.address_id)
+    @camp_director = User.find(Director.find(@camp.director_id).id)
   end
 
   def new
     @kid = Kid.new
+    @camps = Camp.all
   end
 
   def create
     @kid = Kid.new(kid_params)
     @medical_info = MedicalInfo.new(kid_medical_params)
     age = calculate_age(@kid)
-    @group = Group.where("min_age <= ? AND max_age >= ?", age, age)
+    @group = Group.where("min_age <= ? AND max_age >= ? AND camp_id = ?", age, age, params[:camp])
 
     if @kid.save
       puts "KID SAVED"

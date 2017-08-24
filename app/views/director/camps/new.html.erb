@@ -3,17 +3,6 @@
 <section class="row">
   <div class="col-md-2 col-xs-1"></div>
   <div class="col-md-8 col-xs-10 clearfix">
-    <article>
-      <% if flash[:error] %>
-        <div class="alert alert-danger">
-          <ul>
-            <% flash[:error].each do |error| %>
-              <li><%= error %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-    </article>
       <%= form_for @address, url: director_camps_path, method: "post" do |form| %>
 
         <div class="form-group">

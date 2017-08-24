@@ -1,19 +1,28 @@
 <h1> Create a Camp Director! </h1>
 
 <%= form_for @user, url: director_directors_path, method: "post" do |form| %>
+  <div class="row">
+    <div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8">
+  <div class="form-group">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, class: "form-control" %>
+  </div>
 
-  <%= form.label :first_name %>
-  <%= form.text_field :first_name %>
-
-  <%= form.label :last_name %>
-  <%= form.text_field :last_name %>
-
-  <%= form.label :email %>
-  <%= form.email_field :email %>
-
-  <%= form.label :password %>
-  <%= form.password_field :password %>
-
-  <%= form.submit :Submit %>
+  <div class="form-group">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, class: "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= form.label :email %>
+    <%= form.email_field :email, class: "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= form.label :password %>
+    <%= form.password_field :password, class: "form-control" %>
+  </div>
+  
+  <%= form.submit :Submit, class: "btn" %>
 
 <% end %>

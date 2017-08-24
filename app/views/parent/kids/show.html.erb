@@ -1,27 +1,46 @@
-<h1> <%= @kid.first_name %> <%= @kid.last_name %> </h1>
+<div class="row">
+  <div class="col-md-offset-1">
+    <h1>
+      <%= @kid.first_name %>
+      <%= @kid.last_name %>
+    </h1>
+  </div>
+</div>
 
-<h2> General Information </h2>
+<div class="row">
+  <div class="col-md-offset-1">
+    <h3>
+      Birthdate:
+    </h3>
+    <%= @kid.birthdate %>
+  </div>
+</div>
 
-<h3> Birthdate: </h3> <%= @kid.birthdate %>
+<div class="row">
+  <div class="col-md-offset-1">
+    <h3 class>
+      Group:
+    </h3>
+  </div>
+</div>
+<%= render "/layouts/card_list_medium", objects: [[@group]], type: "group", role: "p" %>
 
-<h3> Social Insurance Number: </h3> <%= @kid.sin %>
+<div class="row">
+  <div class="col-md-offset-1">
+    <h3>
+      Medical Information:
+    </h3>
+  </div>
+</div>
 
-<h3> Group: </h3> <%= @group.name %>
+<%= render "/layouts/card_list_medium", objects: [[@medical_info]], type: "medical", role: "p" %>
 
-<h2> Medical Information </h2>
+<div class="row">
+  <div class="col-md-offset-1">
+    <h3>
+      Camp
+    </h3>
+  </div>
+</div>
 
-<h3> Medicare: </h3> <%= @medical_info.medicare %>
-
-<h3> Allergies: </h3> <%= @medical_info.allergies %>
-
-<h3> Conditions: </h3> <%= @medical_info.conditions %>
-
-<h3> Medications: </h3> <%= @medical_info.medications %>
-
-<h3> Dietary Restrictions: </h3> <%= @medical_info.dietary_restrictions %>
-
-<h3> Epi Pen: </h3> <%= @medical_info.epi_pen %>
-
-<br />
-
-<%=link_to "Edit Information", edit_parent_kid_path(:id => params[:id]) %>
+<%= render "/layouts/card_list_medium", objects:[[@camp], [@camp_address], [@camp_director]], type: "camp", role: "p" %>
