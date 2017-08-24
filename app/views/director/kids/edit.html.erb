@@ -1,26 +1,52 @@
 <h1> Edit <%= @kid.first_name %> <%= @kid.last_name %> 's Information </h1>
 
 <%= form_for @kid, url: director_kid_path, method: 'put' do |form| %>
+  <div class="row">
+  <div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8">
+  <div class="form-group">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, class: "form-control" %>
+  </div>
 
-<%= form.label :first_name %>
-<%= form.text_field :first_name %>
+  <div class="form-group">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, class: "form-control" %>
+  </div>
 
-<%= form.label :last_name %>
-<%= form.text_field :last_name %>
+  <div class="form-group">
+    <%= form.label :birthdate %>
+    <%= form.date_field :birthdate, class: "form-control" %>
+  </div>
 
-<%= form.label :birthdate %>
-<%= form.date_field :birthdate %>
+  <div class="form-group">
+    <%= form.label :social_insurance_number %>
+    <%= form.text_field :sin, class: "form-control" %>
+  </div>
 
-<%= form.label :social_insurance_number %>
-<%= form.text_field :sin %>
+  <div class="form-group">
+    Medicare <%= text_field_tag :medicare, @medical_info.medicare, class: "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    Allergies <%= text_area_tag :allergies, @medical_info.allergies, class: "form-control" %>
+  </div>
 
-Medicare <%= text_field_tag("medicare", @medical_info.medicare) %>
-Allergies <%= text_area_tag("allergies", @medical_info.allergies) %>
-Conditions <%= text_area_tag("conditions", @medical_info.conditions) %>
-Medications <%= text_area_tag("medications", @medical_info.medications) %>
-Dietary Restrictions<%= text_area_tag("dietary_restrictions", @medical_info.dietary_restrictions) %>
-Epi-Pen <%= select_tag('epi_pen', "<option value=true>Yes</option><option value=false>No</option>".html_safe)%>
+  <div class="form-group">
+    Conditions <%= text_area_tag :conditions, @medical_info.conditions, class: "form-control" %>
+  </div>
 
-<%= form.submit "Submit" %>
+  <div class="form-group">
+    Medications <%= text_area_tag :medications, @medical_info.medications, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    Dietary Restrictions<%= text_area_tag :dietary_restrictions, @medical_info.dietary_restrictions, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    Epi-Pen <%= select_tag :epi_pen, "<option value=true>Yes</option><option value=false>No</option>".html_safe, class: "form-control" %>
+  </div>
+
+<%= form.submit "Submit", class: "btn" %>
 
 <% end %>
