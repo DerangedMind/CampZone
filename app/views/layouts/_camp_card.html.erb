@@ -5,14 +5,22 @@
 %>
 <div class="card">
   <div class="card-contents">
-    <div class="card-avatar">
-      <img class="" src="<%= Faker::LoremPixel.image('100x100', false, 'people') %>">
-    </div>
+    <img class="card-avatar" src="<%= Faker::LoremPixel.image('100x100', false, 'people') %>">
     <div class="card-info">
-      <div class="card-details">
+      <div class="card-title">
         <p><b><%= camp.name %></b></p>
-        <p><i>Director:</i> <b><%= user[0].first_name %> <%= user[0].last_name %></b></p>
-        <p><%= address[0].city %>, <%= address[0].province %>, <%= address[0].country %></p>
+      </div>
+      <div class="card-details">
+        <div class="attr-keys">
+          <p><i>Director:</i></p>
+          <p><i>Address:</i></p>
+        </div>
+        <div class="attr-values al-r">
+          <p><b><%= user[0].first_name %> <%= user[0].last_name %></b></p>
+          <p><%= address[0].city %>, <%= address[0].province %>, <%= address[0].country %></p>
+        </div>
+         
+        
       </div>
       <div class="card-details">
         <p ></p>

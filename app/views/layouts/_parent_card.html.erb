@@ -2,16 +2,23 @@
 
 <div class="card">
   <div class="card-contents">
-    <div class="card-avatar">
-      <img class="" src="<%= Faker::LoremPixel.image('70x70', false, 'people') %>">
-    </div>
     <div class="card-info">
-      <div class="card-details">
+      <div class="card-title">
         <p><b><%=parent.user.first_name %> <%= parent.user.last_name%></b></p>
-        <p><%= parent.address.street_address %> - <%= parent.address.apt_number %></p>
-        <p><%= parent.address.postal_code %> </p>
-        <p><%= parent.address.city %>, <%= parent.address.province %>, <%= parent.address.country %></p>
-        <p><%= parent.phone_number %>
+      </div>
+      <div class="card-details">
+        <div class="attr-keys">
+          <p><b>Street Address:</b></p>
+          <p><b>Postal Code:</b></p>
+          <p><b>City:</b></p>
+          <p><b>Phone Number:</b></p>
+        </div>
+        <div class="attr-values">
+          <p><%= parent.address.street_address %> - <%= parent.address.apt_number %></p>
+          <p><%= parent.address.postal_code %> </p>
+          <p><%= parent.address.city %>, <%= parent.address.province %>, <%= parent.address.country %></p>
+          <p><%= parent.phone_number %></p>
+        </div>
       </div>
     </div>
   </div>
