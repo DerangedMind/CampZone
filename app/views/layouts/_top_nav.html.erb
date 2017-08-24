@@ -10,7 +10,6 @@
       </div>
     <% end %>
     <div class="nav-links clearfix">
-
       <ul class="al-r al-c-xs cl-b-xs">
         <% if current_user.role == "director" %>
           <li><%= link_to :Dashboard, director_dashboard_index_path %></li>
@@ -24,16 +23,10 @@
           <li><%= link_to :Profile, counselor_profile_path %></li>
           <li><%= link_to :Settings, counselor_settings_path %></li>
         <% end %>
-
-
-
-        <li><a href="profile">Profile</a></li>
-        <li><a href="settings">Settings</a></li>
-
-
-
-
-
+        <% if current_user.role == "parent" %>
+          <li><%= link_to :Profile, parent_profile_path %></li>
+          <li><%= link_to :Settings, parent_settings_path %></li>
+        <% end %>
         <li><a href="/logout">Logout</a></li>
       </ul>
     </div>
