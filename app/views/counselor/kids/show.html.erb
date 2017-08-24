@@ -1,55 +1,50 @@
-<h1>
-  <%= @kid.first_name %>
-  <%= @kid.last_name %>
-</h1>
-
-<h3>
-  Birthdate:
-</h3>
-<%= @kid.birthdate %>
-
-<h3>
-  Group:
-</h3>
-<%= @group.name %>
-
-<h3>
-  Medical Information:
-</h3>
-
-<div>
-  <p>Medicare Number:
-    <%= @kid.medical_info.medicare %>
-  </p>
-  <p>Allergies:
-    <%= @kid.medical_info.allergies %>
-  </p>
-  <p>Conditions:
-    <%= @kid.medical_info.conditions %>
-  </p>
-  <p>Medications:
-    <%= @kid.medical_info.medications %>
-  </p>
-  <p>Dietary Restrictions:
-    <%= @kid.medical_info.dietary_restrictions %>
-  </p>
-  <p>Epi Pen:
-    <%= @kid.medical_info.epi_pen %>
-  </p>
+<div class="row">
+  <div class="col-md-offset-1">
+    <h1>
+      <%= @kid.first_name %>
+      <%= @kid.last_name %>
+    </h1>
+  </div>
 </div>
 
-<h3>
-  Parents:
-</h3>
+<div class="row">
+  <div class="col-md-offset-1">
+    <h3>
+      Birthdate:
+    </h3>
+    <%= @kid.birthdate %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-offset-1">
+    <h3 class>
+      Group:
+    </h3>
+  </div>
+</div>
+<%= render "/layouts/card_list_medium", objects: [[@group]], type: "group", role: "c" %>
+
+<div class="row">
+  <div class="col-md-offset-1">
+    <h3>
+      Medical Information:
+    </h3>
+  </div>
+</div>
+
+<%= render "/layouts/card_list_medium", objects: [[@medical_info]], type: "medical", role: "c" %>
+
+<div class="row">
+  <div class="col-md-offset-1">
+    <h3>
+      Parents:
+    </h3>
+  </div>
+</div>
+
 <% @parents.each do |parent| %>
-<div>
-  <p>Name:
-    <%= parent.user.first_name %> <%= parent.user.last_name %>
-  </p>
-  <p>Email:
-    <%= parent.user.email %></p>
-  <p>Phone Number:
-    <%= number_to_phone(parent.phone_number, area_code: true) %></p>
-</div>
+
+<%= render "/layouts/card_list", objects: [[parent]], type: "parent", role: 'c' %>
 
 <% end %>
