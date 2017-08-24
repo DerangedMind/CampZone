@@ -1,37 +1,62 @@
-<div class="col-sm-offset-1 col-sm-10">
 <h1>
-  Add a Kid to Camp!
+  Add a Kid to Camp!
 </h1>
 
 <%= form_for @kid, url: director_kids_path, method: 'post' do |form| %>
-  <h3> General Information </h3>
+  <div class="row">
+  <div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8">
+  <h3> General Information </h3>
 
-  <p>First Name: <%= form.text_field("first_name") %></p>
-  <p>Last Name: <%= form.text_field("last_name") %></p>
-  <p>Birthday: <%= form.date_field("birthdate") %></p>
-  <p>Social Insurance Number: <%= form.text_field("sin") %></p>
-  <p>Parent Email: <%= email_field_tag("parent_email")%></p>
+  <div class="form-group">
+    <p>First Name: <%= form.text_field :first_name, class: "form-control" %></p>
+  </div>
 
-  <h3> Medical Information </h3>
+  <div class="form-group">  
+    <p>Last Name: <%= form.text_field :last_name, class: "form-control" %></p>
+  </div>
 
-  <p>Medicare: <%= text_field_tag("medicare") %></p>
+  <div class="form-group">
+    <p>Birthday: <%= form.date_field :birthdate, class: "form-control" %></p>
+  </div>
 
-  <p>Allergies: <%= text_area_tag('allergies') %> </p>
-  No Allergies: <%= check_box_tag('allergies', 'no allergies') %>
+  <div class="form-group">
+    <p>Social Insurance Number: <%= form.text_field :sin, class: "form-control" %></p>
+  </div>
 
-  <p>Conditions: <%= text_area_tag('conditions') %> </p>
-  No conditions: <%= check_box_tag('conditions', 'no conditions') %>
+  <div class="form-group">
+    <p>Parent Email: <%= email_field_tag :parent_email, nil, class: "form-control" %></p>
+  </div>
 
-  <p>Medications: <%= text_area_tag('medications') %> </p>
-  No medications: <%= check_box_tag('medications', 'no medications') %>
+  <h3> Medical Information </h3>
 
-  <p>Dietary Restrictions: <%= text_area_tag('dietary_restrictions')%> </p>
-  No Dietary Restrictions: <%= check_box_tag('dietary_restrictions', 'no dietary restrictions') %>
+  <div class="form-group">
+    <p>Medicare: <%= text_field_tag :medicare, nil, class: "form-control" %></p>
+  </div>
 
-  <p>Epi-Pen <%= select_tag('epi_pen', "<option value=true>Yes</option><option value=false>No</option>".html_safe, prompt: "Select")%> </p>
+  <div class="form-group">
+    <p>Allergies: <%= text_area_tag :allergies, nil, class: "form-control" %> </p>
+  No Allergies: <%= check_box_tag :allergies, 'no allergies', class: "form-control" %>
+  </div>
 
+  <div class="form-group">
+    <p>Conditions: <%= text_area_tag :conditions, nil, class: "form-control" %> </p>
+    No conditions: <%= check_box_tag :conditions, 'no conditions', class: "form-control" %>
+  </div>
 
-  <%= submit_tag("Submit") %>
+  <div class="form-group">
+    <p>Medications: <%= text_area_tag :medications, nil, class: "form-control" %> </p>
+    No medications: <%= check_box_tag :medications, 'no medications', class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <p>Dietary Restrictions: <%= text_area_tag :dietary_restrictions, nil, class: "form-control" %> </p>
+    No Dietary Restrictions: <%= check_box_tag :dietary_restrictions, 'no dietary restrictions', class: "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <p>Epi-Pen <%= select_tag :epi_pen, "<option value=true>Yes</option><option value=false>No</option>".html_safe, class: "form-control"%> </p>
+  </div>
+
+  <%= submit_tag "Submit", class: "btn" %>
 
 <% end %>
-</div>

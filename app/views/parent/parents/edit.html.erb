@@ -2,21 +2,35 @@
 
 <%= form_for @parent, url: parent_profile_path, method: 'put' do |form| %>
 
-  <%= form.label :phone_number %>
-  <%= form.telephone_field :phone_number %>
+  <div class="form_group">
+    <%= form.label :phone_number %>
+    <%= form.telephone_field :phone_number, class: "form-control" %>
+  </div>
 
-  City <%= text_field_tag('city', @address.city) %>
+  <div class="form_group">
+    City <%= text_field_tag :city, @address.city, class: "form-control" %>
+  </div>
 
-  Province <%= text_field_tag('province', @address.province) %>
+  <div class="form_group">
+    Province <%= text_field_tag :province, @address.province, class: "form-control" %>
+  </div>
 
-  Country <%= text_field_tag('country', @address.country) %>
+  <div class="form_group">
+    Country <%= text_field_tag :country, @address.country, class: "form-control" %>
+  </div>
 
-  Street Address <%= text_field_tag('street_address', @address.street_address) %>
+  <div class="form_group">
+    Street Address <%= text_field_tag :street_address, @address.street_address, class: "form-control" %>
+  </div>
 
-  Apartment Number <%= text_field_tag('apt_number', @address.apt_number) %>
+  <div class="form_group">
+    Apartment Number <%= text_field_tag :apt_number, @address.apt_number, class: "form-control" %>
+  </div>
 
-  Postal Code<%= text_field_tag('postal_code', @address.postal_code) %>
+  <div class="form_group">
+    Postal Code<%= text_field_tag :postal_code, @address.postal_code, class: "form-control" %>
+  </div>
 
-  <%= form.submit "Submit" %>
+  <%= form.submit "Submit", class: "btn" %>
 
 <% end %>

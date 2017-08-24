@@ -1,12 +1,17 @@
-<div class="col-sm-offset-1 col-sm-10">
 <h1> Edit <%= @counselor.user.first_name %> <%= @counselor.user.last_name %> Information </h1>
 
 <%= form_for @counselor, url: counselor_profile_path, method: "put" do |form| %>
+  <div class="row">
+    <div class="col-xs-offset-1 col-xs-10 col-sm-2 col-sm-8">
+      <div class="form-group">
+        <p> Alias : <%= form.text_field :alias, class: 'form-control' %> </p>
+      </div>
 
-  <p> Alias : <%= form.text_field("alias") %> </p>
-  <p> Password : <%= password_field_tag("password") %> </p>
-
-  <%= form.submit("Submit") %>
-
+      <div class="form-group">
+        <p> Password : <%= password_field_tag :password, nil, class: 'form-control' %> </p>
+      </div>
+      
+      <%= form.submit "Submit", class: 'btn' %>
+    </div>
+  </div>
 <% end %>
-</div>

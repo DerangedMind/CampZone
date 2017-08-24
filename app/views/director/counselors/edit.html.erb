@@ -1,16 +1,24 @@
 <h1> Edit Counselor Information </h1>
 
 <%= form_for @counselor, url: director_counselor_path, method: 'put' do |form| %>
+  <div class="row">
+    <div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8">
+      <div class="form-group">
+        <%= form.label :alias %>
+        <%= form.text_field :alias, class: "form-control" %>
+      </div>
 
-  <%= form.label :alias %>
-  <%= form.text_field :alias %>
-
-  <%= form.label :training %>
-  <%= form.select :training, [["True", true], ["False", false]]%>
-
-  <%= form.label :account_status %>
-  <%= form.select :account_status, [["Active", "active"], ["Pending", "pending"], ["Inactive", 'inactive']] %>
-
-  <%= form.submit "Submit" %>
-
+      <div class="form-group">
+        <%= form.label :training %>
+        <%= form.select :training, [["True", true], ["False", false]], class: "form-control" %>
+      </div>
+      
+      <div class="form-group">
+        <%= form.label :account_status %>
+        <%= form.select :account_status, [["Active", "active"], ["Pending", "pending"], ["Inactive", 'inactive']], class: "form-control" %>
+      </div>
+      
+      <%= form.submit "Submit", class: "btn" %>
+    </div>
+  </div>
 <% end %>
