@@ -1,20 +1,26 @@
 <% counselor = object %>
 <div class="card">
   <div class="card-contents">
-    <div class="card-avatar">
-      <img class="" src="<%= Faker::LoremPixel.image('70x70') %>">
-    </div>
+    <img class="card-avatar" src="<%= Faker::LoremPixel.image('70x70') %>">
     <div class="card-info">
-      <div class="card-details">
-        <p><%= counselor.user.first_name %> <%= counselor.user.last_name %></p>
+      <div class="card-title">
         <% if role == "d" %>
-        <p><%= link_to counselor.alias, "/#{role}/counselors/#{counselor.id}"%></p>
+          <%= link_to "/#{role}/counselors/#{counselor.id}" do %>
+            <p><%= counselor.user.first_name %> <%= counselor.user.last_name %></p>
+          <% end %>
         <% else %>
-        <p> <%= counselor.alias %> </p>
+          <%= counselor.user.first_name %> <%= counselor.user.last_name %>
         <% end %>
       </div>
       <div class="card-details">
-        <p><%= counselor.user.email %></p>
+        <div class="attr-keys">
+          <p><b>Alias:</b></p>
+          <p><b>Email:</b></p>
+        </div>
+        <div class="attr-values">
+          <p><%= counselor.alias %></p>
+          <p><%= counselor.user.email %></p>
+        </div>
       </div>
     </div>
   </div>

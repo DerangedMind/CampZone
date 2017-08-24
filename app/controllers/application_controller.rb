@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
       return age
     end
   end
+  helper_method :calculate_age
 
   def current_user
     if session[:user_id]
