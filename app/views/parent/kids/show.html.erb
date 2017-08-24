@@ -1,33 +1,46 @@
 <div class="row">
-  <div class="col-sm-offset-1 col-sm-10">
-    <h1> <%= @kid.first_name %> <%= @kid.last_name %> </h1>
-
-    <h2> General Information </h2>
-
-    <h3> Birthdate: </h3> <%= @kid.birthdate %>
-
-    <h3> Social Insurance Number: </h3> <%= @kid.sin %>
-
-    <h3> Camp: <%= @group.name %></h3>
-
-    <h3> Group: </h3> <%= @group.name %>
-
-    <h2> Medical Information </h2>
-
-    <h3> Medicare: </h3> <%= @medical_info.medicare %>
-
-    <h3> Allergies: </h3> <%= @medical_info.allergies %>
-
-    <h3> Conditions: </h3> <%= @medical_info.conditions %>
-
-    <h3> Medications: </h3> <%= @medical_info.medications %>
-
-    <h3> Dietary Restrictions: </h3> <%= @medical_info.dietary_restrictions %>
-
-    <h3> Epi Pen: </h3> <%= @medical_info.epi_pen %>
-
-    <br />
-
-    <%=link_to "Edit Information", edit_parent_kid_path(:id => params[:id]) %>
+  <div class="col-md-offset-1">
+    <h1>
+      <%= @kid.first_name %>
+      <%= @kid.last_name %>
+    </h1>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-md-offset-1">
+    <h3>
+      Birthdate:
+    </h3>
+    <%= @kid.birthdate %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-offset-1">
+    <h3 class>
+      Group:
+    </h3>
+  </div>
+</div>
+<%= render "/layouts/card_list_medium", objects: [[@group]], type: "group", role: "p" %>
+
+<div class="row">
+  <div class="col-md-offset-1">
+    <h3>
+      Medical Information:
+    </h3>
+  </div>
+</div>
+
+<%= render "/layouts/card_list_medium", objects: [[@medical_info]], type: "medical", role: "p" %>
+
+<div class="row">
+  <div class="col-md-offset-1">
+    <h3>
+      Camp
+    </h3>
+  </div>
+</div>
+
+<%= render "/layouts/card_list_medium", objects:[[@camp], [@camp_address], [@camp_director]], type: "camp", role: "p" %>

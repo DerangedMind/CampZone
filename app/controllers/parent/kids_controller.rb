@@ -5,6 +5,8 @@ class Parent::KidsController < Parent::PortalController
     @medical_info = MedicalInfo.find_by(kid_id: @kid.id)
     @group = @kid.groups[0]
     @camp = Camp.find(@group.camp_id)
+    @camp_address = Address.find(@camp.address_id)
+    @camp_director = Director.find(@camp.director_id)
   end
 
   def new
