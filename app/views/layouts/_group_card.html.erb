@@ -5,9 +5,13 @@
     <img class="card-avatar" src="<%= Faker::LoremPixel.image('70x70') %>">
     <div class="card-info">
       <div class="card-title">
-        <%= link_to "/#{role}/groups/#{group.id}" do %>
-            <p><%= group.name %>
+        <% if current_user.role != "parent" %>
+          <%= link_to "/#{role}/groups/#{group.id}" do %>
+            <p><%= group.name %></p>
           <% end %>
+        <% else %>
+          <p><%= group.name %></p>
+        <% end %>
       </div>
       <div class="card-details">
         <div class="attr-keys al-l">

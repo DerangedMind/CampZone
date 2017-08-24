@@ -1,86 +1,75 @@
-<div class="col-sm-offset-1 col-sm-10">
-<h1>
-  <%= @kid.first_name %>
-  <%= @kid.last_name %>
-</h1>
+<div class="row">
+  <div class="col-md-offset-1">
+    <h1>
+      <%= @kid.first_name %>
+      <%= @kid.last_name %>
+    </h1>
+  </div>
+</div>
 
-<h3>
-  Birthdate:
-</h3>
-<%= @kid.birthdate %>
-<h3>
-  Social Insurance Number:
-</h3>
-<%= @kid.sin %>
-<h3>
-  Current Group:
-</h3>
+<div class="row">
+  <div class="col-md-offset-1">
+    <h3>
+      Birthdate:
+    </h3>
+    <%= @kid.birthdate %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-offset-1">
+    <h3>
+      Social Insurance Number:
+    </h3>
+    <%= @kid.sin %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-offset-1">
+    <h3>
+      Medical Information:
+    </h3>
+  </div>
+</div>
+
+<%= render "/layouts/card_list_medium", objects:[[@medical_info]], type: 'medical', role: "d" %>
+
+<div class="row">
+  <div class="col-md-offset-1">
+    <h3>
+      Current Group:
+    </h3>
+  </div>
+</div>
 <% @groups.each do |group| %>
-<div>
-  <p>Group Name:
-  <%= link_to group.name, director_group_path(:id => group.id) %></p>
-  <p>Age Range:
-  <%= group.min_age %> - <%= group.max_age %></p>
-  <p>Year:
-  <%= group.start_date %></p>
+<%= render "/layouts/card_list", objects: [@groups], type: "group", role: 'd' %>
+<% end %>
+
+<div class="row">
+  <div class="col-md-offset-1">
+    <h3>
+      Parents:
+    </h3>
+  </div>
 </div>
-<% end %>
+<%= render "/layouts/card_list_medium", objects:[@parents], type: "parent", role: 'd' %>
 
-<h3>
-  Parents:
-</h3>
-<% @parents.each do |parent| %>
-<div>
-  <p>First Name:
-    <%= parent.user.first_name %></p>
-  <p>Last Name:
-    <%= parent.user.last_name %></p>
-  <p>Email:
-    <%= parent.user.email %></p>
-  <p>Phone Number:
-    <%= number_to_phone(parent.phone_number, area_code: true) %></p>
+
+<div class="row">
+  <div class="col-md-offset-1">
+    <h3>
+      Current Counselors:
+    </h3>
+  </div>
 </div>
+    <%= render "/layouts/card_list", objects:[@counselors], type: 'counselor', role: "d" %>
 
-<% end %>
 
-<h3>
-  Current Counselors:
-</h3>
-<% @counselors.each do |counselor| %>
-<p><%= link_to counselor.alias, director_counselor_path(:id => counselor.id) %> </p>
-<% end %>
-<h3>
-  Medical Information:
-</h3>
-
-<p>
-  Medicare
-</p>
-<%= @medical_info.medicare %>
-
-<p>
-  Allergies:
-</p>
-<%=@medical_info.allergies %>
-</p>
-<p>
-Conditions:
-</p>
-<%=@medical_info.conditions %>
-</p>
-<p>
-Medication:
-</p>
-<%=@medical_info.medications %>
-</p>
-<p>
-Epi Pen:
-</p>
-<%=@medical_info.epi_pen %>
-</p>
-
-<br/>
-<%= link_to "Edit Child Information", edit_director_kid_path(:id => @kid.id) %>
-<br/>
-<%= link_to "Remove Child from Database", "/d/kids/#{@kid.id}", method: "DELETE" %>
+<div class="row">
+  <div class="col-md-offset-1">
+    <br/>
+    <%= link_to "Edit Child Information", edit_director_kid_path(:id => @kid.id), class: "btn fl-l" %>
+    <%= link_to "Remove Child from Database", "/d/kids/#{@kid.id}", method: "DELETE", class: "btn fl-l" %>
+  </div>
 </div>

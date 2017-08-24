@@ -4,7 +4,6 @@
   user = objects[2].select { |u| u.id.to_s == camp.director.user_id }
 %>
 <div class="card">
-  <%= link_to signup_parent_path do %>
   <div class="card-contents">
     <div class="card-avatar">
       <img class="" src="<%= Faker::LoremPixel.image('100x100', false, 'people') %>">
@@ -20,5 +19,4 @@
       </div>
     </div>
   </div>
-  <% end %>
 </div>
