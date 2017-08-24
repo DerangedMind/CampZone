@@ -1,7 +1,7 @@
 <nav class="navbar">
   <div class="nav-list">
     <div class="navbar-header fl-l">
-      <%= link_to :CampZone, director_dashboard_index_path, class:"navbar-brand" %>
+      <span class="navbar-brand">CampZone</span>
     </div>
     <% if current_user %>
       <div class="navbar-header fl-r">
@@ -17,14 +17,20 @@
           <li><%= link_to :Counselors, director_counselors_path %></li>
           <li><%= link_to :Groups, director_groups_path %></li>
           <li><%= link_to :Kids, director_kids_path %></li>
+          <li><%= link_to :Profile, director_profile_path %></li>
+          <li><%= link_to :Settings, director_settings_path %></li>
         <% end %>
         <% if current_user.role == "counselor" %>
           <li><%= link_to :Groups, counselor_groups_path %></li>
           <li><%= link_to :Kids, counselor_kids_path %></li>
+          <li><%= link_to :Profile, counselor_profile_path %></li>
+          <li><%= link_to :Settings, counselor_settings_path%></li>
         <% end %>
-        <li><a href="profile">Profile</a></li>
-        <li><a href="settings">Settings</a></li>
-        <li><a href="/logout">Logout</a></li>
+        <% if current_user.role == "parent" %>
+          <li><%= link_to :Profile, parent_profile_path %></li>
+          <li><%= link_to :Settings, parent_settings_path %></li>
+        <% end %>
+          <li> <%= link_to :Logout, logout_path %></li>
       </ul>
     </div>
   </div>
