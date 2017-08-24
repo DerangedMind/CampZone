@@ -21,9 +21,19 @@
         <% if current_user.role == "counselor" %>
           <li><%= link_to :Groups, counselor_groups_path %></li>
           <li><%= link_to :Kids, counselor_kids_path %></li>
+          <li><%= link_to :Profile, counselor_profile_path %></li>
+          <li><%= link_to :Settings, counselor_settings_path %></li>
         <% end %>
+
+
+
         <li><a href="profile">Profile</a></li>
         <li><a href="settings">Settings</a></li>
+
+
+
+
+
         <li><a href="/logout">Logout</a></li>
       </ul>
     </div>
