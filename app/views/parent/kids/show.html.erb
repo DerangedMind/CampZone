@@ -44,3 +44,9 @@
 </div>
 
 <%= render "/layouts/card_list_medium", objects:[[@camp], [@camp_address], [@camp_director]], type: "camp", role: "p" %>
+
+<div class="row">
+  <div class="col-md-offset-1">
+    <%= link_to "Edit Kid Information", edit_parent_kid_path(:id => params[:id]), class: "btn fl-l" %>
+  </div>
+</div>
