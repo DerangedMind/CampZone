@@ -6,7 +6,7 @@ class Parent::KidsController < Parent::PortalController
     @group = @kid.groups[0]
     @camp = Camp.find(@group.camp_id)
     @camp_address = Address.find(@camp.address_id)
-    @camp_director = Director.find(@camp.director_id)
+    @camp_director = User.find(Director.find(@camp.director_id).id)
   end
 
   def new
