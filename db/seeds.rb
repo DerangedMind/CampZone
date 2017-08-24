@@ -6,78 +6,171 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Camp.destroy_all
-
-puts "Creating Camp..."
-
-address = Address.create!({
-  city: Faker::Address.city,
-  province: Faker::Address.state_abbr,
-  country: Faker::Address.country,
-  street_address: Faker::Address.street_address,
-  apt_number: Faker::Address.secondary_address,
-  postal_code: Faker::Address.postcode.to_s
-})
-
-puts "Creating Director..."
-
 User.destroy_all
 Counselor.destroy_all
 Director.destroy_all
-
-director_user = User.create!({
-  first_name: Faker::Zelda.character,
-  last_name: "of #{Faker::Zelda.location}",
-  email: "admin@couchlyfe.com",
-  password: "password",
-  role: "director",
-  email_confirmed: true,
-  confirm_token: nil
-})
-
-director = Director.create!({
-  user_id: director_user.id
-})
-
-camp = Camp.create!(
-  name: Faker::HarryPotter.location,
-  address_id: 1,
-  phone_number: '5551234567',
-  director_id: 1
-)
-
-puts "Creating Group..."
-
 Group.destroy_all
+Parent.destroy_all
+Kid.destroy_all
 
-group = Group.create!({
-  camp_id: camp.id,
-  name: Faker::StarTrek.location,
-  min_age: 12,
-  max_age: 14,
-  start_date: Date.current.next_week(:monday)
-})
+Faker::Config.locale = 'en-CA'
 
+def create_address
+  address = Address.create!({
+    city: Faker::Address.city,
+    province: Faker::Address.state_abbr,
+    country: Faker::Address.country,
+    street_address: Faker::Address.street_address,
+    apt_number: Faker::Address.secondary_address,
+    postal_code: Faker::Address.postcode.to_s
+  })
+end
 
-acc_status = ["inactive", "active", "pending"]
+def create_director_user
+  user = User.create!({
+    first_name: Faker::DragonBall.character,
+    last_name: Faker::Cat.name,
+    email: "admin#{rand(4 * 12) + 1}@couchlyfe.com",
+    password: "password",
+    role: "director",
+    email_confirmed: true,
+    confirm_token: nil
+  })
+end
 
-puts "Creating Counselors..."
+def create_director(user)
+  director = Director.create!({
+    user_id: user.id
+  })
+end
 
-3.times do |count|
+def create_counselor_user
   user = User.create!({
     first_name: Faker::Zelda.character,
-    last_name: "of #{Faker::Zelda.location}",
-    email: "#{Faker::Cat.name}#{rand(6)}@campers.com",
+    last_name: Faker::Cat.name,
+    email: "#{Faker::Cat.name}#{rand(5..50)}#{rand(1..8)}#{rand(5..10)}@campers.com",
     password: "password",
     role: "counselor"
   })
+end
 
+def create_counselor(user, group, acc_status)
   counselor = Counselor.create!({
     user_id: user.id,
     alias: Faker::Pokemon.name,
     training: false,
-    account_status: acc_status[count],
+    account_status: acc_status,
     group_ids: [group.id]
   })
+end
+
+def create_parent_user
+  user = User.create!({
+    first_name: Faker::Lovecraft.deity,
+    last_name: Faker::Witcher.monster,
+    email: "#{Faker::Hipster.word}#{rand(5..50)}#{rand(1..8)}#{rand(5..10)}@campers.com",
+    password: "password",
+    role: "parent"
+  })
+end
+
+def create_parent(user, address)
+  parent = Parent.create!({
+    user_id: user.id,
+    address_id: address.id,
+    phone_number: Faker::PhoneNumber.phone_number
+  })
+end
+
+def create_kid(parent, group_id)
+  kid = Kid.create!({
+    first_name: Faker::Color.color_name.capitalize,
+    last_name: Faker::Pokemon.name,
+    birthdate: Faker::Date.birthday(8, 17),
+    sin: Faker::Number.number(9),
+    parent_ids: parent.id,
+    group_ids: group_id
+  })
+end
+
+def create_medical(kid)
+  medical = MedicalInfo.create({
+    kid_id: kid.id,
+    allergies: Faker::Witcher.monster,
+    conditions: Faker::Lorem.word,
+    medications: "Some kind of medication lol",
+    dietary_restrictions: "Can't eat food",
+    epi_pen: [true, false].sample,
+    medicare: Faker::Number.number(12)
+  })
+end
+
+def create_camp(director, address)
+  camp = Camp.create!(
+    name: Faker::HarryPotter.location,
+    address_id: address.id,
+    phone_number: Faker::Base.numerify('(###)###-####'),
+    director_id: director.id
+  )
+end
+
+def create_group(camp, age)
+  group = Group.create!({
+    camp_id: camp.id,
+    name: Faker::StarTrek.location,
+    min_age: age,
+    max_age: age+2,
+    start_date: Faker::Date.between(1.month.from_now, 6.months.from_now)
+  })
+
+end
+
+def calculate_age(kid)
+  unless kid.birthdate.nil?
+    current_date = Date.today
+    age = ((current_date - kid.birthdate).to_i) / 365
+    return age
+  end
+end
+
+4.times do |main_count|
+
+  puts "Creating Director..."
+  director = create_director(create_director_user)
+
+  puts "Creating Camp..."
+  camp = create_camp(director, create_address)
+
+  puts "Creating Groups..."
+  age = 8
+  groups = []
+  4.times do
+    groups << create_group(camp, age)
+    age += 3
+  end
+
+  acc_status = ["inactive", "active", "pending"]
+
+  puts "Creating Counselors..."
+
+  12.times do |counselor_count|
+    counselor = create_counselor(create_counselor_user, groups[counselor_count % 4], acc_status[counselor_count % 3])
+  end
+
+  puts "Creating Parents and Kids..."
+
+  20.times do |parent_count|
+    parent = create_parent(create_parent_user, create_address)
+
+    random = 1 + rand(3)
+    random.times do |kid_count|
+      kid = create_kid(parent, ((parent_count % 3) * main_count) + 1)
+      create_medical(kid)
+      age = calculate_age(kid)
+      kid.groups << Group.where("min_age <= ? AND max_age >= ? AND camp_id = ?", age, age, camp.id)
+
+    end
+  end
 end
 
 puts "Creating Test Counselor..."
@@ -97,65 +190,8 @@ test_counselor = Counselor.create(
   alias: "DemiGodMode",
   training: true,
   account_status: "active",
-  group_ids: [group.id]
+  group_ids: [1, 8]
 )
-
-
-Parent.destroy_all
-Kid.destroy_all
-puts "Creating Parents and Kids..."
-
-10.times do |count|
-  user = User.create!({
-    first_name: Faker::Lovecraft.deity,
-    last_name: "of #{Faker::Lovecraft.location}",
-    email: "#{Faker::Lovecraft.word}#{count * rand(7) + 1}@campers.com",
-    password: "password",
-    role: "parent"
-  })
-
-  address = Address.create!({
-    city: Faker::Address.city,
-    province: Faker::Address.state_abbr,
-    country: Faker::Address.country,
-    street_address: Faker::Address.street_address,
-    apt_number: Faker::Address.secondary_address,
-    postal_code: Faker::Address.postcode.to_s
-  })
-
-  parent = Parent.create!({
-    user_id: user.id,
-    address_id: address.id,
-    phone_number: Faker::PhoneNumber.phone_number
-  })
-
-  random = 1 + rand(3)
-  random.times do |count|
-    kid = Kid.create!({
-      first_name: Faker::Pokemon.name,
-      last_name: "of #{Faker::HarryPotter.location}",
-      birthdate: Faker::Date.birthday(5, 14),
-      sin: Faker::Number.number(9)
-    })
-    KidsParent.create!({
-      parent_id: parent.id,
-      kid_id: kid.id
-    })
-    MedicalInfo.create({
-      kid_id: kid.id,
-      allergies: Faker::Witcher.monster,
-      conditions: Faker::Lorem.word,
-      medications: "Some kind of medication lol",
-      dietary_restrictions: "Can't eat food",
-      epi_pen: true,
-      medicare: Faker::Number.number(12)
-      })
-    GroupsKid.create!({
-      kid_id: kid.id,
-      group_id: 1
-    })
-  end
-end
 
 puts "Creating Test Parent..."
 
@@ -175,10 +211,4 @@ test_parent = Parent.create(
   phone_number: "5141234567"
 )
 
-# find address through prent.
-# find prent with kid id 3
-
-KidsParent.create(
-  parent_id: test_parent.id,
-  kid_id: 3
-)
+test_parent.kids << Kid.find(3)
