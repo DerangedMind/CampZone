@@ -51,6 +51,8 @@ def create_counselor_user
     email: "#{Faker::Cat.name}#{rand(5..50)}#{rand(1..8)}#{rand(5..10)}@campers.com",
     password: "password",
     role: "counselor"
+    email_confirmed: true,
+    confirm_token: nil
   })
 end
 
@@ -71,6 +73,8 @@ def create_parent_user
     email: "#{Faker::Hipster.word}#{rand(5..50)}#{rand(1..8)}#{rand(5..10)}@campers.com",
     password: "password",
     role: "parent"
+    email_confirmed: true,
+    confirm_token: nil
   })
 end
 
