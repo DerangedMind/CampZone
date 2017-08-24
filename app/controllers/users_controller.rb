@@ -21,6 +21,10 @@ class UsersController < ApplicationController
     if user
       user.email_activate
       session[:user_id] = user.id
+      if user.role == "counselor"
+        counselor = Counselor.find_by_user_id(user.id)
+        counselor.update(:account_status => "active")
+      end
       display_flash(user)
       redirect_to_role_portal(user)
     end
