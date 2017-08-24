@@ -1,1 +1,6 @@
+<div class="col-sm-offset-1 col-sm-10">
+  <h1> All Kids </h1>
+  <h3> Total Kids: <%= @kids.count %></h3>
+</div>
+
 <%= render 'layouts/card_list', objects: [@kids], type: "kid", role: "c" %>
