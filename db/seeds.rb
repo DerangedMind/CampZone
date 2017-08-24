@@ -78,7 +78,7 @@ def create_parent(user, address)
   parent = Parent.create!({
     user_id: user.id,
     address_id: address.id,
-    phone_number: Faker::PhoneNumber.phone_number
+    phone_number: Faker::Base.numerify('(###)###-####')
   })
 end
 
@@ -175,7 +175,17 @@ end
 
 puts "Creating Test Counselor..."
 
-test_counselor_user = User.create(
+test_director_user = User.create!(
+  first_name: 'Grandma',
+  last_name: "Testerson",
+  email: "admin@couchlyfe.com",
+  password: "password",
+  role: "director",
+  email_confirmed: true,
+  confirm_token: nil
+)
+
+test_counselor_user = User.create!(
   first_name: 'Test Counselor',
   last_name: "TEST",
   email: "counselor@campzone.com",
@@ -185,7 +195,7 @@ test_counselor_user = User.create(
   confirm_token: nil
 )
 
-test_counselor = Counselor.create(
+test_counselor = Counselor.create!(
   user_id: test_counselor_user.id,
   alias: "DemiGodMode",
   training: true,
@@ -195,7 +205,7 @@ test_counselor = Counselor.create(
 
 puts "Creating Test Parent..."
 
-test_parent_user = User.create(
+test_parent_user = User.create!(
   first_name: "TestParent",
   last_name: "TEST",
   email: "parent@campzone.com",
@@ -205,7 +215,7 @@ test_parent_user = User.create(
   confirm_token: nil
 )
 
-test_parent = Parent.create(
+test_parent = Parent.create!(
   user_id: test_parent_user.id,
   address_id: Parent.find(KidsParent.find_by_kid_id(3).parent_id).address_id,
   phone_number: "5141234567"

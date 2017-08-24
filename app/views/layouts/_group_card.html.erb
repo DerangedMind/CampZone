@@ -2,16 +2,22 @@
 
 <div class="card">
   <div class="card-contents">
-    <div class="card-avatar">
-      <img class="" src="<%= Faker::LoremPixel.image('70x70') %>">
-    </div>
+    <img class="card-avatar" src="<%= Faker::LoremPixel.image('70x70') %>">
     <div class="card-info">
-      <div class="card-details">
+      <div class="card-title">
         <%= link_to "/#{role}/groups/#{group.id}" do %>
-          <p><%= group.name %>
-        <% end %>
-        <p>Age Range: <%= group.min_age %> - <%= group.max_age %></p>
-        <p>Starting: <%= group.start_date %></p>
+            <p><%= group.name %>
+          <% end %>
+      </div>
+      <div class="card-details">
+        <div class="attr-keys al-l">
+          <p><b>Age Group:</b></p>
+          <p><b>Start Date:</b></p>
+        </div>
+        <div class="attr-values al-r">
+          <p><%= group.min_age %> - <%= group.max_age %></p>
+          <p><%= group.start_date %></p>
+        </div>
       </div>
     </div>
   </div>
