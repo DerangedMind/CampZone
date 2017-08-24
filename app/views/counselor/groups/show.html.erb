@@ -1,17 +1,11 @@
-<h1> <%= @group.name %> at Camp <%= @camp.name %></h1>
-<h3> Age Range: </h3> <%= @group.min_age %> - <%= @group.max_age %>
-
-<h3> Counselors: <%= @counselors.count %> </h3>
+<div class="col-sm-offset-1 col-sm-10">
+  <h1> <%= @group.name %> at Camp <%= @camp.name %></h1>
+  <h2> Age Range: </h2> <%= @group.min_age %> - <%= @group.max_age %>
+  <h2> Counselors: <%= @counselors.count %> </h2>
+</div>
 <%= render 'layouts/card_list', objects: [@counselors], type: "counselor", role: "c" %>
 
-<h3 class="col-md-6"> Kids: <%=@kids.count %> </h3>
-
+<div class="col-sm-offset-1 col-sm-10">
+  <h2> Kids: <%= @kids.count %></h2>
+</div>
 <%= render 'layouts/card_list', objects: [@kids], type: "kid", role: "c" %>
-
-
-<div class="col-md-12">
-  <%=link_to "Edit Group",  edit_director_group_path(:id => params[:id])%>
-</div>
-<div class="col-md-12">
-  <%= link_to "Delete Group", director_group_path, method: "delete"%>
-</div>
