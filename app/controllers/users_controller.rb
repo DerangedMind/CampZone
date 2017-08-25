@@ -62,7 +62,7 @@ class UsersController < ApplicationController
       if @director.save
         puts "DIRECTOR SAVED"
         UserMailer.registration_confirmation(@user).deliver
-        flash[:notice] = "Director Created! Please ask new director to verify email"
+        flash[:notice] = "Director Created! Please check your email #{@user.email} to verify account"
         redirect_to login_path
       else
         puts "DIRECTOR NOT SAVED"
