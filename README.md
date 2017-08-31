@@ -1,4 +1,4 @@
-# README.md
+# CampZone
 
 ## About the Project
 
