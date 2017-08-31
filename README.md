@@ -10,10 +10,10 @@ This project came to life with the idea of solving a problem present in summer c
 CampZone brings all of these points together into one simple solution in the form of a web application.
 
 ### View CampZone Screenshots
-!["Screenshot of Splash Page"](#)
-!["Screenshot of Login Page Full Screen"](#)
-!["Screenshot of Director Dashboard"](#)
-!["Screenshot of Director Kids Details"](#)
+!["Splash"](/docs/splash.png)
+!["Login Full Screen"](/docs/login.png)
+!["Director Dashboard"](/docs/director-dashboard.png)
+!["Director Kid Details"](/docs/director-kid.png)
 
 
 ## User Stories
