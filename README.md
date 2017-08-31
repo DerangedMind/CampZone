@@ -7,7 +7,14 @@ This project came to life with the idea of solving a problem present in summer c
 - Allowing camp administration to keep track of all participants and separate them into groups
 - Allowing counsellors to have access to all the important information regarding the children of their group, including parent contact information, allergies, etc.
 
-Camper brings all of these points together into one simple solution in the form of a web application.
+CampZone brings all of these points together into one simple solution in the form of a web application.
+
+### View CampZone
+!["Screenshot of Splash Page"](#)
+!["Screenshot of Login Page Full Screen"](#)
+!["Screenshot of Director Dashboard"](#)
+!["Screenshot of Director Kids Details"](#)
+
 
 ## User Stories
 
