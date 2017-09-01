@@ -81,23 +81,21 @@ I want to register my kid(s),
 so I can send them off for the summer.
 
 
+## Web Application Setup
+
+* Run `bundle install`
+* Follow database setup then run `bin/rake db:reset`
+* Run `bin/rails s -b 0.0.0.0` to start the server
+* Open your browser window to localhost:300
+
+## Dependencies
+
+* Rails 4.2 [Rails Guide](http://guides.rubyonrails.org/v4.2/)
+* PostgreSQL 9.x
+
 ## Database Setup
 
 The project currently uses PSQL. As a developer, please create a development database on your local machine called "camper_development"
 ```psql -d development
 CREATE DATABASE camper_development;
 ```
-
-## Test Logins:
-
-*Parent:*
-Email: parent@campzone.com
-password: password
-
-*Counselor:*
-Email: counselor@campzone.com
-password: password
-
-*Director:*
-Email: admin@couchlyfe.com
-password: password
