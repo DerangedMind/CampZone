@@ -7,72 +7,27 @@ This project came to life with the idea of solving a problem present in summer c
 - Allowing camp administration to keep track of all participants and separate them into groups
 - Allowing counsellors to have access to all the important information regarding the children of their group, including parent contact information, allergies, etc.
 
-Camper brings all of these points together into one simple solution in the form of a web application.
+CampZone brings all of these points together into one simple solution in the form of a web application.
 
-## User Stories
+### View Select CampZone Screenshots
+!["Splash"](/docs/splash.png)
 
-### Admin
+#### Director Dashboard
+!["Director Dashboard"](/docs/director-dashboard.png)
 
-As an Admin,
-I want to create a camp,
-so I can organize my camp, counsellors, parents, and kids.
+!["Login Full Screen"](/docs/login.png)
 
-As an Admin,
-I want to see all kids,
-so I can keep track of them.
+## Web Application Setup
 
-As an Admin,
-I want to see a kid's parents,
-so I can keep track of or contact them.
+* Run `bundle install`
+* Follow database setup then run `bin/rake db:reset`
+* Run `bin/rails s -b 0.0.0.0` to start the server
+* Open your browser window to localhost:300
 
-As an Admin,
-I want to see all counselors,
-so I know who is supposed to be in charge of which kids.
+## Dependencies
 
-As an Admin,
-I want to be able to invite counselors,
-so they can help organize the camp.
-
-As an Admin,
-I want to see the groups in my camp,
-so I have information about each group (kids & counselors).
-
-As an Admin,
-I want to create a group,
-so I can organize the kids by age.
-
-As an Admin,
-I want to see each group and the kids within them,
-so I can organize each group individually.
-
-As an Admin,
-I want to select a kid and see their information,
-so I can know their parents' contact, medical, and other info.
-
-As an Admin,
-I want to see a dashboard,
-so I know how many kids are enrolled, how much money I made, how many counselors there are, and what activities are planned.
-
-### Counselor
-
-As a Counselor,
-I want to select a kid **within my group** and see their information,
-so I can know their parents' contact info, medical info, and other info.
-
-As a Counselor,
-I want to see all the kids within my group,
-so I can organize and count my kids.
-
-### Parents
-
-As a Parent,
-I want to create an account,
-so I can log into the website.
-
-As a Parent,
-I want to register my kid(s),
-so I can send them off for the summer.
-
+* Rails 4.2 [Rails Guide](http://guides.rubyonrails.org/v4.2/)
+* PostgreSQL 9.x
 
 ## Database Setup
 
@@ -80,17 +35,3 @@ The project currently uses PSQL. As a developer, please create a development dat
 ```psql -d development
 CREATE DATABASE camper_development;
 ```
-
-## Test Logins:
-
-*Parent:*
-Email: parent@campzone.com
-password: password
-
-*Counselor:*
-Email: counselor@campzone.com
-password: password
-
-*Director:*
-Email: admin@couchlyfe.com
-password: password
